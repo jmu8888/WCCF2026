@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026华盛顿中国文化节技术组工作流程与系统保障方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #A62B2B; /* 华夏红 */
+            --primary-light: #F9ECEC;
+            --secondary-color: #C5A059; /* 祥云金 */
+            --dark-color: #2A2A2A; /* 炭黑 */
+            --light-bg: #FDFBF7; /* 宣纸白 */
+            --border-color: #E2E8F0;
+            --text-muted: #64748B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #F1F1F1;
+            color: var(--dark-color);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .document-container {
+            background-color: #FFFFFF;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            border-top: 8px solid var(--primary-color);
+            position: relative;
+        }
+
+        /* 装饰水印 */
+        .document-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--primary-light) 10%, transparent 11.1%);
+            background-size: 15px 15px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* 封面样式 */
+        .cover-page {
+            padding: 80px 80px 40px 80px;
+            border-bottom: 2px solid var(--primary-light);
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-family: 'Noto Sans SC', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.3;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .sub-title {
+            font-size: 18px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-color);
+            text-align: left;
+        }
+
+        .meta-item {
+            font-size: 14px;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        /* 内容版面 */
+        .content-body {
+            padding: 60px 80px;
+        }
+
+        h2.section-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2.section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        h2.section-title i {
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+
+        h3.subsection-title {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 3px solid var(--secondary-color);
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 15px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        /* 重点提示框 */
+        .callout-box {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 列表样式 */
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 15px;
+            color: #4A4A4A;
+            margin-bottom: 8px;
+        }
+
+        li strong {
+            color: var(--dark-color);
+        }
+
+        /* 表格样式 */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: #4A4A4A;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #FAFBFD;
+        }
+
+        /* 时间线/流转设计 */
+        .timeline-vertical {
+            margin: 25px 0;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline-vertical::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-node::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 0 4px var(--primary-light);
+            z-index: 2;
+        }
+
+        .timeline-node.highlight::before {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px #FBF6EC;
+        }
+
+        .timeline-time {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 14px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--dark-color);
+            margin-bottom: 6px;
+        }
+
+        /* 页脚 */
+        .document-footer {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 30px 80px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* 打印适配 */
+        @media print {
+            body {
+                background-color: #FFFFFF;
+                padding: 0;
+            }
+            .document-container {
+                box-shadow: none;
+                max-width: 100%;
+                border-top: none;
+            }
+            .cover-page {
+                page-break-after: always;
+                padding-top: 120px;
+            }
+            .content-body {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="document-container">
+    
+    <div class="cover-page">
+        <span class="header-badge">TECHNICAL MANAGEMENT HANDBOOK</span>
+        <h1 class="main-title">《2026 华盛顿中国文化节》</h1>
+        <div class="sub-title">技术组工作流程与系统保障方案</div>
+        
+        <div class="meta-grid">
+            <div class="meta-item">
+                <span class="meta-label">核心目标</span>
+                <span class="meta-value">听得清·看得清·运行顺·系统稳</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">管理机制</span>
+                <span class="meta-value">统一需求与调度</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">文档属性</span>
+                <span class="meta-value">技术执行标准手册</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        
+        <h2 class="section-title"><i class="fa-solid fa-gears"></i> 第一章、总则与技术升级原则</h2>
+        <p>
+            本流程依据<strong>“从设备保障升级为系统保障”</strong>的总体指导原则进行编制。技术组的工作职责绝非局限于单一的硬件物理操作，而是要全面服务于舞台整体流程、现场观众体验、重要嘉宾讲话、现场秩序维护以及全场的安全稳定。
+        </p>
+        <p>
+            为了将风险拦截在开演之前，技术组全体成员在文化节全周期执行过程中，必须严格遵循以下四项刚性红线原则：
+        </p>
+
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 25%">核心红线原则</th>
+                    <th style="width: 45%">执行细则与标准</th>
+                    <th style="width: 30%">核心管理目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>不凭经验开场</strong></td>
+                    <td>所有音响、视频、大屏、线缆、话筒、导播及供电设备，必须在开演前完成全系统测试。</td>
+                    <td>消除硬件隐患，杜绝临场盲区。</td>
+                </tr>
+                <tr>
+                    <td><strong>不临场猜需求</strong></td>
+                    <td>所有演出团队、主持人、嘉宾讲话、视频播放及特殊节目需求，必须提前申报、提前确认。</td>
+                    <td>防止因信息不对称导致的走位或音视频错漏。</td>
+                </tr>
+                <tr>
+                    <td><strong>不单点依赖</strong></td>
+                    <td>关键设备、话筒、线缆、转换器、电源、人员岗位必须设置备份，避免单点故障影响整体运行。</td>
+                    <td>实现故障秒级切换，保障系统高可用。</td>
+                </tr>
+                <tr>
+                    <td><strong>不只管设备</strong></td>
+                    <td>技术组同时承担流程配合、信息传递、临场排障、观众体验与安全稳定保障职责。</td>
+                    <td>打破“部门墙”，提供协同保障。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title"><i class="fa-solid fa-users-viewfinder"></i> 第二章、技术组架构与人员职责分工</h2>
+        <p>
+            技术组精简并配置 <strong>5–6人轻量化高效执行小组</strong>。各岗位职责明晰，现场推行“一岗双责、动态替补”机制，确保每一个技术触点都有专人咬合：
+        </p>
+
+        <h3 class="subsection-title">1. 技术总协调</h3>
+        <ul>
+            <li><strong>核心职责：</strong> 负责统筹技术组整体口径，协调主舞台、第二舞台、导演组、摄影摄像组、工程组、安保组及秘书组之间的技术事项。</li>
+            <li><strong>应变权限：</strong> 遇到重大问题时，全权负责整体统筹并及时进行升级处理。</li>
+        </ul>
+
+        <h3 class="subsection-title">2. 音响负责人</h3>
+        <ul>
+            <li><strong>核心职责：</strong> 负责主扩音响、补声音箱、返听系统、麦克风、无线/有线话筒的管理与啸叫控制。</li>
+            <li><strong>专项保障：</strong> 精准调试嘉宾讲话系统及演出声场调试，确保各区域声音清晰。</li>
+        </ul>
+
+        <h3 class="subsection-title">3. 视频负责人与大屏负责人</h3>
+        <ul>
+            <li><strong>核心职责：</strong> 负责主舞台LED大屏幕、视频控制系统以及多路信号转换器的稳定运行。</li>
+            <li><strong>技术要求：</strong> 负责背景视频、暖场PPT、赞助商滚动广告的播放管理，严格保障信号不中断。</li>
+        </ul>
+
+        <h3 class="subsection-title">4. 导播与摄像技术协调</h3>
+        <ul>
+            <li><strong>核心职责：</strong> 负责现场多机位摄像信号的接入、导播切换台的正常运转以及现场实况投屏（IMAG）的视音频同步。</li>
+            <li><strong>协作任务：</strong> 配合宣传组与外包直播团队，提供高保真的主路视音频推流信号。</li>
+        </ul>
+
+        <h3 class="subsection-title">5. 电力与线缆安全员</h3>
+        <ul>
+            <li><strong>核心职责：</strong> 负责技术主控区、舞台核心区及配电箱之间的强电引入与分配。</li>
+            <li><strong>安全防线：</strong> 巡检全场音视频线缆的物理防护（如过线桥铺设），做好设备防雨防水应急覆盖。</li>
+        </ul>
+
+        <h2 class="section-title"><i class="fa-solid fa-business-time"></i> 第三章、各阶段技术执行与流转流程</h2>
+        <p>
+            技术保障按照时间推进与任务属性，严格划分为以下**五个标准化执行阶段**进行流转。每一阶段均设立明确的核心目标与交付动作：
+        </p>
+
+        <div class="timeline-vertical">
+            <div class="timeline-node">
+                <span class="timeline-time">第一阶段：设备进场与物理连接</span>
+                <p class="timeline-title">核心目标：规范布局、打牢硬件物理基础</p>
+                <p style="font-size: 14px;">
+                    配合工程搭建组的进度，技术设备有序进场。按照预定规划图摆放音响、大屏箱体与主控台；严格执行强电与弱电信号线缆分离布线，凡跨越人行通道或车道处，<strong>必须100%全量加装工业级过线桥防护</strong>，并做好所有设备的接地防静电处理。
+                </p>
+            </div>
+            
+            <div class="timeline-node">
+                <span class="timeline-time">第二阶段：单系统独立调试</span>
+                <p class="timeline-title">核心目标：各个击破、确保单一硬件指标达标</p>
+                <p style="font-size: 14px;">
+                    进行单硬件通电与系统初调。音响组主测频响曲线并进行基础粉噪测试；视频组进行LED大屏幕全屏点亮检查，排查死点、坏点，进行色彩平衡校准；电力组使用万用表对供电电压进行不间断测量，确保强电输入稳定。
+                </p>
+            </div>
+
+            <div class="timeline-node">
+                <span class="timeline-time">第三阶段：全系统联合调试</span>
+                <p class="timeline-title">核心目标：多维咬合、打通整体技术链路</p>
+                <p style="font-size: 14px;">
+                    打通音视频与大屏全链路。实地测试摄像机信号经导播台切换后投向大屏幕的时延，确保视音频同步；测试现场无线话筒的频段切换，进行走位扫频，<strong>彻底锁死并隔离Pennsylvania Avenue附近的频段干扰</strong>。
+                </p>
+            </div>
+
+            <div class="timeline-node">
+                <span class="timeline-time">第四阶段：彩排配合与需求最终确认</span>
+                <p class="timeline-title">核心目标：业务对接、将技术指标与节目流程完美对齐</p>
+                <p style="font-size: 14px;">
+                    技术组全员就位配合导演组及演出人员进行实地彩排。针对重点节目逐一核对音响伴奏音频、大屏背景视频及特殊的换麦克风走位；技术主控台统一记录测试结果、未解决问题和临时调整事项，限时动态闭环。
+                </p>
+            </div>
+
+            <div class="timeline-node highlight">
+                <span class="timeline-time">第五阶段：全场联检与开场准备（09:00 AM – 09:30 AM）</span>
+                <p class="timeline-title">核心目标：终极查漏补缺、确保系统绝对稳定</p>
+                <p style="font-size: 14px;">
+                    <strong>主要任务：</strong><br>
+                    1. 配合组委会、工程组、安保组进行全场联检，重点检查舞台区、主控台、线缆路径、摄像机位和 LED 大屏周边安全；<br>
+                    2. 对主舞台和第二舞台进行最终 <strong>Sound Check</strong>，对主持人麦克风、嘉宾讲话麦克风和备用麦克风进行最后确认；<br>
+                    3. 对开场节目音乐、视频、大屏画面和导播切换进行最后确认，并将所有非必要车辆、设备箱和杂物清离核心区域；<br>
+                    4. 技术总协调确认“音响、视频、大屏、线缆、备用设备、通信方式”六项均处于可运行状态。<br>
+                    <strong style="color: var(--primary-color);">* 开场前 5 分钟进入静默准备状态，非紧急事项不得随意更改技术口径。</strong>
+                </p>
+            </div>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-play"></i> 第四章、正式运行期间工作流程与标准</h2>
+        <p>活动正式开始后，技术组全面切入常态化保障模式，各项操作必须遵循标准化、网格化的运行准则：</p>
+        
+        <div class="callout-box">
+            <div class="callout-title"><i class="fa-solid fa-tower-broadcast"></i> 1. 主控台统一调度机制</div>
+            <p style="font-size: 14px; margin-bottom: 0;">
+                活动期间所有技术问题统一报至技术主控台，由技术总协调判断处理优先级，避免多人同时指挥，严禁多人交叉操作。
+            </p>
+        </div>
+
+        <div class="callout-box" style="border-left-color: var(--secondary-color);">
+            <div class="callout-title" style="color: var(--secondary-color);"><i class="fa-solid fa-scroll"></i> 2. 严格按节目单与指令执行</div>
+            <p style="font-size: 14px; margin-bottom: 0;">
+                音响、视频、大屏、导播、换麦、音乐播放必须严格按照**最终节目单（Cue Sheet）**和导演组口令精准执行，技术人员不盲目盲动。
+            </p>
+        </div>
+
+        <div class="callout-box">
+            <div class="callout-title"><i class="fa-solid fa-star"></i> 3. 关键节点重点保障标准</div>
+            <p style="font-size: 14px; margin-bottom: 0;">
+                重点保障以下环节：<strong>开幕式嘉宾入场</strong>、<strong>主持人开场</strong>、<strong>大使及 VIP 致辞</strong>、<strong>剪彩仪式</strong>等核心重大节目切换。
+            </p>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-kit-medical"></i> 第五章、突发技术风险与应急排障预案</h2>
+        <p>为确保文化节期间技术链条的“零中断”，针对可能发生的硬件或外在环境风险，特制定以下秒级响应应急预案：</p>
+
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 25%">突发故障场景</th>
+                    <th style="width: 45%">即时应急处置动作（秒级）</th>
+                    <th style="width: 30%">前置预防备份措施</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>主话筒突然失音/断频</strong></td>
+                    <td>舞台侧方技术人员立即将桌上早已通电、处于待命状态的<strong>备份话筒</strong>人工送上舞台，调音台瞬间切换通道。</td>
+                    <td>主舞台配置双工运行话筒，主备话筒实施物理频段跨区隔离。</td>
+                </tr>
+                <tr>
+                    <td><strong>主路强电跳闸/突发断电</strong></td>
+                    <td>电力安全员立即切断过载支路，技术总协调组织将核心调音台、无线接收机等关键设备一键切至现场<strong>备用UPS电源</strong>。</td>
+                    <td>控制台引入双路供电，核心控制设备前置加装在线式UPS。</td>
+                </tr>
+                <tr>
+                    <td><strong>视频或大屏信号黑屏</strong></td>
+                    <td>视频组迅速在切换台上将主路输入无缝切至备份控制主机的应急背景画面（或副路信号线缆）。</td>
+                    <td>主控台至大屏之间双线缆、双发送卡并联运行。</td>
+                </tr>
+                <tr>
+                    <td><strong>突发雷阵雨或大风突袭</strong></td>
+                    <td>电力安全员立即切断大舞台前沿区域的非必要电源；全组迅速铺设防雨遮罩，加固桁架防风沙袋。</td>
+                    <td>开演前全量对室外设备接头做防水胶带包裹。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 30px;">
+            <strong>技术组全体成员将通过以上细致、严密的工程级执行流程，将“保障”落实到具体的每一个链路与秒级响应中，为2026华盛顿中国文化节的顺利举行筑牢最坚实的技术底座。</strong>
+        </p>
+
+    </div>
+
+    <div class="document-footer">
+        <div>2026 第24届华盛顿中国文化节 · 技术保障组制</div>
+        <div style="margin-top: 5px; font-size: 11px;">CONFIDENTIAL - FOR INTERNAL USE ONLY</div>
+    </div>
+
+</div>
+
+</body>
+</html>

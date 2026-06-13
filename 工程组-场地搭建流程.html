@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026华盛顿中国文化节进场搭建流程执行手册</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #A62B2B; /* 华夏红 */
+            --primary-light: #F9ECEC;
+            --secondary-color: #C5A059; /* 祥云金 */
+            --dark-color: #2A2A2A; /* 炭黑 */
+            --light-bg: #FDFBF7; /* 宣纸白 */
+            --border-color: #E2E8F0;
+            --text-muted: #64748B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #F1F1F1;
+            color: var(--dark-color);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .document-container {
+            background-color: #FFFFFF;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            border-top: 8px solid var(--primary-color);
+            position: relative;
+        }
+
+        /* 装饰水印 */
+        .document-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--primary-light) 10%, transparent 11.1%);
+            background-size: 15px 15px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* 封面样式 */
+        .cover-page {
+            padding: 60px 80px 40px 80px;
+            border-bottom: 2px solid var(--primary-light);
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-family: 'Noto Sans SC', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.3;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .sub-title {
+            font-size: 18px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        /* 统计看板网格 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+
+        .stats-card {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--secondary-color);
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stats-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stats-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* 内容版面 */
+        .content-body {
+            padding: 40px 80px;
+        }
+
+        h2.section-title {
+            font-size: 20px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 6px;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2.section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        h2.section-title i {
+            color: var(--secondary-color);
+            font-size: 16px;
+        }
+
+        h3.subsection-title {
+            font-size: 15px;
+            color: var(--dark-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 3px solid var(--secondary-color);
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+
+        /* 核心原则框 */
+        .principles-box {
+            background-color: var(--primary-light);
+            border: 1px solid #F1D5D5;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .principles-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .principle-item {
+            background: #FFFFFF;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-color);
+            font-size: 13px;
+        }
+
+        /* 时间线设计 */
+        .timeline-vertical {
+            margin: 25px 0;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline-vertical::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .timeline-node::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 0 4px var(--primary-light);
+            z-index: 2;
+        }
+
+        .timeline-node.highlight::before {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px #FBF6EC;
+        }
+
+        .timeline-time {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 14px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .stage-box {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 8px;
+        }
+
+        .goal-badge {
+            display: inline-block;
+            background-color: #E2E8F0;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .task-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .task-list li {
+            font-size: 13.5px;
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 6px;
+            color: #4A4A4A;
+        }
+
+        .task-list li::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        /* 页脚 */
+        .document-footer {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 20px 80px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        @media print {
+            body { background-color: #FFFFFF; padding: 0; }
+            .document-container { box-shadow: none; max-width: 100%; border-top: none; }
+            .cover-page { page-break-after: always; padding-top: 60px; }
+            .content-body { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="document-container">
+    
+    <!-- 封面及大盘统计 -->
+    <div class="cover-page">
+        <span class="header-badge">LOGISTICS & SITE SETUP</span>
+        <h1 class="main-title">2026年第24届华盛顿中国文化节</h1>
+        <div class="sub-title">华盛顿特区·早班进场搭建流程方案（05:00 AM - 09:30 AM）</div>
+        
+        <!-- 搭建体量看板 -->
+        <div class="stats-grid">
+            <div class="stats-card">
+                <span class="stats-number">89 个</span>
+                <span class="stats-label">全场总帐篷数</span>
+            </div>
+            <div class="stats-card">
+                <span class="stats-number">25 个</span>
+                <span class="stats-label">C区美食帐篷</span>
+            </div>
+            <div class="stats-card">
+                <span class="stats-number">20 个</span>
+                <span class="stats-label">A区文化展示</span>
+            </div>
+            <div class="stats-card">
+                <span class="stats-number">18 个</span>
+                <span class="stats-label">B区商品帐篷</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 正文内容 -->
+    <div class="content-body">
+        
+        <!-- 核心统筹原则 -->
+        <div class="principles-box">
+            <div class="principles-title"><i class="fa-solid fa-triangle-exclamation"></i> 全场现场总体编排与指挥原则</div>
+            <p style="font-size: 13.5px; color: #661D1D; margin-bottom: 12px;">
+                本方案严格遵循以下三大核心原则，确保各组别、外包工程队与义工团队在有限的清晨时间内，安全有序地交叉作业，严防车道无序拥堵：
+            </p>
+            <div class="principles-grid">
+                <div class="principle-item">
+                    <strong>重型设备第一优先</strong><br>钢结构卡车、大屏幕及用电工程车须率先占位组装。
+                </div>
+                <div class="principle-item">
+                    <strong>展位多线并行</strong><br>多团队、多区域沿主干道两侧同步交叉展开搭建。
+                </div>
+                <div class="principle-item">
+                    <strong>软件调试收尾</strong><br>硬件全面落位后，严密执行声场彩排、消防联检与清场。
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-clock"></i> 进场搭建全流程节点分段执行图</h2>
+        <p>全场物料卸车、框架架设、个性布展、软运行联联调至正式开场，共分为以下五个刚性阶段：</p>
+
+        <div class="timeline-vertical">
+            
+            <!-- 第一阶段 -->
+            <div class="timeline-node">
+                <span class="timeline-time">05:00 AM - 06:00 AM</span>
+                <div class="timeline-title">第一阶段：核心重型设备与基础设施进场</div>
+                <div class="stage-box">
+                    <span class="goal-badge">核心目标：抢抓清晨第一小时，将全场个体个体体量最大、涉及重电的物资精准送达指定位置</span>
+                    <ul class="task-list">
+                        <li><strong>STAGE 1 & STAGE 2（两大舞台区域）：</strong> Stage 1（主舞台）的舞台钢结构卡车、音响灯光桁架、LED大屏幕结构件，以及技术组与导演区（D1~5）的物资首批重装进场，全面开始主体结构组装。Stage 2（第二舞台）的基础舞台板、背景桁架同步进场搭建。</li>
+                        <li><strong>C区（美食区，共25个帐篷）：</strong> 美食区的供电专用工程车第一时刻入场，沿C1-C25区域拉线铺设临时主供电线路与主配电箱。</li>
+                        <li><strong>商户车辆卸货控时：</strong> 由于后续全场89个帐篷搭建将严重占用核心车道，所有涉及重型厨具、冷链及液化气罐的美食商户车辆，**必须严格限制在此阶段内**完成全部卸货并离场。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 第二阶段 -->
+            <div class="timeline-node">
+                <span class="timeline-time">06:00 AM - 07:15 AM</span>
+                <div class="timeline-title">第二阶段：全场展位框架与核心功能区搭建</div>
+                <div class="stage-box">
+                    <span class="goal-badge">核心目标：高效闪战，75分钟内实现全场89个帐篷的主体骨架全面铺开并拉起固定</span>
+                    <ul class="task-list">
+                        <li><strong>A区（文化展示，20个帐篷） & B区（商品，18个帐篷）：</strong> 搭建义工组与外包工程队分为两路，沿 Pennsylvania Avenue NW 干道两侧由深至浅（从两端舞台向中央交叉口方向）同时推进，组装帐篷框架并拉起防雨顶棚。</li>
+                        <li><strong>VIP接待区与画架展示区：</strong> 位于右侧 Stage 1 旁的 F1 & F2 贵宾接待帐篷全面开始搭建，铺设红地毯并有序摆放接待桌椅。L区画架展示区域的物料集中卸车，开始成排组合架设。</li>
+                        <li><strong>专项后勤功能组帐篷：</strong> 红十字急救站设立在全场中部核心交汇处，医疗桌椅、担架及常用急救箱迅速就位。4个化妆室紧邻 Stage 1 后方，镜子、排灯、更衣隔断快速组装成型。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 第三阶段 -->
+            <div class="timeline-node">
+                <span class="timeline-time">07:15 AM - 08:00 AM</span>
+                <div class="timeline-title">第三阶段：赞助商个性布展与公共配套设施完善</div>
+                <div class="stage-box">
+                    <span class="goal-badge">核心目标：硬件全面成型，专项活动区域与公共配套设施全面激活</span>
+                    <ul class="task-list">
+                        <li><strong>赞助商与特别展区（E1~8, H区）：</strong> E1~8赞助商区（8个帐篷）与 H区（绘画、特别赞助，4个帐篷）的专属物料车，根据批复的排期表有序进场卸货，各企业代表开始个性化展台布置、宣传背景板张贴与物资上架。</li>
+                        <li><strong>啤酒区（Beer Zone）组装：</strong> 位于左下角广场/草坪区域，啤酒倒酒设备、吧台、专用冷链冷藏箱物资集中进场，设立美观的物理围栏并张贴标识。</li>
+                        <li><strong>公共景观与卫生：</strong> 中央核心区域的蓝色六角互动打卡装置完成拼装。位于场地上下两处的流动厕所（WC）进行大幕开启前的最终清洁，并挂设清晰醒目的指示牌。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 第四阶段 -->
+            <div class="timeline-node">
+                <span class="timeline-time">08:00 AM - 09:00 AM</span>
+                <div class="timeline-title">第四阶段：商品陈列、技术软运行调试与后勤人员就位</div>
+                <div class="stage-box">
+                    <span class="goal-badge">核心目标：参展人员全面入驻，全场设备、人员开始“软运行”</span>
+                    <ul class="task-list">
+                        <li><strong>全场商户入铺布展：</strong> A区、B区、C区、H区的所有参展商持有效证件（或利用手推车）进入各自所属帐篷，精细化陈列文化工艺品；美食区商户开始准备食材、连接燃气/用电设备并进行关键的安全预热。</li>
+                        <li><strong>媒体与关键机位联通：</strong> 全场5个关键摄影机位（01-05）的专业摄影师携带摇臂、三脚架、高清摄像机全量进场，完成机位架设并与技术组主控导演区（D1~5）联通视音频信号传输线。</li>
+                        <li><strong>后勤义工大部队集合（I组）：</strong> 共包含6个岗位/区域的全体后勤义工在现场总控台集合，分发对讲机、工作服、现场执行手册，由各组组长带队分派至各路口咨询台、舞台后台、打卡点及公共安全哨位就位。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 第五阶段 -->
+            <div class="timeline-node highlight">
+                <span class="timeline-time">09:00 AM - 09:30 AM</span>
+                <div class="timeline-title">第五阶段：全场综合大联检、音响彩排与清场撤车</div>
+                <div class="stage-box">
+                    <span class="goal-badge">核心目标：查漏补缺，清退多余车辆，确保开大门前万无一失</span>
+                    <ul class="task-list">
+                        <li><strong>组委会与消防大联检（09:00 - 09:20）：</strong> 重点检查全场89个帐篷的防风配重沙袋是否稳固，全面排查高空坠物隐患；对C区美食商户的用电负载、气罐连接安全、灭克器配置进行逐一合规检查。</li>
+                        <li><strong>舞台视听彩排 Sound Check（09:10 - 09:25）：</strong> Stage 1 与 Stage 2 音响、麦克风进行最后的声场微调；开场节目演职人员全量上台进行走位与无线耳麦、手持话筒测试。</li>
+                        <li><strong>核心活动区全面清场（09:25 - 09:30）：</strong> 所有布展车辆、设备搭建货车、垃圾清理车**必须全部驶离**活动核心车道（Pennsylvania Avenue NW）。全场安全保安人员全量到岗，VIP接待人员在各入口处就位迎接首批贵宾。</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 正式开场宣言 -->
+        <div class="principles-box" style="border-left-color: var(--secondary-color); background-color: #FAF7F0; border-color: #EFE6D5; text-align: center; padding: 15px; margin-top: 25px;">
+            <span style="font-size: 18px; font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 5px;"><i class="fa-solid fa-door-open"></i> 09:30 AM | 正式开场</span>
+            <p style="font-size: 14.5px; margin-bottom: 0; color: var(--dark-color); font-weight: 500;">
+                《2026华盛顿中国文化节》大门准时打开，市集全面开市，舞台文化演出正式拉开璀璨帷幕！
+            </p>
+        </div>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="document-footer">
+        <div>2026 第24届华盛顿中国文化节组委会 · 秘书处、工程后勤组联合编制</div>
+        <div style="margin-top: 5px; font-size: 11px; color: var(--text-muted);">CONFIDENTIAL - FOR SITE EXECUTION ONLY</div>
+    </div>
+
+</div>
+
+</body>
+</html>
