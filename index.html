@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026华盛顿中国文化节总体方案与部门架构执行总纲</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #A62B2B; /* 华夏红 */
+            --primary-light: #F9ECEC;
+            --secondary-color: #C5A059; /* 祥云金 */
+            --dark-color: #2A2A2A; /* 炭黑 */
+            --light-bg: #FDFBF7; /* 宣纸白 */
+            --border-color: #E2E8F0;
+            --text-muted: #64748B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #F1F1F1;
+            color: var(--dark-color);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .document-container {
+            background-color: #FFFFFF;
+            max-width: 950px;
+            margin: 0 auto;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            border-top: 8px solid var(--primary-color);
+            position: relative;
+        }
+
+        /* 装饰水印 */
+        .document-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--primary-light) 10%, transparent 11.1%);
+            background-size: 15px 15px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* 封面样式 */
+        .cover-page {
+            padding: 70px 80px 40px 80px;
+            border-bottom: 2px solid var(--primary-light);
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-family: 'Noto Sans SC', serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.3;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .sub-title {
+            font-size: 18px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 35px;
+        }
+
+        /* 宏观架构看板 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .stats-card {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--secondary-color);
+            padding: 15px 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stats-number {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .stats-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* 内容版面 */
+        .content-body {
+            padding: 50px 80px;
+        }
+
+        h2.section-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2.section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        h2.section-title i {
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+
+        h3.subsection-title {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 4px solid var(--secondary-color);
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 15px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        /* 核心管理原则框 */
+        .principles-box {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .principles-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 表格样式 */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14.5px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: #4A4A4A;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #FAFBFD;
+        }
+
+        .dept-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background-color: #F1F5F9;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .leader-text {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        /* 页脚 */
+        .document-footer {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 25px 80px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        @media print {
+            body { background-color: #FFFFFF; padding: 0; }
+            .document-container { box-shadow: none; max-width: 100%; border-top: none; }
+            .cover-page { page-break-after: always; padding-top: 80px; }
+            .content-body { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="document-container">
+    
+    <div class="cover-page">
+        <span class="header-badge">MASTER CONTROL DOCUMENT</span>
+        <h1 class="main-title">Washington Chinese Culture Festival</h1>
+        <h1 class="main-title" style="margin-top: -10px;">华盛顿中国文化节总体方案</h1> [cite: 1, 2, 4]
+        <div class="sub-title">部门架构、核心职责与文案系统执行总纲</div> [cite: 3, 5]
+        
+        <div class="stats-grid">
+            <div class="stats-card">
+                <span class="stats-number">4 大</span>
+                <span class="stats-label">核心执行部</span> 
+            </div>
+            <div class="stats-card">
+                <span class="stats-number">22 个</span>
+                <span class="stats-label">二级职能组</span> 
+            </div>
+            <div class="stats-card">
+                <span class="stats-number">30+ 位</span>
+                <span class="stats-label">核心管理负责人</span> [cite: 5, 69]
+            </div>
+            <div class="stats-card">
+                <span class="stats-number">1 套</span>
+                <span class="stats-label">统一协作体系</span> [cite: 65]
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        
+        <h2 class="section-title"><i class="fa-solid fa-sitemap"></i> 第一章、最高指挥部与核心统筹</h2>
+        <p>
+            华盛顿中国文化节规模宏大、事务繁杂 [cite: 4, 5]。为确保全盘统筹有序、沟通顺畅，本届文化节设立“联席会议主席团”与“项目管理办公室”两级核心指挥中枢 ：
+        </p>
+        
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 25%">指挥层级</th>
+                    <th style="width: 25%">核心负责人</th>
+                    <th style="width: 50%">管理职能定位</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1 联席会议主席团</strong></td>
+                    <td class="leader-text">执行主席：徐江</td>
+                    <td>负责文化节的战略方向、宏观决策及重大核心事务的最终审定 。</td>
+                </tr>
+                <tr>
+                    <td><strong>2 项目管理办公室</strong><br><small>(秘书指挥部)</small></td>
+                    <td class="leader-text">秘书组组长：何洁</td>
+                    <td>主要负责活动整体方向把控、各小组之间的横向协同调度、会议统筹以及日常综合事务管理 [cite: 5, 6]。下设<strong>秘书组名单</strong>与<strong>秘书组任务单</strong> [cite: 7, 8]。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 第二章、核心执行部门与二级功能小组职责</h2>
+        <p>最高指挥部下设四大专业执行部，下辖各个二级职能小组，执行“专人专岗、动态咬合”的网格化管理 ：</p>
+
+        <h3 class="subsection-title">一、3 现场执行与技术工程部 (Onsite Execution & Operations)</h3>
+        <p><strong>总体职责：</strong> 本项目重点负责文化节现场的整体场地搭建、技术支持保障、安全秩序维护以及视觉效果呈现 [cite: 9, 10]。</p>
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 20%">代号 / 职能组</th>
+                    <th style="width: 25%">组长 / 负责人</th>
+                    <th style="width: 55%">核心工作职责与执行对接</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="dept-badge">3.1 工程组</span></td>
+                    <td class="leader-text">许纲</td>
+                    <td>全面负责Pennsylvania Avenue NW现场的整体搭建。执行依据为《2026WCCF《场地搭建流程》（v2.0）》 [cite: 11, 12, 13]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">3.2 技术组</span></td>
+                    <td class="leader-text">徐洪庆</td>
+                    <td>负责舞台、音响、灯光、大屏等软硬件技术支持。执行依据为《技术组进场流程》 [cite: 14, 15, 16]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">3.3 后勤组</span></td>
+                    <td class="leader-text">蔡春生</td>
+                    <td>负责义工餐饮（午餐/早鸟早餐）、瓶装水储备调配、T恤发放、现场台账及物资分发。执行依据为《后勤组任务单》 [cite: 17, 18, 19]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">3.4 安保组</span></td>
+                    <td class="leader-text">杨修竹</td>
+                    <td>负责现场人流安全、路口管控、应急突发状况处置，保障全场安全秩序 [cite: 10, 20, 21]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">3.5 摄影摄像组</span></td>
+                    <td class="leader-text">李菲</td>
+                    <td>负责多机位专业摄像信号接入、全场图文直播影像记录、媒体摄影位架设协调 [cite: 22, 23]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">3.6 视觉设计组</span></td>
+                    <td class="leader-text">叶承曦</td>
+                    <td>负责主舞台背景、主横幅、视觉延展物料、全场平面标识及排版比例的最终审定 [cite: 24, 25, 68]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">3.7 义工组</span></td>
+                    <td class="leader-text">缪传奇</td>
+                    <td>全权负责全场志愿者的招募、筛选、岗前培训、现场点对点派驻与动态调配管理 [cite: 26, 27]。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">二、4 文化活动与内容体验部 (Cultural Programs & Activities)</h3>
+        <p><strong>总体职责：</strong> 重点统筹与处理所有舞台文艺节目内容、特色文化展览策划、现场观众互动体验以及配套美食协办项目的落地 [cite: 28, 29]。</p>
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 20%">代号 / 职能组</th>
+                    <th style="width: 25%">组长 / 负责人</th>
+                    <th style="width: 55%">核心工作职责与执行对接</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="dept-badge">4.1 开幕庆典组</span></td>
+                    <td class="leader-text">夏翔波</td>
+                    <td>负责开幕式流程编排、重要政要入场剪彩环节统筹及庆典脚本执行 [cite: 30, 31]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.2 嘉宾接待组</span></td>
+                    <td class="leader-text">李民</td>
+                    <td>负责主舞台侧方VIP贵宾接待帐篷的红地毯铺设、桌椅摆放及贵宾到场接待服务 [cite: 32, 33]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.3 第一舞台组</span></td>
+                    <td class="leader-text">穆建西</td>
+                    <td>负责第一舞台（主舞台）所有文艺演出节目的内容审核、上下台走位和节目单控制 [cite: 34, 35]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.4 第二舞台组</span></td>
+                    <td class="leader-text">张乐</td>
+                    <td>负责第二舞台及互动展示区的舞台板、桁架搭建跟进及现场流程调度 [cite: 36, 37]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.5 青少年委员会</span></td>
+                    <td class="leader-text">主任：李宁</td>
+                    <td>独立统筹青少年相关的中华文化传承、专属活动策划、互动展示与现场协作 [cite: 38, 39]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.6 文化体验组</span></td>
+                    <td class="leader-text">共同组长：苏丽娟（希望）<br>李晓（美中）、田晶（哈维）</td>
+                    <td>三方共同组长联合协调，负责统筹全场传统工艺、非遗文化等展位的现场布置与体验把控 [cite: 40, 41]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.7 绘画互动组</span></td>
+                    <td class="leader-text">叶承曦</td>
+                    <td>负责现场画架展示区域物料架设、中央蓝色六角互动打卡装置拼装与维护 [cite: 42, 43]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">4.8 美食组</span></td>
+                    <td class="leader-text">王博</td>
+                    <td>餐饮服务作为文化节的重要体验部分，该组负责美食商户（C1~C25）的招商入驻及用电、用气合规对接 [cite: 44, 45]。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">三、5 外联宣传与公共关系部 (Communications & Public Relations)</h3>
+        <p><strong>总体职责：</strong> 全面管理文化节对内与对外的宣传公关、政府各级行政许可申报、中外媒体对接及社会公众的广泛参与 [cite: 46, 47]。</p>
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 20%">代号 / 职能组</th>
+                    <th style="width: 25%">组长 / 负责人</th>
+                    <th style="width: 55%">核心工作职责与执行对接</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="dept-badge">5.1 许可申报组</span></td>
+                    <td class="leader-text">肖水根</td>
+                    <td>主要负责特区政府各级行政审批、合规审查（Permitting & Compliance）及政府关系对接 [cite: 48, 49]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">5.2 公共传播委员会</span></td>
+                    <td class="leader-text">主任：Karina Hou (对外)<br>胡荣华 (对内)</td>
+                    <td>双主任制。Karina Hou负责协调全美主流社会传播；胡荣华负责协调华人社群内部公共关系与动员 [cite: 50, 51]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">5.3 宣传组</span></td>
+                    <td class="leader-text">黄静</td>
+                    <td>负责官方通稿撰写、社交媒体矩阵运营、宣传海报分发以及外包直播团队推流协调 [cite: 52, 53]。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">四、6 招商筹款与商务财务部 (Business Development & Finance)</h3>
+        <p><strong>总体职责：</strong> 全权负责文化节的商务资金筹措、各大企业赞助谈判、商业摊位招商入驻以及整体财务收支管控 [cite: 54, 55]。</p>
+        <table class="table-responsive">
+            <thead>
+                <tr>
+                    <th style="width: 20%">代号 / 职能组</th>
+                    <th style="width: 25%">组长 / 负责人</th>
+                    <th style="width: 55%">核心工作职责与执行对接</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="dept-badge">6.1 摊位招商组</span></td>
+                    <td class="leader-text">夏翔波</td>
+                    <td>负责非美食类商业摊位的市场招商、合同签订、摊位配额分配及费用催缴 [cite: 56, 57]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">6.2 赞助筹款组</span></td>
+                    <td class="leader-text">李卉</td>
+                    <td>负责联系海内外大型赞助商、企业机构伙伴，进行赞助方案谈判与资金募集 [cite: 58, 59]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">6.3 海外招商组</span></td>
+                    <td class="leader-text">李传明</td>
+                    <td>负责拓展海外（包括中国大陆及港澳台地区）的商业赞助、文化展商及涉外商务对接 [cite: 60, 61]。</td>
+                </tr>
+                <tr>
+                    <td><span class="dept-badge">6.4 财务组</span></td>
+                    <td class="leader-text">刘胜</td>
+                    <td>负责文化节整体预算核定、账目管理、各组开支发票报销、款项审计及商务收支合规管控 [cite: 55, 62, 63]。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> 第三章、数字化文案协作系统与最佳实践推荐</h2>
+        <p>
+            由于文化节核心管理团队及各协作单位组长接近30人，传统的微信群发文档容易导致信息错漏和多头指挥 [cite: 69, 70]。为此，组委会联合项目管理办公室（PMO）向各个部门推荐使用 **Asana 数字化项目管理系统** 开展高效协作 [cite: 64, 70]：
+        </p>
+
+        <div class="principles-box">
+            <div class="principles-title"><i class="fa-solid fa-tags"></i> 1. 采用数字化层级前缀（Task Prefixes）</div>
+            <p style="font-size: 14px; margin-bottom: 0;">
+                鉴于免费版 Asana 协作系统不直接支持多级子文件夹（Sub-groups），各工作组在输入任务时，**必须严格按照上述“十进制数字编码样式”作为任务前缀** [cite: 65]。例如：<br>
+                <span>▪ </span><code>[3.5] 确认主舞台摄影机位摆放规划图</code>（属于摄影摄像组任务） [cite: 22, 67]<br>
+                <span>▪ </span><code>[3.6] 最终审定主横幅排版与字号缩放比例</code>（属于视觉设计组任务） [cite: 24, 68]
+            </p>
+        </div>
+
+        <div class="principles-box" style="border-left-color: var(--secondary-color);">
+            <div class="principles-title" style="color: var(--secondary-color);"><i class="fa-solid fa-users-gear"></i> 2. 管理群组成员上限与信息分发流转</div>
+            <p style="font-size: 14px; margin-bottom: 0;">
+                为规避免费版 Asana 空间的人数限制，无须将30多位负责人全部邀请进入该工作区 [cite: 69]。**由项目管理办公室（PMO负责人：何洁）作为主控大本营指挥官** [cite: 70]。何洁根据例会纪要更新 Asana 上的任务单，并在关键节点利用系统的 **“Export to CSV/Excel”（一键导出至Excel）** 功能，生成最干净的工作状态看板，通过微信群或电子邮件定期下发分发至全体委员会成员 [cite: 70]。
+            </p>
+        </div>
+
+        <p style="margin-top: 30px;">
+            <strong>本《执行总纲》通过结构化的组织咬合与数字化工具推荐，将作为2026华盛顿中国文化节的顶层运行框架，指导各部门高效协同，助力文化节圆满成功。</strong>
+        </p>
+
+    </div>
+
+    <div class="document-footer">
+        <div>2026 第24届华盛顿中国文化节组委会 · 项目管理办公室联合编制</div> [cite: 5, 6]
+        <div style="margin-top: 5px; font-size: 11px; color: var(--text-muted);">CONFIDENTIAL - FOR INTERNAL COMMITTEE USE ONLY</div>
+    </div>
+
+</div>
+
+</body>
+</html>
