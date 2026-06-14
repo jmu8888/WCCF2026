@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026华盛顿中国文化节｜物料统计总表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+    --primary-color:#1E5A8A;
+    --primary-deep:#0B3F63;
+    --primary-light:#EAF4FB;
+    --secondary-color:#4FA3D1;
+    --accent-color:#7CB7D8;
+    --dark-color:#1F2933;
+    --light-bg:#F7FBFE;
+    --border-color:#D8E8F3;
+    --text-muted:#63788A;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+    background:linear-gradient(180deg,#EEF6FB 0%,#F4F7FA 100%);
+    color:var(--dark-color);
+    font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.6;
+    padding:40px 20px;
+}
+.document-container {
+    background:#fff;
+    max-width:1080px;
+    margin:0 auto;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 30px rgba(11,63,99,.12);
+    border-top:8px solid var(--primary-color);
+    position:relative;
+}
+.document-container::before {
+    content:"";
+    position:absolute;
+    top:0; right:0;
+    width:180px; height:180px;
+    background:radial-gradient(circle,var(--primary-light) 10%,transparent 11.1%);
+    background-size:15px 15px;
+    opacity:.65;
+    pointer-events:none;
+}
+
+.top-link {
+    padding: 12px 40px 0;
+    position: relative;
+    z-index: 2;
+}
+.top-link a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border-color);
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: var(--light-bg);
+}
+.top-link i {
+    font-size: 11px;
+    color: var(--secondary-color);
+}
+
+.cover-page {
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:64px 80px 36px;
+    border-bottom:2px solid var(--primary-light);
+}
+.header-badge {
+    display:inline-block;
+    background:var(--primary-light);
+    color:var(--primary-color);
+    font-weight:700;
+    padding:6px 16px;
+    border-radius:50px;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:22px;
+    text-transform:uppercase;
+}
+.main-title {
+    font-size:34px;
+    color:var(--primary-deep);
+    margin-bottom:10px;
+    letter-spacing:1px;
+}
+.sub-title {
+    font-size:17px;
+    color:var(--text-muted);
+    margin-bottom:26px;
+}
+.stats-grid {
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
+    max-width:920px;
+    margin:0 auto;
+}
+.stat-card {
+    background:linear-gradient(180deg,#fff 0%,var(--light-bg) 100%);
+    border:1px solid var(--border-color);
+    border-top:4px solid var(--secondary-color);
+    border-radius:8px;
+    padding:16px 10px;
+    text-align:center;
+}
+.stat-label {
+    color:var(--text-muted);
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+.stat-number {
+    font-size:30px;
+    font-weight:700;
+    color:var(--primary-color);
+    line-height:1;
+}
+.stat-unit {
+    font-size:13px;
+    font-weight:700;
+    color:var(--text-muted);
+    margin-left:3px;
+}
+.content-body {
+    padding:42px 70px 54px;
+}
+.section-title {
+    font-size:22px;
+    color:var(--primary-deep);
+    border-bottom:2px solid var(--primary-light);
+    padding-bottom:10px;
+    margin-bottom:18px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+.section-title i { color:var(--secondary-color); }
+.note-box {
+    background:var(--light-bg);
+    border:1px solid var(--border-color);
+    border-left:4px solid var(--primary-color);
+    padding:16px 18px;
+    border-radius:8px;
+    margin:18px 0 22px;
+    color:#405568;
+    font-size:14px;
+}
+.table-wrap {
+    width:100%;
+    overflow-x:auto;
+    border:1px solid var(--border-color);
+    border-radius:10px;
+    box-shadow:0 2px 12px rgba(11,63,99,.06);
+}
+table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    min-width:860px;
+}
+th {
+    background:linear-gradient(180deg,#236B9E 0%,var(--primary-color) 100%);
+    color:#fff;
+    padding:13px 14px;
+    text-align:left;
+    font-weight:700;
+    vertical-align:middle;
+}
+td {
+    border-bottom:1px solid var(--border-color);
+    color:#405568;
+    padding:12px 14px;
+    vertical-align:top;
+}
+tr:nth-child(even) td { background:#F7FBFE; }
+tr:hover td { background:#EEF7FC; }
+tr:last-child td { border-bottom:none; }
+.qty {
+    color:var(--primary-deep);
+    font-size:16px;
+    font-weight:700;
+    white-space:nowrap;
+}
+.subtotal-row td {
+    background:#EAF4FB !important;
+    font-weight:700;
+    color:var(--primary-deep);
+    border-top:2px solid var(--secondary-color);
+}
+.footer {
+    background:var(--light-bg);
+    border-top:1px solid var(--border-color);
+    padding:24px 70px;
+    text-align:center;
+    color:var(--text-muted);
+    font-size:12px;
+}
+@media(max-width:900px) {
+    .cover-page,.content-body,.footer { padding-left:28px; padding-right:28px; }
+    .stats-grid { grid-template-columns:repeat(3,1fr); }
+}
+@media(max-width:560px) {
+    body { padding:20px 10px; }
+    .main-title { font-size:26px; }
+    .stats-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media print {
+    body { background:#fff; padding:0; }
+    .document-container { box-shadow:none; max-width:100%; border-radius:0; border-top:none; }
+    
+.top-link {
+    padding: 12px 40px 0;
+    position: relative;
+    z-index: 2;
+}
+.top-link a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border-color);
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: var(--light-bg);
+}
+.top-link i {
+    font-size: 11px;
+    color: var(--secondary-color);
+}
+
+.cover-page { padding-top:60px; }
+    table { min-width:0; font-size:12px; }
+    tr { page-break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<div class="document-container">
+    <div class="top-link"><a href="index.html"><i class="fa-solid fa-house"></i> Archive Home</a></div>
+    <div class="cover-page">
+        <span class="header-badge">MATERIAL SUMMARY TABLE</span>
+        <h1 class="main-title">2026 华盛顿中国文化节｜物料统计总表</h1>
+        <div class="sub-title">桌椅、帐篷、舞台设备、消防、公共设施与后勤物料汇总</div>
+        <div class="stats-grid">
+            <div class="stat-card">
+        <div class="stat-label">帐篷</div>
+        <div><span class="stat-number">89</span><span class="stat-unit">顶</span></div>
+    </div>
+<div class="stat-card">
+        <div class="stat-label">桌子</div>
+        <div><span class="stat-number">57</span><span class="stat-unit">张</span></div>
+    </div>
+<div class="stat-card">
+        <div class="stat-label">椅子</div>
+        <div><span class="stat-number">122</span><span class="stat-unit">把</span></div>
+    </div>
+<div class="stat-card">
+        <div class="stat-label">灭火器</div>
+        <div><span class="stat-number">25</span><span class="stat-unit">个</span></div>
+    </div>
+<div class="stat-card">
+        <div class="stat-label">打卡宣传</div>
+        <div><span class="stat-number">3</span><span class="stat-unit">套</span></div>
+    </div>
+<div class="stat-card">
+        <div class="stat-label">摄影机位</div>
+        <div><span class="stat-number">5</span><span class="stat-unit">个</span></div>
+    </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <h2 class="section-title"><i class="fa-solid fa-clipboard-list"></i> 物料统计总表</h2>
+        <div class="note-box">
+            说明：本表根据已确认的可计量物料整理；“担架 1–2 副”按范围保留。桌类小计按 57 张计算，椅子按每桌配 2 把加 VIP 接待椅 8 把统计，共 122 把。
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:16%;">类别</th>
+                        <th style="width:26%;">物料</th>
+                        <th style="width:14%;">可统计数量</th>
+                        <th style="width:12%;">单位</th>
+                        <th style="width:32%;">计算说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+            <td>帐篷</td>
+            <td>标准帐篷总数</td>
+            <td class="qty">89</td>
+            <td>顶</td>
+            <td>按总表“89 顶帐篷”统计</td>
+        </tr><tr class="">
+            <td>桌类</td>
+            <td>展桌</td>
+            <td class="qty">20</td>
+            <td>张</td>
+            <td>A 区文化展示，每帐篷至少 1 套</td>
+        </tr><tr class="">
+            <td>桌类</td>
+            <td>商品陈列桌</td>
+            <td class="qty">18</td>
+            <td>张</td>
+            <td>B 区商品区</td>
+        </tr><tr class="">
+            <td>桌类</td>
+            <td>赞助商桌椅</td>
+            <td class="qty">16</td>
+            <td>张</td>
+            <td>E 区 8 顶帐篷，每帐篷 2 套</td>
+        </tr><tr class="">
+            <td>桌类</td>
+            <td>VIP 接待桌</td>
+            <td class="qty">2</td>
+            <td>张</td>
+            <td>F1/F2 VIP 接待区</td>
+        </tr><tr class="">
+            <td>桌类</td>
+            <td>医疗桌椅</td>
+            <td class="qty">1</td>
+            <td>张</td>
+            <td>急救站</td>
+        </tr><tr class="subtotal-row">
+            <td>桌类小计</td>
+            <td>桌 / 桌椅套折算</td>
+            <td class="qty">57</td>
+            <td>张</td>
+            <td></td>
+        </tr><tr class="">
+            <td>椅类</td>
+            <td>椅子（每桌配两个）</td>
+            <td class="qty">114</td>
+            <td>把</td>
+            <td>每帐篷建议 2 把</td>
+        </tr><tr class="">
+            <td>椅类</td>
+            <td>VIP 接待椅</td>
+            <td class="qty">8</td>
+            <td>把</td>
+            <td>VIP 接待区</td>
+        </tr><tr class="subtotal-row">
+            <td>椅类小计</td>
+            <td>明确椅子数量</td>
+            <td class="qty">122</td>
+            <td>把</td>
+            <td>不含桌椅套内椅子</td>
+        </tr><tr class="">
+            <td>舞台设备</td>
+            <td>舞台结构</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 1 主舞台</td>
+        </tr><tr class="">
+            <td>音响设备</td>
+            <td>主舞台音响系统</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 1</td>
+        </tr><tr class="">
+            <td>音响设备</td>
+            <td>第二舞台音响系统</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 2</td>
+        </tr><tr class="">
+            <td>显示设备</td>
+            <td>LED 大屏幕结构件</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 1</td>
+        </tr><tr class="">
+            <td>控制设备</td>
+            <td>调音台 / 主控台</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 1 / D 区</td>
+        </tr><tr class="">
+            <td>第二舞台</td>
+            <td>背景幕布</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 2</td>
+        </tr><tr class="">
+            <td>第二舞台</td>
+            <td>背景桁架</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>Stage 2</td>
+        </tr><tr class="">
+            <td>消防安全</td>
+            <td>美食区灭火器</td>
+            <td class="qty">25</td>
+            <td>个</td>
+            <td>C1–C25，每摊位至少 1 个</td>
+        </tr><tr class="">
+            <td>VIP 物料</td>
+            <td>红地毯</td>
+            <td class="qty">1</td>
+            <td>批</td>
+            <td>VIP 区</td>
+        </tr><tr class="">
+            <td>医疗物料</td>
+            <td>担架</td>
+            <td class="qty">1–2</td>
+            <td>副</td>
+            <td>急救站</td>
+        </tr><tr class="">
+            <td>公共设施</td>
+            <td>流动厕所 WC</td>
+            <td class="qty">2</td>
+            <td>处</td>
+            <td>上下两处</td>
+        </tr><tr class="">
+            <td>互动装置</td>
+            <td>护照打卡宣传</td>
+            <td class="qty">3</td>
+            <td>套</td>
+            <td>中央核心区域，美食，文化展示区</td>
+        </tr><tr class="">
+            <td>摄影摄像</td>
+            <td>摄影机位</td>
+            <td class="qty">5</td>
+            <td>个</td>
+            <td>01–05 编号</td>
+        </tr><tr class="">
+            <td>后勤义工</td>
+            <td>后勤 / 义工岗位</td>
+            <td class="qty">6</td>
+            <td>个岗位 / 区域</td>
+            <td>中心区，四大功能区，总控</td>
+        </tr><tr class="">
+            <td>后勤义工</td>
+            <td>义工集合点标识</td>
+            <td class="qty">1</td>
+            <td>套</td>
+            <td>总控台集合</td>
+        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        供现场采购、物资核对、分区负责人签字确认使用
+    </div>
+</div>
+</body>
+</html>
