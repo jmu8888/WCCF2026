@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鸣谢赞助商 · 2024 Washington Chinese Culture Festival</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fbf8f3;
+    --rule: #d9d2c4;
+    --accent: #a8321e;
+    --muted: #6b6354;
+    --card: #ffffff;
+
+    /* Fluid type scale via clamp() */
+    --title-size: clamp(28px, 5vw, 52px);
+    --eyebrow-size: clamp(10px, 1.2vw, 13px);
+    --subtitle-size: clamp(12px, 1.4vw, 16px);
+    --footer-size: clamp(11px, 1.3vw, 14px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: clamp(24px, 5vw, 64px) clamp(16px, 3vw, 40px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1520px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    text-align: center;
+    padding-bottom: clamp(28px, 4vw, 50px);
+    margin-bottom: clamp(28px, 4vw, 56px);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(50px, 6vw, 80px);
+    height: 5px;
+    background: var(--accent);
+  }
+
+  .eyebrow {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--eyebrow-size);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: clamp(10px, 1.5vw, 18px);
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: var(--title-size);
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-bottom: clamp(8px, 1.2vw, 14px);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--subtitle-size);
+    color: var(--muted);
+    letter-spacing: 0.18em;
+  }
+
+  /* ---------- Logo grid (auto-fit responsive) ---------- */
+  .grid {
+    display: grid;
+    /* auto-fit: cells flow from 5 wide on big screens down to 2 on phones */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: clamp(10px, 1.2vw, 16px);
+  }
+
+  .cell {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    aspect-ratio: 5 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(14px, 1.6vw, 22px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(168, 50, 30, 0.10);
+    border-color: rgba(168, 50, 30, 0.4);
+  }
+
+  .cell img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Renders sharper across devices */
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* ---------- Group labels (optional row dividers between categories) ---------- */
+  .group-label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: clamp(18px, 2vw, 28px) 0 clamp(4px, 0.6vw, 8px) 0;
+  }
+
+  .group-label:first-child {
+    margin-top: 0;
+  }
+
+  .group-label h2 {
+    font-size: clamp(14px, 1.5vw, 17px);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+
+  .group-label .en {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(9px, 1vw, 11px);
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .group-label .line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    margin-top: clamp(40px, 5vw, 68px);
+    padding-top: clamp(20px, 2.5vw, 32px);
+    border-top: 1px solid var(--rule);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--footer-size);
+    color: var(--muted);
+    letter-spacing: 0.2em;
+  }
+
+  footer .dot {
+    color: var(--accent);
+    margin: 0 12px;
+  }
+
+  /* ---------- Targeted breakpoint tweaks ---------- */
+  /* Tablet portrait: tighten cells a bit */
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  }
+  /* Phone: 2 columns, taller cells for legibility */
+  @media (max-width: 540px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .cell { aspect-ratio: 4 / 3; padding: 14px; }
+    .group-label .en { display: none; }
+  }
+  /* Very narrow phones */
+  @media (max-width: 360px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    body { background: white; padding: 16px; }
+    .cell { box-shadow: none; break-inside: avoid; border-color: #ccc; }
+    .group-label .line { background: #ccc; }
+    header { border-color: #ccc; }
+    footer { border-color: #ccc; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="eyebrow">Thank You · 衷心感谢</div>
+      <h1>鸣 谢 赞 助 商</h1>
+      <p class="subtitle">2024 WASHINGTON CHINESE CULTURE FESTIVAL</p>
+    </header>
+
+    <div class="grid">
+
+      <div class="group-label">
+        <h2>老字号 与 文化机构</h2>
+        <span class="en">Heritage Brands &amp; Cultural Institutions</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/01_haichuang_huangpu.png" alt="上海市黄浦区 海创黄浦"></div>
+      <div class="cell"><img src="logos/46_laoshanghai.png" alt="上海黄浦老字号 LaoShanghai"></div>
+      <div class="cell"><img src="logos/47_duocai_guizhou.png" alt="多彩贵州"></div>
+      <div class="cell"><img src="logos/11_shaanxi.png" alt="Shaanxi 陕西"></div>
+      <div class="cell"><img src="logos/02_shaowansheng.png" alt="邵万生 1852"></div>
+      <div class="cell"><img src="logos/03_daoxiangcun.png" alt="稻香村 DXC"></div>
+      <div class="cell"><img src="logos/04_zhenlaodafang.png" alt="真老大房"></div>
+      <div class="cell"><img src="logos/05_shanghai_yaozao.png" alt="上海药皂 Shanghai Yaozao"></div>
+      <div class="cell"><img src="logos/06_shanpai_fan.png" alt="扇牌 Fan"></div>
+      <div class="cell"><img src="logos/07_fenghua_flauhra.png" alt="蜂花 FLAUHRA"></div>
+      <div class="cell"><img src="logos/08_fenghua_box.png" alt="蜂花"></div>
+      <div class="cell"><img src="logos/09_shanghai_red.png" alt="上海"></div>
+
+      <div class="group-label">
+        <h2>媒 体</h2>
+        <span class="en">Media</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/12_wuhan_tv.png" alt="武汉广播电视台"></div>
+      <div class="cell"><img src="logos/13_dongfang_tv.png" alt="东方卫视 Dragon TV"></div>
+      <div class="cell"><img src="logos/39_xinshijie.png" alt="新世界时报"></div>
+      <div class="cell"><img src="logos/40_meihua_media.png" alt="美华传媒 A&amp;C Media"></div>
+      <div class="cell"><img src="logos/41_wa_chinese_post.png" alt="华盛顿中文邮报 The Washington Chinese Post"></div>
+
+      <div class="group-label">
+        <h2>餐 饮</h2>
+        <span class="en">Food &amp; Hospitality</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/14_mcdonalds_big.png" alt="McDonald's"></div>
+      <div class="cell"><img src="logos/15_zihaiguo.png" alt="自嗨锅"></div>
+      <div class="cell"><img src="logos/18_fotile.png" alt="FOTILE 方太"></div>
+      <div class="cell"><img src="logos/21_han_palace.png" alt="汉皇 Han Palace"></div>
+      <div class="cell"><img src="logos/20_han_spot.png" alt="HAN SPOT 汉食尚"></div>
+      <div class="cell"><img src="logos/23_dahongpao.png" alt="大红袍海鲜酒家"></div>
+      <div class="cell"><img src="logos/24_ecru_emissary.png" alt="Ecru Emissary LLC"></div>
+      <div class="cell"><img src="logos/33_yume.png" alt="Yume Asian Fusion"></div>
+      <div class="cell"><img src="logos/17_yelp.png" alt="Yelp"></div>
+
+      <div class="group-label">
+        <h2>金 融 与 商 务</h2>
+        <span class="en">Finance &amp; Business</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/10_wantong_gmcc.png" alt="万通贷款 General Mortgage Capital Corporation"></div>
+      <div class="cell"><img src="logos/22_lemfi.png" alt="LeMFi"></div>
+      <div class="cell"><img src="logos/31_annova_small.png" alt="Annova Advisors"></div>
+      <div class="cell"><img src="logos/34_certiglobe.png" alt="Certiglobe Visas"></div>
+      <div class="cell"><img src="logos/35_linsili_insurance.png" alt="林思丽保险事务所"></div>
+      <div class="cell"><img src="logos/29_guotian.png" alt="国田集团 Guo Tian"></div>
+      <div class="cell"><img src="logos/44_italkbb.png" alt="iTalkBB"></div>
+
+      <div class="group-label">
+        <h2>教 育 与 科 技</h2>
+        <span class="en">Education &amp; Technology</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/25_wust.png" alt="Washington University of Science and Technology"></div>
+      <div class="cell"><img src="logos/45_joy_education.png" alt="卓教国际 Joy Education International"></div>
+      <div class="cell"><img src="logos/36_scenex_ai.png" alt="SceneX AI Group"></div>
+
+      <div class="group-label">
+        <h2>地 产 与 生 活 服 务</h2>
+        <span class="en">Real Estate &amp; Lifestyle Services</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/37_yhh_yue_he.png" alt="YHH Yue He Homes"></div>
+      <div class="cell"><img src="logos/30_lc_loving_care.png" alt="LC Loving Care Home Services"></div>
+
+      <div class="group-label">
+        <h2>社 团 与 文 化 艺 术</h2>
+        <span class="en">Community Organizations &amp; Arts</span>
+        <span class="line"></span>
+      </div>
+      <div class="cell"><img src="logos/19_ucco.png" alt="美国侨学界社团联席会 UCCO"></div>
+      <div class="cell"><img src="logos/26_dmv_qipao.png" alt="大华府旗袍时装艺术团 DMV Qipao Fashion Group"></div>
+      <div class="cell"><img src="logos/27_qipao_va.png" alt="世界旗袍联合会美国VA分会"></div>
+      <div class="cell"><img src="logos/28_huatong.png" alt="美国华盛顿中国和平统一促进会"></div>
+      <div class="cell"><img src="logos/42_dahuafu_forum.png" alt="大华府两岸时事论坛社"></div>
+      <div class="cell"><img src="logos/43_us_shandong.png" alt="全美山东同乡会联合总会 US Shandong Fellowship Association"></div>
+
+    </div>
+
+    <footer>
+      WITH SINCERE APPRECIATION
+      <span class="dot">◆</span>
+      谨 此 致 谢
+    </footer>
+
+  </div>
+</body>
+</html>

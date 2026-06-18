@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鸣谢赞助商 · Our Sponsors</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fbf8f3;
+    --rule: #d9d2c4;
+    --accent: #a8321e;
+    --muted: #6b6354;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    padding: 60px 24px;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 5px;
+    background: var(--accent);
+  }
+
+  .eyebrow {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 44px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .section-title h2 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .section-title .en {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .section-title .line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* Sponsor grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px 24px;
+  }
+
+  .sponsor {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .sponsor::before {
+    content: "";
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+
+  footer .heart {
+    color: var(--accent);
+    margin: 0 6px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body { padding: 40px 16px; }
+    h1 { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; }
+    .section-title .en { display: none; }
+  }
+
+  @media print {
+    body { background: white; padding: 20px; }
+    .sponsor::before { background: #000; }
+    .section-title .line, header { border-color: #000; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="eyebrow">Thank You · 衷心感谢</div>
+      <h1>鸣 谢 赞 助 商</h1>
+      <p class="subtitle">OUR HONORED SPONSORS &amp; PARTNERS</p>
+    </header>
+
+    <section>
+      <div class="section-title">
+        <h2>政府与文化机构</h2>
+        <span class="en">Government &amp; Cultural Institutions</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">上海市黄浦区 — 海创黄浦</div>
+        <div class="sponsor">美中新视角基金会</div>
+        <div class="sponsor">陕西省文化和旅游厅</div>
+        <div class="sponsor">山地公园省 · 多彩贵州风</div>
+        <div class="sponsor">国侨学届社团联席会</div>
+        <div class="sponsor">华盛顿同心基金会</div>
+        <div class="sponsor">美国华盛顿中国和平统一促进会</div>
+        <div class="sponsor">大华府两岸时事论坛社</div>
+        <div class="sponsor">全美山东同乡会联合总会</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>媒体与传播</h2>
+        <span class="en">Media &amp; Communications</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">武汉广播电视台</div>
+        <div class="sponsor">东方卫视美国新闻中心</div>
+        <div class="sponsor">新世界时报</div>
+        <div class="sponsor">华盛顿中文邮报</div>
+        <div class="sponsor">美华传媒</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>餐饮与食品</h2>
+        <span class="en">Food &amp; Hospitality</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">自嗨锅集团</div>
+        <div class="sponsor">McDonald's</div>
+        <div class="sponsor">FOTILE 方太</div>
+        <div class="sponsor">汉宫 China Garden</div>
+        <div class="sponsor">汉皇 Han Palace</div>
+        <div class="sponsor">汉食尚 Han Spot</div>
+        <div class="sponsor">大红袍海鲜酒家</div>
+        <div class="sponsor">Ecru Emissary LLC — TANG RESERVE 大唐甄选</div>
+        <div class="sponsor">Yume Asian Fusion</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>教育机构</h2>
+        <span class="en">Education</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">卓教国际 — 小使者</div>
+        <div class="sponsor">华盛顿科技大学</div>
+        <div class="sponsor">Veritas Collegiate Academy</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>金融与专业服务</h2>
+        <span class="en">Finance &amp; Professional Services</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">万通贷款 General Mortgage Capital Corporation</div>
+        <div class="sponsor">LeMFi</div>
+        <div class="sponsor">梅张会计师楼</div>
+        <div class="sponsor">Annova Advisors</div>
+        <div class="sponsor">Certiglobe Visas</div>
+        <div class="sponsor">林思丽保险事务所</div>
+        <div class="sponsor">国田集团</div>
+        <div class="sponsor">iTalkBB</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>科技与创新</h2>
+        <span class="en">Technology &amp; Innovation</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">SceneX AI Group Inc.</div>
+        <div class="sponsor">美中创新创业联盟</div>
+        <div class="sponsor">Yelp</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>地产与生活服务</h2>
+        <span class="en">Real Estate &amp; Lifestyle</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">HO Brothers Development, LLC</div>
+        <div class="sponsor">Yue He Homes / Century 21 New Millennium</div>
+        <div class="sponsor">乐康居家护理服务</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>文化艺术团体</h2>
+        <span class="en">Arts &amp; Cultural Groups</span>
+        <span class="line"></span>
+      </div>
+      <div class="grid">
+        <div class="sponsor">大华府旗袍时装艺术团</div>
+        <div class="sponsor">世界旗袍联合会 · 美国维吉尼亚州 VA 分会</div>
+      </div>
+    </section>
+
+    <footer>
+      WITH SINCERE APPRECIATION
+      <span class="heart">❤</span>
+      谨此致谢
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主办单位 · Organizers</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fbf8f3;
+    --rule: #d9d2c4;
+    --accent: #a8321e;
+    --muted: #6b6354;
+    --card: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 60px 24px;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 5px;
+    background: var(--accent);
+  }
+
+  .eyebrow {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 46px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+
+  .org {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 28px 26px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .org:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(168, 50, 30, 0.08);
+  }
+
+  .org::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .acronym {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+
+  .cn {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .en {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 64px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+  }
+
+  footer .dot {
+    color: var(--accent);
+    margin: 0 10px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body { padding: 40px 16px; }
+    h1 { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; }
+    .org { padding: 22px 20px; }
+  }
+
+  @media print {
+    body { background: white; padding: 20px; }
+    .org { box-shadow: none; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="eyebrow">Presented By · 联合主办</div>
+      <h1>主 办 单 位</h1>
+      <p class="subtitle">ORGANIZERS</p>
+    </header>
+
+    <div class="grid">
+
+      <div class="org">
+        <span class="acronym">ACECEA</span>
+        <span class="cn">美中经济文化交流协会</span>
+        <span class="en">American Chinese Economic &amp; Cultural Exchange Association</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">ACS</span>
+        <span class="cn">美中实验学校</span>
+        <span class="en">American Chinese School</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">CAAGW</span>
+        <span class="cn">大华府地区中国大专院校校友会联合会</span>
+        <span class="en">Chinese Alumni Associations of Greater Washington</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">CCCAA</span>
+        <span class="cn">美国华盛顿同乡会联合会</span>
+        <span class="en">Coordination Council of Chinese American Associations</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">GWCAC</span>
+        <span class="cn">华盛顿华人社区联盟</span>
+        <span class="en">Greater Washington Chinese American Community</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">HCCS</span>
+        <span class="cn">哈维中文学校</span>
+        <span class="en">Howard County Chinese School</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">HCS</span>
+        <span class="cn">希望中文学校</span>
+        <span class="en">Hope Chinese School</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">UCAPO</span>
+        <span class="cn">美国华人专业团体联合会</span>
+        <span class="en">The Union of Chinese American Professional Organizations</span>
+      </div>
+
+      <div class="org">
+        <span class="acronym">USCAC</span>
+        <span class="cn">美中工商联合会</span>
+        <span class="en">United States–China Association of Commerce</span>
+      </div>
+
+    </div>
+
+    <footer>
+      JOINTLY PRESENTED
+      <span class="dot">◆</span>
+      联 合 呈 献
+    </footer>
+
+  </div>
+</body>
+</html>
