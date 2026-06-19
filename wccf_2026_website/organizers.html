@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The 24th Washington Chinese Culture Festival is jointly presented by 9 Greater Washington Chinese community organizations.">
+<title>Organizers · 主办单位 · WCCF 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .organizers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .org {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 36px 32px;
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .org:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  }
+  .org::before {
+    content: "";
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--red);
+  }
+  .org__num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+  .org__acronym {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--red);
+  }
+  .org__cn {
+    font-family: var(--serif-cn);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .org__en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="stages.html">Stages</a></li>
+      <li><a href="cuisine.html">Cuisine</a></li>
+      <li><a href="visit.html">Visit</a></li>
+      <li><a href="organizers.html" class="is-current">Organizers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="pagehero">
+  <div class="container">
+    <div class="pagehero__crumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Organizers</span>
+    </div>
+    <div class="pagehero__inner">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 18px;">Presented Jointly By · 联合主办</p>
+        <h1 class="pagehero__title-cn">主办<span>单位</span></h1>
+        <p class="pagehero__title-en">Brought to you by the Greater Washington Chinese community.</p>
+        <p class="pagehero__desc">A celebration of this scale takes a village. The 24th Washington Chinese Culture Festival is jointly presented by nine community organizations that together represent the cultural, educational, professional, and civic life of Chinese Americans in the D.C. region.</p>
+      </div>
+      <div class="pagehero__aside">主</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ORGANIZERS GRID ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nine Organizations · 九大主办</span>
+      <h2 class="h2-cn">同心协力,共襄盛举</h2>
+    </div>
+
+    <div class="organizers">
+      <div class="org">
+        <div class="org__num">— 01</div>
+        <div class="org__acronym">ACECEA</div>
+        <div class="org__cn">美中经济文化交流协会</div>
+        <div class="org__en">American Chinese Economic &amp; Cultural Exchange Association</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 02</div>
+        <div class="org__acronym">ACS</div>
+        <div class="org__cn">美中实验学校</div>
+        <div class="org__en">American Chinese School</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 03</div>
+        <div class="org__acronym">CAAGW</div>
+        <div class="org__cn">大华府地区中国大专院校校友会联合会</div>
+        <div class="org__en">Chinese Alumni Associations of Greater Washington</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 04</div>
+        <div class="org__acronym">CCCAA</div>
+        <div class="org__cn">美国华盛顿同乡会联合会</div>
+        <div class="org__en">Coordination Council of Chinese American Associations</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 05</div>
+        <div class="org__acronym">GWCAC</div>
+        <div class="org__cn">华盛顿华人社区联盟</div>
+        <div class="org__en">Greater Washington Chinese American Community</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 06</div>
+        <div class="org__acronym">HCCS</div>
+        <div class="org__cn">哈维中文学校</div>
+        <div class="org__en">Howard County Chinese School</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 07</div>
+        <div class="org__acronym">HCS</div>
+        <div class="org__cn">希望中文学校</div>
+        <div class="org__en">Hope Chinese School</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 08</div>
+        <div class="org__acronym">UCAPO</div>
+        <div class="org__cn">美国华人专业团体联合会</div>
+        <div class="org__en">Union of Chinese American Professional Organizations</div>
+      </div>
+      <div class="org">
+        <div class="org__num">— 09</div>
+        <div class="org__acronym">USCAC</div>
+        <div class="org__cn">美中工商联合会</div>
+        <div class="org__en">United States–China Association of Commerce</div>
+      </div>
+    <div class="org">
+        <div class="org__num">— 10</div>
+        <div class="org__acronym">WCHF</div>
+        <div class="org__cn">华盛顿同心基金会</div>
+        <div class="org__en">Washington Chinese Heritage Foundation</div>
+      </div>
+	</div>
+  </div>
+</section>
+
+<!-- ============ PAGER ============ -->
+<section class="pager">
+  <div class="container">
+    <div class="pager__inner">
+      <a href="visit.html" class="pager__link pager__link--prev">
+        <div class="pager__label">Previous</div>
+        <div class="pager__title">参与攻略</div>
+        <div class="pager__sub">Visit · Plan Your Day</div>
+      </a>
+      <a href="sponsors.html" class="pager__link pager__link--next">
+        <div class="pager__label">Next</div>
+        <div class="pager__title">鸣谢赞助商</div>
+        <div class="pager__sub">Sponsors · 44 Partners</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+  document.getElementById('navToggle')?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>

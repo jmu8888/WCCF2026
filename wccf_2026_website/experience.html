@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Try on HanFu, master calligraphy, play Weiqi, dance with ribbon dragons — ten hands-on cultural stations at the 24th Washington Chinese Culture Festival.">
+<title>Experience · 文化体验 · WCCF 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Pillars ----- */
+  .pillars {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(60px, 8vw, 110px) 0;
+  }
+  .pillars__head { text-align: center; margin-bottom: clamp(40px, 5vw, 64px); }
+  .pillars__head .h2 { color: var(--paper); }
+  .pillars__head .h2 em { color: var(--gold-soft); }
+  .pillars__head p {
+    font-family: var(--serif-en); font-style: italic;
+    color: rgba(250,247,241,0.78);
+    font-size: clamp(16px, 1.4vw, 20px);
+    max-width: 60ch; margin: 16px auto 0;
+  }
+  .pillars__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(12px, 2vw, 32px);
+  }
+  .pillar {
+    text-align: center;
+    padding: 24px 12px;
+    border-right: 1px solid rgba(250,247,241,0.10);
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar__cn {
+    font-family: var(--serif-cn);
+    font-size: clamp(48px, 7vw, 90px);
+    font-weight: 900;
+    color: var(--gold-soft);
+    line-height: 1; margin-bottom: 14px;
+  }
+  .pillar__en {
+    font-family: var(--serif-en);
+    font-size: clamp(16px, 1.5vw, 22px);
+    font-weight: 500; font-style: italic;
+    color: var(--paper); margin-bottom: 6px;
+  }
+  .pillar__desc {
+    font-size: clamp(11px, 0.9vw, 13px);
+    color: rgba(250,247,241,0.6);
+    letter-spacing: 0.05em;
+  }
+  @media (max-width: 760px) {
+    .pillars__grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .pillar { padding: 12px 4px; }
+    .pillar__cn { font-size: clamp(36px, 11vw, 56px); }
+    .pillar__en { font-size: 13px; }
+    .pillar__desc { display: none; }
+  }
+
+  /* ----- Activity matrix ----- */
+  .matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .activity {
+    background: var(--card);
+    padding: 32px 26px;
+    border: 1px solid var(--rule);
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .activity::before {
+    content: "";
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--red);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .activity:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    border-color: transparent;
+  }
+  .activity:hover::before { transform: scaleX(1); }
+  .activity__index {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+  .activity__icon {
+    width: 48px; height: 48px;
+    margin-bottom: 18px;
+    color: var(--red);
+  }
+  .activity__cn {
+    font-family: var(--serif-cn);
+    font-size: 20px; font-weight: 700;
+    color: var(--ink); margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .activity__en {
+    font-family: var(--serif-en);
+    font-style: italic; font-size: 16px;
+    color: var(--muted); margin-bottom: 12px;
+  }
+  .activity__desc {
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .activity__tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 3px 10px;
+    background: var(--paper-2);
+    color: var(--red);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 3px;
+  }
+
+  /* ----- Tips block ----- */
+  .tips {
+    background: var(--paper-2);
+    padding: clamp(60px, 8vw, 110px) 0;
+  }
+  .tips__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 36px);
+  }
+  .tip {
+    padding: 28px 0 28px 28px;
+    border-left: 3px solid var(--gold);
+  }
+  .tip__num {
+    font-family: var(--serif-en);
+    font-style: italic; font-size: 42px;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 12px;
+  }
+  .tip__title {
+    font-family: var(--serif-cn);
+    font-size: 19px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .tip__desc {
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  @media (max-width: 760px) {
+    .tips__grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html" class="is-current">Experience</a></li>
+      <li><a href="stages.html">Stages</a></li>
+      <li><a href="cuisine.html">Cuisine</a></li>
+      <li><a href="visit.html">Visit</a></li>
+      <li><a href="organizers.html">Organizers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="pagehero">
+  <div class="container">
+    <div class="pagehero__crumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Experience</span>
+    </div>
+    <div class="pagehero__inner">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 18px;">01 · Culture Experience Matrix</p>
+        <h1 class="pagehero__title-cn">文化<span>体验</span></h1>
+        <p class="pagehero__title-en">Try on, learn, play, take home — and remember.</p>
+        <p class="pagehero__desc">A five-pillar journey followed by ten hands-on stations led by masters. From HanFu and Fujian Zanhua to calligraphy, paper-cutting, and Weiqi — every exhibit invites you to participate rather than spectate.</p>
+      </div>
+      <div class="pagehero__aside">观</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FIVE PILLARS ============ -->
+<section class="pillars">
+  <div class="container">
+    <div class="pillars__head">
+      <span class="eyebrow" style="color: var(--gold-soft);">Be a Chinese Culture Experiencer for a Day</span>
+      <h2 class="h2" style="margin-top: 14px;">Don't just watch — <em>become</em> part of the culture.</h2>
+      <p>The festival's five-pillar journey through one of the world's oldest cultural traditions.</p>
+    </div>
+    <div class="pillars__grid">
+      <div class="pillar">
+        <div class="pillar__cn">观</div>
+        <div class="pillar__en">See It</div>
+        <div class="pillar__desc">Watch &amp; Witness</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar__cn">学</div>
+        <div class="pillar__en">Learn It</div>
+        <div class="pillar__desc">Hands-on Masterclasses</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar__cn">玩</div>
+        <div class="pillar__en">Play It</div>
+        <div class="pillar__desc">Games &amp; Competitions</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar__cn">带</div>
+        <div class="pillar__en">Take It Home</div>
+        <div class="pillar__desc">Handmade Treasures</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar__cn">享</div>
+        <div class="pillar__en">Share It</div>
+        <div class="pillar__desc">Memories &amp; Moments</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATRIX ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Ten Hands-On Stations</span>
+      <h2 class="h2-cn">十大文化体验站</h2>
+      <p class="lede">From intangible heritage crafts to ancient board games — pick up a brush, wear a headpiece, master a movement.</p>
+    </div>
+
+    <div class="matrix">
+
+      <div class="activity">
+        <div class="activity__index">— Station 01</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 L36 14 L34 30 L24 38 L14 30 L12 14 Z"/><path d="M24 6 L24 38"/><path d="M14 18 L34 18"/></svg>
+        <div class="activity__cn">汉服 & 民族服饰</div>
+        <div class="activity__en">HanFu &amp; Ethnic Attire</div>
+        <p class="activity__desc">Try on traditional ethnic clothing and stunning HanFu displays — see China's 56 cultural heritages up close.</p>
+        <span class="activity__tag">Try On</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 02</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="18" r="6"/><path d="M14 30 Q24 22 34 30"/><path d="M18 16 L16 12"/><path d="M30 16 L32 12"/><path d="M24 12 L24 8"/></svg>
+        <div class="activity__cn">福建簪花</div>
+        <div class="activity__en">Fujian Zanhua</div>
+        <p class="activity__desc">Wear intangible cultural heritage floral headpieces — the iconic Fujian flower crowns recognized by UNESCO.</p>
+        <span class="activity__tag">Heritage</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 03</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="14"/><circle cx="19" cy="20" r="1.5" fill="currentColor"/><circle cx="29" cy="20" r="1.5" fill="currentColor"/><path d="M18 28 Q24 32 30 28"/><path d="M14 14 Q16 12 18 14"/><path d="M30 14 Q32 12 34 14"/></svg>
+        <div class="activity__cn">传统脸谱彩绘</div>
+        <div class="activity__en">Festive Face Painting</div>
+        <p class="activity__desc">Get a traditional festive face painting inspired by Peking Opera's iconic character archetypes.</p>
+        <span class="activity__tag">Family</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 04</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38 L26 22"/><path d="M22 26 L30 18"/><path d="M28 20 L36 12"/><path d="M34 14 L38 10 L40 12 L36 16"/><path d="M8 40 L12 36"/></svg>
+        <div class="activity__cn">中国书法</div>
+        <div class="activity__en">Chinese Calligraphy</div>
+        <p class="activity__desc">Pick up the brush in a masterclass — learn from master calligraphers and take home your first character.</p>
+        <span class="activity__tag">Masterclass</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 05</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="10" width="20" height="28"/><path d="M18 16 L30 16"/><path d="M18 22 L30 22"/><path d="M18 28 L30 28"/><path d="M18 34 L24 34"/><circle cx="34" cy="14" r="2"/></svg>
+        <div class="activity__cn">剪纸艺术</div>
+        <div class="activity__en">Paper Cutting</div>
+        <p class="activity__desc">Cut intricate patterns under folk masters' guidance — a 1,500-year-old art form passed down for generations.</p>
+        <span class="activity__tag">Take Home</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 06</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="18" r="4"/><path d="M24 22 Q14 30 14 38"/><path d="M24 22 Q34 30 34 38"/><path d="M14 28 L34 28"/><circle cx="24" cy="10" r="2"/></svg>
+        <div class="activity__cn">绒花工艺</div>
+        <div class="activity__en">Iron-Wire Velvet Flowers</div>
+        <p class="activity__desc">Craft delicate velvet flowers wire by wire — once exclusive to imperial court ladies of the Tang Dynasty.</p>
+        <span class="activity__tag">DIY</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 07</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 30 Q12 14 18 14 L30 14 Q36 14 36 30"/><path d="M12 30 L36 30"/><path d="M12 30 L10 38 L38 38 L36 30"/><circle cx="18" cy="22" r="1.5" fill="currentColor"/><circle cx="24" cy="22" r="1.5" fill="currentColor"/><circle cx="30" cy="22" r="1.5" fill="currentColor"/></svg>
+        <div class="activity__cn">中国民族乐器</div>
+        <div class="activity__en">Traditional Instruments</div>
+        <p class="activity__desc">Listen to, learn about, and even try guzheng, erhu, pipa and dizi — thousands of years of musical heritage.</p>
+        <span class="activity__tag">Music</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 08</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="14"/><line x1="10" y1="24" x2="38" y2="24"/><line x1="24" y1="10" x2="24" y2="38"/><line x1="14" y1="14" x2="34" y2="34"/><line x1="34" y1="14" x2="14" y2="34"/><circle cx="18" cy="18" r="2" fill="currentColor"/><circle cx="30" cy="30" r="2" stroke="currentColor" fill="var(--card)"/></svg>
+        <div class="activity__cn">围棋对弈</div>
+        <div class="activity__en">Weiqi (Go)</div>
+        <p class="activity__desc">Test your strategy against players of all levels — the 2,500-year-old game of territory and intuition.</p>
+        <span class="activity__tag">Strategy</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 09</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38 L20 20 L26 24 L36 10"/><circle cx="14" cy="32" r="2" fill="currentColor"/><circle cx="22" cy="24" r="2" fill="currentColor"/><circle cx="30" cy="20" r="2" fill="currentColor"/></svg>
+        <div class="activity__cn">筷子夹豆赛</div>
+        <div class="activity__en">Chopstick Bean Race</div>
+        <p class="activity__desc">Test your chopstick mastery in a friendly speed competition — equally fun for first-timers and lifelong pros.</p>
+        <span class="activity__tag">Competition</span>
+      </div>
+
+      <div class="activity">
+        <div class="activity__index">— Station 10</div>
+        <svg class="activity__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20 Q14 12 22 18 Q30 24 38 16"/><path d="M8 28 Q14 22 22 28 Q30 34 38 26"/><path d="M8 36 Q14 30 22 36 Q30 40 38 34"/></svg>
+        <div class="activity__cn">彩带龙舞</div>
+        <div class="activity__en">Ribbon Dragon Dance</div>
+        <p class="activity__desc">Pick up a ribbon and join the dragon procession — easy moves, infectious rhythm, unforgettable photos.</p>
+        <span class="activity__tag">Movement</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIPS ============ -->
+<section class="tips">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Make the Most of Your Day</span>
+      <h2 class="h2-cn">三个小建议</h2>
+    </div>
+    <div class="tips__grid">
+      <div class="tip">
+        <div class="tip__num">01</div>
+        <div class="tip__title">先取文化护照</div>
+        <p class="tip__desc">Pick up a Cultural Passport at the entrance. Collect stamps from each station — full stamps unlock souvenirs and food discounts.</p>
+      </div>
+      <div class="tip">
+        <div class="tip__num">02</div>
+        <div class="tip__title">穿着舒适</div>
+        <p class="tip__desc">Plan to be on your feet most of the day. Wear comfortable shoes — the venue spans an entire city block.</p>
+      </div>
+      <div class="tip">
+        <div class="tip__num">03</div>
+        <div class="tip__title">开启 AirDrop</div>
+        <p class="tip__desc">Professional photographers around the venue will AirDrop you free high-resolution photos. Turn on AirDrop ahead of time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGER ============ -->
+<section class="pager">
+  <div class="container">
+    <div class="pager__inner">
+      <a href="index.html" class="pager__link pager__link--prev">
+        <div class="pager__label">Previous</div>
+        <div class="pager__title">回到首页</div>
+        <div class="pager__sub">Home · Festival Overview</div>
+      </a>
+      <a href="stages.html" class="pager__link pager__link--next">
+        <div class="pager__label">Next · 02</div>
+        <div class="pager__title">两大舞台</div>
+        <div class="pager__sub">Stages · Performances All Day</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+  document.getElementById('navToggle')?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section, .pillars, .tips').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>

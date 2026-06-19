@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Taste your way through China province by province — Sichuan, Shanghai, Xinjiang, Mongolia, plus Bao, dumplings, Roujiamo, and bubble teas at the 24th WCCF.">
+<title>Cuisine · 舌尖上的中国 · WCCF 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Cuisine intro split ----- */
+  .cuisine-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 6vw, 72px);
+    align-items: center;
+    margin-bottom: clamp(48px, 6vw, 80px);
+  }
+  .cuisine-intro__visual {
+    aspect-ratio: 4/3;
+    background:
+      radial-gradient(circle at 30% 40%, var(--gold-soft) 0%, transparent 35%),
+      radial-gradient(circle at 70% 65%, rgba(185,28,28,0.6) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(185,28,28,0.3) 0%, transparent 50%),
+      var(--paper-2);
+    border: 1px solid var(--rule);
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cuisine-intro__visual::before {
+    content: "中";
+    font-family: var(--serif-cn);
+    font-size: clamp(180px, 28vw, 360px);
+    color: var(--red);
+    opacity: 0.16;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .cuisine-intro__visual span {
+    position: absolute;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(11px, 1vw, 14px);
+    color: var(--red);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .cuisine-intro__visual span:nth-child(1) { top: 16%; left: 18%; }
+  .cuisine-intro__visual span:nth-child(2) { top: 24%; right: 14%; }
+  .cuisine-intro__visual span:nth-child(3) { bottom: 30%; left: 10%; }
+  .cuisine-intro__visual span:nth-child(4) { bottom: 18%; right: 18%; }
+  .cuisine-intro__visual span:nth-child(5) { top: 48%; left: 50%; transform: translate(-50%, -50%); }
+  @media (max-width: 760px) { .cuisine-intro { grid-template-columns: 1fr; } }
+
+  /* ----- Region cards ----- */
+  .cuisine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .dish {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .dish:hover {
+    transform: translateY(-3px);
+    border-color: var(--red);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  }
+  .dish__num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.16em;
+    margin-bottom: 12px;
+  }
+  .dish__region {
+    font-family: var(--serif-cn);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1.1;
+  }
+  .dish__region-en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .dish__profile {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .dish__items {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ----- Flavor profile bar ----- */
+  .flavors {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(60px, 8vw, 110px) 0;
+  }
+  .flavors__head { text-align: center; margin-bottom: clamp(40px, 5vw, 60px); }
+  .flavors__head .h2 { color: var(--paper); }
+  .flavors__head .h2 em { color: var(--gold-soft); }
+  .flavors__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(12px, 2vw, 28px);
+  }
+  .flavor {
+    text-align: center;
+    padding: 24px 12px;
+  }
+  .flavor__icon {
+    font-family: var(--serif-cn);
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--gold-soft);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .flavor__en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(14px, 1.3vw, 18px);
+    color: var(--paper);
+  }
+  @media (max-width: 600px) { .flavors__grid { grid-template-columns: repeat(5, 1fr); } .flavor { padding: 8px 2px; } .flavor__icon { font-size: clamp(28px, 9vw, 42px); } .flavor__en { font-size: 11px; } }
+
+  /* ----- Must-eat checklist ----- */
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .check {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .check:hover { border-color: var(--red); transform: translateY(-2px); }
+  .check__box {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border: 2px solid var(--red);
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    color: var(--red);
+    font-weight: 700;
+  }
+  .check__cn {
+    font-family: var(--serif-cn);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .check__en {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    font-family: var(--serif-en);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="stages.html">Stages</a></li>
+      <li><a href="cuisine.html" class="is-current">Cuisine</a></li>
+      <li><a href="visit.html">Visit</a></li>
+      <li><a href="organizers.html">Organizers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="pagehero">
+  <div class="container">
+    <div class="pagehero__crumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Cuisine</span>
+    </div>
+    <div class="pagehero__inner">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 18px;">03 · A Culinary Map of China</p>
+        <h1 class="pagehero__title-cn">舌尖上的<span>中国</span></h1>
+        <p class="pagehero__title-en">Taste your way through a continent — province by province.</p>
+        <p class="pagehero__desc">The festival's massive Food Exhibit is a literal culinary map. Signature dishes from viral, highly-rated local Chinese restaurants come together so you can taste authentic specialties from every corner of the country — all in one afternoon.</p>
+      </div>
+      <div class="pagehero__aside">食</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cuisine-intro">
+      <div class="cuisine-intro__visual">
+        <span>新疆 Xinjiang</span>
+        <span>北京 Beijing</span>
+        <span>四川 Sichuan</span>
+        <span>上海 Shanghai</span>
+        <span>蒙古 Mongolia</span>
+      </div>
+      <div>
+        <span class="eyebrow" style="display: block; margin-bottom: 14px;">From One Street, A Whole Continent</span>
+        <h2 class="h2-cn" style="margin-bottom: 20px;">从一条街,尝遍一个大陆。</h2>
+        <p class="lede" style="margin-bottom: 24px;">Visitors can taste authentic specialties from various provinces, including the fiery flavors of Sichuan, the savory-sweet notes of Shanghai, and aromatic barbecues from Xinjiang and Mongolia.</p>
+        <p style="color: var(--muted); font-size: 15px;">From iconic Chinese Bao and artisanal dumplings to savory Chinese Burgers (Roujiamo) and refreshing bubble teas — it's the ultimate "must-eat" checklist for any food lover.</p>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top: 40px;">
+      <span class="eyebrow">Eight Regional Profiles</span>
+      <h2 class="h2-cn">八大风味,一站收齐</h2>
+    </div>
+
+    <div class="cuisine-grid">
+      <div class="dish">
+        <div class="dish__num">— Region 01</div>
+        <div class="dish__region">川菜</div>
+        <div class="dish__region-en">Sichuan</div>
+        <div class="dish__profile">Profile · 麻辣 The Fire</div>
+        <p class="dish__items">Mapo tofu, dan dan noodles, mouthwatering chicken, hot pot with bone-deep mala heat — Sichuan peppercorns deliver that signature numbing tingle.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 02</div>
+        <div class="dish__region">上海菜</div>
+        <div class="dish__region-en">Shanghai</div>
+        <div class="dish__profile">Profile · 甜咸 Savory-Sweet</div>
+        <p class="dish__items">Soup dumplings (XLB), red-braised pork belly, scallion pancakes, sticky rice balls — delicate, glossy, comfort-food classic.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 03</div>
+        <div class="dish__region">新疆烧烤</div>
+        <div class="dish__region-en">Xinjiang BBQ</div>
+        <div class="dish__profile">Profile · 香辣 Aromatic</div>
+        <p class="dish__items">Cumin lamb skewers, fluffy naan bread, big-plate chicken, hand-pulled laghman noodles — Silk Road flavors over open flame.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 04</div>
+        <div class="dish__region">蒙古烧烤</div>
+        <div class="dish__region-en">Mongolian BBQ</div>
+        <div class="dish__profile">Profile · 粗犷 Hearty</div>
+        <p class="dish__items">Grilled mutton, salty milk tea, buuz dumplings, smoky grilled fare from the steppes — robust, deeply satisfying.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 05</div>
+        <div class="dish__region">面点</div>
+        <div class="dish__region-en">Bao &amp; Dumplings</div>
+        <div class="dish__profile">Profile · 经典 Iconic</div>
+        <p class="dish__items">Pan-fried Sheng Jian Bao, hand-pleated jiaozi, steamed cha siu bao, soup-filled XLB — perfect handheld bites.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 06</div>
+        <div class="dish__region">肉夹馍</div>
+        <div class="dish__region-en">Roujiamo</div>
+        <div class="dish__profile">Profile · 街味 Street Star</div>
+        <p class="dish__items">Xi'an's iconic flatbread sandwich — slow-braised meats packed into a crispy bun. Some call it the original Chinese burger.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 07</div>
+        <div class="dish__region">奶茶饮品</div>
+        <div class="dish__region-en">Bubble Tea</div>
+        <div class="dish__profile">Profile · 清新 Refreshing</div>
+        <p class="dish__items">Hand-shaken milk teas, fruit teas, cheese foam crowns, brown sugar boba — the perfect afternoon companion.</p>
+      </div>
+      <div class="dish">
+        <div class="dish__num">— Region 08</div>
+        <div class="dish__region">点心甜品</div>
+        <div class="dish__region-en">Sweets &amp; Pastries</div>
+        <div class="dish__profile">Profile · 甜蜜 Sweet</div>
+        <p class="dish__items">Egg tarts, mooncakes, candied haw, tanghulu — China's iconic sweet street snacks across generations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLAVORS ============ -->
+<section class="flavors">
+  <div class="container">
+    <div class="flavors__head">
+      <span class="eyebrow" style="color: var(--gold-soft);">Five Flavors · 五味</span>
+      <h2 class="h2" style="margin-top: 14px;">The compass of Chinese cooking — <em>balanced in every bite.</em></h2>
+    </div>
+    <div class="flavors__grid">
+      <div class="flavor"><div class="flavor__icon">酸</div><div class="flavor__en">Sour</div></div>
+      <div class="flavor"><div class="flavor__icon">甜</div><div class="flavor__en">Sweet</div></div>
+      <div class="flavor"><div class="flavor__icon">苦</div><div class="flavor__en">Bitter</div></div>
+      <div class="flavor"><div class="flavor__icon">辣</div><div class="flavor__en">Spicy</div></div>
+      <div class="flavor"><div class="flavor__icon">咸</div><div class="flavor__en">Savory</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MUST-EAT CHECKLIST ============ -->
+<section class="section section--paper-2">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Must-Eat Checklist · 必吃清单</span>
+      <h2 class="h2-cn">不容错过的八样</h2>
+      <p class="lede">A handy starting list for first-time visitors. Pace yourself.</p>
+    </div>
+    <div class="checklist">
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">小笼包</div><div class="check__en">Soup Dumplings</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">麻辣火锅</div><div class="check__en">Mala Hot Pot</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">羊肉串</div><div class="check__en">Lamb Skewers</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">肉夹馍</div><div class="check__en">Roujiamo</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">生煎包</div><div class="check__en">Sheng Jian Bao</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">担担面</div><div class="check__en">Dan Dan Noodles</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">珍珠奶茶</div><div class="check__en">Boba Milk Tea</div></div></div>
+      <div class="check"><div class="check__box">✓</div><div><div class="check__cn">糖葫芦</div><div class="check__en">Tanghulu</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGER ============ -->
+<section class="pager">
+  <div class="container">
+    <div class="pager__inner">
+      <a href="stages.html" class="pager__link pager__link--prev">
+        <div class="pager__label">Previous · 02</div>
+        <div class="pager__title">两大舞台</div>
+        <div class="pager__sub">Stages · Performances</div>
+      </a>
+      <a href="visit.html" class="pager__link pager__link--next">
+        <div class="pager__label">Next · 04</div>
+        <div class="pager__title">参与攻略</div>
+        <div class="pager__sub">Visit · Plan Your Day</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+  document.getElementById('navToggle')?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section, .flavors').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>

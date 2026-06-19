@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Two stages, all day. Main Stage: traditional dances, Wushu, Tai Chi, Peking Opera, Lion & Dragon. 2nd Stage: audience co-creation and community performances.">
+<title>Stages · 两大舞台 · WCCF 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Stages comparison ----- */
+  .stages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2.5vw, 32px);
+  }
+  .stage {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(250,247,241,0.12);
+    padding: clamp(28px, 4vw, 48px);
+    position: relative;
+    overflow: hidden;
+  }
+  .stage__num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(80px, 12vw, 160px);
+    font-weight: 400;
+    color: var(--gold);
+    opacity: 0.18;
+    position: absolute;
+    top: -20px; right: 20px;
+    line-height: 1;
+  }
+  .stage__label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .stage__title {
+    font-family: var(--serif-cn);
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .stage__sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(16px, 1.4vw, 20px);
+    color: rgba(250,247,241,0.7);
+    margin-bottom: 28px;
+  }
+  .stage__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .stage__list li {
+    font-size: 14px;
+    color: rgba(250,247,241,0.92);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(250,247,241,0.08);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .stage__list li::before {
+    content: "◆";
+    color: var(--red);
+    font-size: 8px;
+  }
+  @media (max-width: 760px) {
+    .stages { grid-template-columns: 1fr; }
+    .stage__list { grid-template-columns: 1fr; }
+  }
+
+  /* ----- Schedule table ----- */
+  .schedule {
+    background: var(--card);
+    border: 1px solid var(--rule);
+  }
+  .schedule__row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    gap: 24px;
+    padding: 20px clamp(20px, 3vw, 36px);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .schedule__row:last-child { border-bottom: none; }
+  .schedule__row--head {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .schedule__time {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 24px);
+    color: var(--red);
+    font-weight: 500;
+  }
+  .schedule__row--head .schedule__time {
+    color: var(--gold-soft);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .schedule__cell {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .schedule__row--head .schedule__cell {
+    color: var(--gold-soft);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .schedule__title {
+    font-family: var(--serif-cn);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .schedule__sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .schedule__note {
+    text-align: center;
+    margin-top: 18px;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 760px) {
+    .schedule__row { grid-template-columns: 1fr; gap: 6px; padding: 18px 24px; }
+    .schedule__row--head { display: none; }
+    .schedule__time { font-size: 18px; }
+  }
+
+  /* ----- Performance categories ----- */
+  .perfgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .perfcard {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 28px 26px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .perfcard:hover { transform: translateY(-3px); border-color: var(--red); }
+  .perfcard__icon {
+    width: 40px; height: 40px;
+    margin: 0 auto 18px;
+    color: var(--red);
+  }
+  .perfcard__cn {
+    font-family: var(--serif-cn);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .perfcard__en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="stages.html" class="is-current">Stages</a></li>
+      <li><a href="cuisine.html">Cuisine</a></li>
+      <li><a href="visit.html">Visit</a></li>
+      <li><a href="organizers.html">Organizers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="pagehero">
+  <div class="container">
+    <div class="pagehero__crumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Stages</span>
+    </div>
+    <div class="pagehero__inner">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 18px;">02 · Two Stages, All Day Long</p>
+        <h1 class="pagehero__title-cn">两大<span>舞台</span></h1>
+        <p class="pagehero__title-en">From awe to participation, two parallel worlds of performance.</p>
+        <p class="pagehero__desc">Elite-level programming on the Main Stage runs non-stop throughout the day. Meanwhile, the 2nd Stage invites the audience to step off the sidelines and into the spotlight — line dances, ping pong matches, and shared joy.</p>
+      </div>
+      <div class="pagehero__aside">演</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TWO STAGES ============ -->
+<section class="section section--ink">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Stage Lineup · 节目阵容</span>
+      <h2 class="h2-cn">两个舞台，两种体验</h2>
+    </div>
+
+    <div class="stages">
+      <div class="stage">
+        <div class="stage__num">I</div>
+        <div class="stage__label">Main Stage · 主舞台</div>
+        <h3 class="stage__title">The Culture Show</h3>
+        <p class="stage__sub">Elite-level programming, non-stop all day</p>
+        <ul class="stage__list">
+          <li>Traditional Dances · 传统舞蹈</li>
+          <li>Regional Folk Songs · 民歌</li>
+          <li>Classical Instruments · 民族乐器</li>
+          <li>Chinese Acrobatics · 杂技</li>
+          <li>Wushu Martial Arts · 武术</li>
+          <li>Tai Chi · 太极</li>
+          <li>Peking Opera · 京剧</li>
+          <li>Lion &amp; Dragon Dance · 舞狮舞龙</li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <div class="stage__num">II</div>
+        <div class="stage__label">2nd Stage · 互动舞台</div>
+        <h3 class="stage__title">Audience Co-Creation</h3>
+        <p class="stage__sub">Step off the sidelines and onto the stage</p>
+        <ul class="stage__list">
+          <li>Line Dances · 集体广场舞</li>
+          <li>Ping Pong Matches · 乒乓友谊赛</li>
+          <li>Open-Mic Performances · 自由表演</li>
+          <li>Karaoke Singalong · 卡拉OK</li>
+          <li>Group Tai Chi · 集体太极</li>
+          <li>Children's Workshops · 亲子互动</li>
+          <li>Community Showcases · 社区展示</li>
+          <li>Cross-Cultural Mixers · 文化交流</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAIN STAGE PROGRAM ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Main Stage Program</span>
+      <h2 class="h2-cn">主舞台节目单</h2>
+      <p class="lede">A sample running order. Exact program times confirmed closer to the event.</p>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule__row schedule__row--head">
+        <div class="schedule__time">Time · 时间</div>
+        <div class="schedule__cell">Program · 节目</div>
+        <div class="schedule__cell">Style · 风格</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">10:00</div>
+        <div>
+          <div class="schedule__title">开幕式典礼</div>
+          <div class="schedule__sub">Opening Ceremony · with dignitaries</div>
+        </div>
+        <div class="schedule__cell">Ceremonial</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">11:00</div>
+        <div>
+          <div class="schedule__title">传统民族舞蹈</div>
+          <div class="schedule__sub">Traditional Ethnic Dances</div>
+        </div>
+        <div class="schedule__cell">Dance</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">12:00</div>
+        <div>
+          <div class="schedule__title">中国杂技</div>
+          <div class="schedule__sub">Chinese Acrobatics</div>
+        </div>
+        <div class="schedule__cell">Acrobatics</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">13:00</div>
+        <div>
+          <div class="schedule__title">民乐演奏</div>
+          <div class="schedule__sub">Classical Instrument Showcase</div>
+        </div>
+        <div class="schedule__cell">Music</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">14:00</div>
+        <div>
+          <div class="schedule__title">武术 & 太极</div>
+          <div class="schedule__sub">Wushu &amp; Tai Chi</div>
+        </div>
+        <div class="schedule__cell">Martial Arts</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">15:00</div>
+        <div>
+          <div class="schedule__title">京剧选段</div>
+          <div class="schedule__sub">Peking Opera Highlights</div>
+        </div>
+        <div class="schedule__cell">Opera</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">16:00</div>
+        <div>
+          <div class="schedule__title">民歌专场</div>
+          <div class="schedule__sub">Regional Folk Songs</div>
+        </div>
+        <div class="schedule__cell">Vocal</div>
+      </div>
+      <div class="schedule__row">
+        <div class="schedule__time">17:00</div>
+        <div>
+          <div class="schedule__title">舞狮 & 舞龙</div>
+          <div class="schedule__sub">Lion &amp; Dragon Dance Finale</div>
+        </div>
+        <div class="schedule__cell">Spectacle</div>
+      </div>
+    </div>
+    <p class="schedule__note">* 时间为参考,实际节目以现场公告为准。Times are indicative; final program confirmed on-site.</p>
+  </div>
+</section>
+
+<!-- ============ PERFORMANCE CATEGORIES ============ -->
+<section class="section section--paper-2">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Performance Highlights · 重点节目</span>
+      <h2 class="h2-cn">看点抢先看</h2>
+    </div>
+
+    <div class="perfgrid">
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="14" r="4"/><path d="M24 18 L24 36"/><path d="M14 22 L34 22"/><path d="M16 36 L24 28 L32 36"/></svg>
+        <div class="perfcard__cn">武术</div>
+        <div class="perfcard__en">Wushu Martial Arts</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="14"/><path d="M24 10 Q34 14 24 24 Q14 34 24 38"/><circle cx="24" cy="16" r="2" fill="currentColor"/><circle cx="24" cy="32" r="2"/></svg>
+        <div class="perfcard__cn">太极</div>
+        <div class="perfcard__en">Tai Chi</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30 Q16 14 24 22 Q32 30 40 14"/><circle cx="24" cy="22" r="3" fill="currentColor"/><path d="M24 25 L24 38"/></svg>
+        <div class="perfcard__cn">京剧</div>
+        <div class="perfcard__en">Peking Opera</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="20" r="6"/><circle cx="34" cy="20" r="6"/><path d="M14 26 L14 38"/><path d="M34 26 L34 38"/><path d="M20 22 Q24 16 28 22"/></svg>
+        <div class="perfcard__cn">舞狮舞龙</div>
+        <div class="perfcard__en">Lion &amp; Dragon Dance</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 36 L14 18 Q14 10 24 10 Q34 10 34 18 L34 36"/><circle cx="20" cy="22" r="1.5" fill="currentColor"/><circle cx="24" cy="22" r="1.5" fill="currentColor"/><circle cx="28" cy="22" r="1.5" fill="currentColor"/></svg>
+        <div class="perfcard__cn">民乐</div>
+        <div class="perfcard__en">Classical Instruments</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38 L18 22 L24 28 L32 14 L40 22"/><circle cx="18" cy="14" r="3"/></svg>
+        <div class="perfcard__cn">杂技</div>
+        <div class="perfcard__en">Chinese Acrobatics</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14 L34 14 L30 36 L18 36 Z"/><path d="M18 20 L30 20"/><path d="M19 26 L29 26"/></svg>
+        <div class="perfcard__cn">广场舞</div>
+        <div class="perfcard__en">Line Dancing</div>
+      </div>
+      <div class="perfcard">
+        <svg class="perfcard__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+        <div class="perfcard__cn">乒乓球</div>
+        <div class="perfcard__en">Ping Pong</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGER ============ -->
+<section class="pager">
+  <div class="container">
+    <div class="pager__inner">
+      <a href="experience.html" class="pager__link pager__link--prev">
+        <div class="pager__label">Previous · 01</div>
+        <div class="pager__title">文化体验</div>
+        <div class="pager__sub">Experience · Hands-On Stations</div>
+      </a>
+      <a href="cuisine.html" class="pager__link pager__link--next">
+        <div class="pager__label">Next · 03</div>
+        <div class="pager__title">舌尖上的中国</div>
+        <div class="pager__sub">Cuisine · A Culinary Map</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+  document.getElementById('navToggle')?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>

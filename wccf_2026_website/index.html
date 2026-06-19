@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="24th Washington Chinese Culture Festival · Saturday, August 29, 2026 · Pennsylvania Avenue NW. Free admission. Experience China in the heart of D.C.">
+<title>2026 Washington Chinese Culture Festival · 第24届华盛顿中国文化节</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ----- Hero ----- */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 30%, rgba(196,147,62,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(185,28,28,0.10) 0%, transparent 60%),
+      var(--paper);
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(32px, 6vw, 72px);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero__edition {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(16px, 1.4vw, 20px);
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .hero__edition::before {
+    content: ""; display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--muted);
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+  .hero__title-en {
+    font-family: var(--serif-en);
+    font-size: clamp(28px, 4.5vw, 60px);
+    font-weight: 500;
+    line-height: 1.02;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .hero__title-en em { font-style: italic; color: var(--red); }
+  .hero__title-cn {
+    font-family: var(--serif-cn);
+    font-size: clamp(48px, 9vw, 124px);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+  .hero__title-cn span { color: var(--red); }
+  .hero__sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(18px, 1.7vw, 24px);
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-bottom: 36px;
+    max-width: 30ch;
+  }
+  .hero__meta {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: clamp(20px, 4vw, 48px);
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .hero__meta-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .hero__meta-value {
+    font-family: var(--serif-cn);
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .hero__meta-value em {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .hero__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero__pandas {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18));
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .hero__sun {
+    position: absolute;
+    width: clamp(280px, 38vw, 480px);
+    height: clamp(280px, 38vw, 480px);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold) 0%, var(--gold-soft) 55%, transparent 75%);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .hero__free {
+    position: absolute; top: 20px; right: 0;
+    width: 110px; height: 110px;
+    background: var(--red);
+    color: var(--paper);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    transform: rotate(-12deg);
+    z-index: 3;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .hero__free strong {
+    font-family: var(--serif-en);
+    font-size: 28px; font-weight: 600; font-style: italic;
+    display: block; line-height: 1;
+  }
+  .hero__free small {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  @media (max-width: 880px) {
+    .hero__inner { grid-template-columns: 1fr; text-align: center; }
+    .hero__edition::before { display: none; }
+    .hero__sub { margin-left: auto; margin-right: auto; }
+    .hero__meta { justify-content: center; }
+    .hero__visual { order: -1; margin-bottom: 24px; }
+    .hero__pandas { max-width: 280px; }
+    .hero__free { width: 88px; height: 88px; right: 10%; }
+    .hero__free strong { font-size: 22px; }
+  }
+  @media (max-width: 540px) {
+    .hero__meta { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  /* ----- Portal cards (replace single-page content) ----- */
+  .portal {
+    background: var(--paper-2);
+    padding: clamp(60px, 8vw, 110px) 0;
+  }
+  .portal__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(14px, 1.8vw, 24px);
+  }
+  .portal__card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: clamp(28px, 4vw, 48px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+  .portal__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  }
+  .portal__card::before {
+    content: "";
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .portal__card:hover::before { transform: scaleX(1); }
+  .portal__card-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(48px, 6vw, 80px);
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.4;
+  }
+  .portal__card-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .portal__card-cn {
+    font-family: var(--serif-cn);
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .portal__card-en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(16px, 1.4vw, 20px);
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .portal__card-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  @media (max-width: 760px) {
+    .portal__grid { grid-template-columns: 1fr; }
+    .portal__card { grid-template-columns: 1fr; }
+    .portal__card-num { order: -1; }
+  }
+
+  /* ----- Quick-fact strip ----- */
+  .quickfacts {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 40px 0;
+    border-top: 4px solid var(--red);
+  }
+  .quickfacts__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .quickfacts__num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 60px);
+    color: var(--gold-soft);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quickfacts__label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,247,241,0.7);
+  }
+  @media (max-width: 640px) {
+    .quickfacts__grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="stages.html">Stages</a></li>
+      <li><a href="cuisine.html">Cuisine</a></li>
+      <li><a href="visit.html">Visit</a></li>
+      <li><a href="organizers.html">Organizers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="hero__edition">The 24th Annual Edition · 第二十四届</p>
+      <h1 class="hero__title-en">Experience <em>China</em><br>on Pennsylvania Avenue</h1>
+      <h2 class="hero__title-cn">华盛顿<span>中国</span>文化节</h2>
+      <p class="hero__sub">The ultimate one-day cultural blockbuster<br>comes to the heart of D.C.</p>
+
+      <div class="hero__meta">
+        <div>
+          <div class="hero__meta-label">When · 时间</div>
+          <div class="hero__meta-value">2026年8月29日<em>Sat · All Day</em></div>
+        </div>
+        <div>
+          <div class="hero__meta-label">Where · 地点</div>
+          <div class="hero__meta-value">Pennsylvania Ave<em>3rd–4th St NW</em></div>
+        </div>
+        <div>
+          <div class="hero__meta-label">Cost · 费用</div>
+          <div class="hero__meta-value" style="color: var(--red);">Free Admission<em>免费入场</em></div>
+        </div>
+      </div>
+
+      <a href="visit.html" class="btn">Plan Your Visit</a>
+    </div>
+
+    <div class="hero__visual">
+      <div class="hero__sun"></div>
+      <img class="hero__pandas" src="logos/coin_A.png" alt="Festival panda mascots in traditional Chinese costume">
+      <div class="hero__free">
+        <div>
+          <strong>Free</strong>
+          <small>免费</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ QUICK FACTS ============ -->
+<section class="quickfacts">
+  <div class="container">
+    <div class="quickfacts__grid">
+      <div>
+        <div class="quickfacts__num">24</div>
+        <div class="quickfacts__label">Annual Edition · 届</div>
+      </div>
+      <div>
+        <div class="quickfacts__num">2</div>
+        <div class="quickfacts__label">Live Stages · 大舞台</div>
+      </div>
+      <div>
+        <div class="quickfacts__num">10+</div>
+        <div class="quickfacts__label">Hands-On Activities · 互动体验</div>
+      </div>
+      <div>
+        <div class="quickfacts__num">∞</div>
+        <div class="quickfacts__label">Dishes to Taste · 美食畅尝</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTAL ============ -->
+<section class="portal">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Be a Chinese Culture Experiencer for a Day</span>
+      <h2 class="h2-cn">五大版块，一日畅游</h2>
+      <p class="lede">Don't just watch — become part of the culture. Explore each of the festival's four worlds, then plan your day.</p>
+    </div>
+
+    <div class="portal__grid">
+
+      <a href="experience.html" class="portal__card">
+        <div>
+          <div class="portal__card-label">01 · Experience</div>
+          <div class="portal__card-cn">文化体验矩阵</div>
+          <div class="portal__card-en">Try On, Learn, Play, Take Home</div>
+          <p class="portal__card-desc">HanFu, Fujian Zanhua, calligraphy, paper-cutting, velvet flowers, traditional instruments, Weiqi, ribbon dragons — ten hands-on stations led by masters.</p>
+        </div>
+        <div class="portal__card-num">观</div>
+      </a>
+
+      <a href="stages.html" class="portal__card">
+        <div>
+          <div class="portal__card-label">02 · Stages</div>
+          <div class="portal__card-cn">两大舞台</div>
+          <div class="portal__card-en">Watch &amp; Participate, All Day</div>
+          <p class="portal__card-desc">Main Stage: traditional dances, Wushu, Tai Chi, Peking Opera, Lion &amp; Dragon. 2nd Stage: line dances, ping pong, community co-creation.</p>
+        </div>
+        <div class="portal__card-num">演</div>
+      </a>
+
+      <a href="cuisine.html" class="portal__card">
+        <div>
+          <div class="portal__card-label">03 · Cuisine</div>
+          <div class="portal__card-cn">舌尖上的中国</div>
+          <div class="portal__card-en">A Culinary Map of China</div>
+          <p class="portal__card-desc">Fiery Sichuan, savory-sweet Shanghai, aromatic Xinjiang &amp; Mongolian BBQ, Bao, dumplings, Roujiamo, bubble teas — eight regions, one street.</p>
+        </div>
+        <div class="portal__card-num">食</div>
+      </a>
+
+      <a href="visit.html" class="portal__card">
+        <div>
+          <div class="portal__card-label">04 · Visit</div>
+          <div class="portal__card-cn">参与攻略</div>
+          <div class="portal__card-en">Plan Your Day · Date &amp; Location</div>
+          <p class="portal__card-desc">Opening Ceremony with dignitaries, free professional photos via AirDrop, the Cultural Passport stamp collection, and everything you need to plan your visit.</p>
+        </div>
+        <div class="portal__card-num">游</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital — enabling residents of D.C. and beyond to experience the vitality of Chinese culture, dance, music, martial arts, acrobatics, and more.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  toggle?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section, .portal, .hero, .quickfacts').forEach(el => {
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>

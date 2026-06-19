@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Plan your visit to the 24th Washington Chinese Culture Festival on August 29, 2026. Free admission, prestigious opening ceremony, free professional photos, Cultural Passport.">
+<title>Visit · 参与攻略 · WCCF 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Big info hero ----- */
+  .infohero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  .infohero__info { display: grid; gap: 28px; }
+  .infohero__intro h2 { margin-bottom: 8px; }
+  .detail {
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .detail__label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .detail__value {
+    font-family: var(--serif-cn);
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.3;
+  }
+  .detail__value small {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(250,247,241,0.7);
+    font-size: clamp(14px, 1.2vw, 16px);
+    margin-top: 4px;
+  }
+  .infohero__visual {
+    aspect-ratio: 1;
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .infohero__visual::before {
+    content: "";
+    position: absolute; inset: 20%;
+    border: 1px solid rgba(196,147,62,0.4);
+    border-radius: 50%;
+  }
+  .infohero__visual::after {
+    content: "";
+    position: absolute; inset: 35%;
+    border: 1px solid rgba(196,147,62,0.5);
+    border-radius: 50%;
+  }
+  .infohero__date {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+  }
+  .infohero__date-month {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--gold-soft);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .infohero__date-day {
+    font-family: var(--serif-cn);
+    font-size: clamp(80px, 14vw, 180px);
+    font-weight: 900;
+    color: var(--paper);
+    line-height: 0.85;
+  }
+  .infohero__date-year {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--gold-soft);
+    letter-spacing: 0.15em;
+    margin-top: 8px;
+  }
+  @media (max-width: 760px) {
+    .infohero { grid-template-columns: 1fr; }
+    .infohero__visual { max-width: 360px; margin: 0 auto; }
+  }
+
+  /* ----- Highlights ----- */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 28px);
+  }
+  .highlight {
+    background: var(--card);
+    padding: clamp(28px, 3vw, 40px);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+  .highlight__num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 56px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+  .highlight__title {
+    font-family: var(--serif-cn);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .highlight__sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-size: 15px;
+  }
+  .highlight__desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .highlight__tag {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    background: var(--paper-2);
+    color: var(--red);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+  @media (max-width: 880px) { .highlights { grid-template-columns: 1fr; } }
+
+  /* ----- Map / Getting There ----- */
+  .gettinghere {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: start;
+  }
+  .gettinghere__map {
+    aspect-ratio: 4/3;
+    background:
+      linear-gradient(135deg, rgba(196,147,62,0.10) 0%, transparent 100%),
+      var(--paper-2);
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .gettinghere__pin {
+    width: 60px; height: 60px;
+    background: var(--red);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--paper);
+    font-size: 28px;
+    box-shadow: 0 8px 24px rgba(185,28,28,0.4);
+    position: relative;
+    z-index: 2;
+  }
+  .gettinghere__pin::after {
+    content: "";
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse {
+    from { transform: scale(0.5); opacity: 0.6; }
+    to   { transform: scale(1.2); opacity: 0; }
+  }
+  .gettinghere__streets {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg, transparent 49%, var(--rule) 49%, var(--rule) 51%, transparent 51%),
+      linear-gradient(90deg, transparent 49%, var(--rule) 49%, var(--rule) 51%, transparent 51%);
+    opacity: 0.3;
+  }
+  .gettinghere__label {
+    position: absolute;
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .gettinghere__label--top   { top: 16px; left: 50%; transform: translateX(-50%); }
+  .gettinghere__label--right { top: 50%; right: 16px; transform: translateY(-50%) rotate(90deg); transform-origin: center; }
+  .gettinghere__label--bot   { bottom: 16px; left: 50%; transform: translateX(-50%); }
+  .gettinghere__label--left  { top: 50%; left: 16px; transform: translateY(-50%) rotate(-90deg); transform-origin: center; }
+
+  .transport { display: grid; gap: 20px; }
+  .transport__row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .transport__row:last-child { border-bottom: none; }
+  .transport__icon {
+    width: 44px; height: 44px;
+    background: var(--paper-2);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--red);
+  }
+  .transport__title {
+    font-family: var(--serif-cn);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .transport__desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  @media (max-width: 760px) { .gettinghere { grid-template-columns: 1fr; } }
+
+  /* ----- FAQ ----- */
+  .faq { display: grid; gap: 12px; max-width: 820px; margin: 0 auto; }
+  .faq__item {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .faq__q {
+    padding: 22px 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--serif-cn);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    list-style: none;
+    transition: color 0.2s;
+  }
+  .faq__q::-webkit-details-marker { display: none; }
+  .faq__q::after {
+    content: "+";
+    font-family: var(--serif-en);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--red);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .faq__item[open] .faq__q::after { transform: rotate(45deg); }
+  .faq__item[open] .faq__q { color: var(--red); }
+  .faq__a {
+    padding: 0 28px 24px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .faq__a em {
+    font-family: var(--serif-en);
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="stages.html">Stages</a></li>
+      <li><a href="cuisine.html">Cuisine</a></li>
+      <li><a href="visit.html" class="is-current">Visit</a></li>
+      <li><a href="organizers.html">Organizers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="pagehero">
+  <div class="container">
+    <div class="pagehero__crumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Visit</span>
+    </div>
+    <div class="pagehero__inner">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 18px;">04 · Plan Your Day</p>
+        <h1 class="pagehero__title-cn">参与<span>攻略</span></h1>
+        <p class="pagehero__title-en">Pennsylvania Avenue, transformed for one day only.</p>
+        <p class="pagehero__desc">Mark your calendars for an extraordinary journey without ever leaving the nation's capital. From morning until night, this high-profile event brings an authentic, all-encompassing Chinese experience directly to the heart of D.C.</p>
+      </div>
+      <div class="pagehero__aside">游</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BIG INFO BLOCK ============ -->
+<section class="section section--ink">
+  <div class="container">
+    <div class="infohero">
+      <div class="infohero__info">
+        <div class="infohero__intro">
+          <span class="eyebrow" style="color: var(--gold-soft); display: block; margin-bottom: 14px;">Mark Your Calendar · 信息汇总</span>
+          <h2 class="h2">Pennsylvania Avenue,<br><em>transformed.</em></h2>
+        </div>
+        <div class="detail">
+          <div class="detail__label">What · 活动</div>
+          <div class="detail__value">第二十四届华盛顿中国文化节<small>The 24th Washington Chinese Culture Festival</small></div>
+        </div>
+        <div class="detail">
+          <div class="detail__label">When · 时间</div>
+          <div class="detail__value">2026年8月29日 · 周六全天<small>Saturday, August 29, 2026 · All Day</small></div>
+        </div>
+        <div class="detail">
+          <div class="detail__label">Where · 地点</div>
+          <div class="detail__value">宾夕法尼亚大道 NW · 3街与4街之间<small>Pennsylvania Ave NW · Between 3rd &amp; 4th Streets · Washington, D.C.</small></div>
+        </div>
+        <div class="detail">
+          <div class="detail__label">Admission · 费用</div>
+          <div class="detail__value" style="color: var(--gold-soft);">免费入场<small>Free Admission · Open to All</small></div>
+        </div>
+      </div>
+
+      <div class="infohero__visual">
+        <div class="infohero__date">
+          <div class="infohero__date-month">August</div>
+          <div class="infohero__date-day">29</div>
+          <div class="infohero__date-year">2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">A Prestigious Celebration · 活动亮点</span>
+      <h2 class="h2-cn">三大亮点,不容错过</h2>
+      <p class="lede">Beyond the performances — moments that stay with you.</p>
+    </div>
+
+    <div class="highlights">
+
+      <div class="highlight">
+        <div class="highlight__num">01</div>
+        <h3 class="highlight__title">开幕式典礼</h3>
+        <p class="highlight__sub">A Prestigious Opening Ceremony</p>
+        <p class="highlight__desc">Attended by a distinguished delegation of U.S. Senators, Congressmen, State Governors, and Ambassadors — cementing this event as a premier diplomatic and cultural milestone.</p>
+        <span class="highlight__tag">VIP Delegation</span>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight__num">02</div>
+        <h3 class="highlight__title">免费专业摄影</h3>
+        <p class="highlight__sub">Free Photos · Instant AirDrop</p>
+        <p class="highlight__desc">Professional photographers stationed across the venue capture your day. High-quality digital photos delivered straight to your phone via AirDrop — instantly, and completely free.</p>
+        <span class="highlight__tag">Always Free</span>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight__num">03</div>
+        <h3 class="highlight__title">文化护照</h3>
+        <p class="highlight__sub">Cultural Passport · Stamp &amp; Unlock</p>
+        <p class="highlight__desc">Pick up a Cultural Passport, collect stamps at different exhibit lines, and unlock exclusive souvenirs and food discounts. The more you experience, the more you take home.</p>
+        <span class="highlight__tag">Pick Yours Up</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING THERE ============ -->
+<section class="section section--paper-2">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Getting Here · 交通指南</span>
+      <h2 class="h2-cn">如何前往</h2>
+    </div>
+
+    <div class="gettinghere">
+      <div class="gettinghere__map" aria-label="Festival location at Pennsylvania Ave NW between 3rd and 4th Streets">
+        <div class="gettinghere__streets"></div>
+        <div class="gettinghere__label gettinghere__label--top">Pennsylvania Ave NW</div>
+        <div class="gettinghere__label gettinghere__label--bot">3rd ↔ 4th Streets</div>
+        <div class="gettinghere__pin">◆</div>
+      </div>
+      <div class="transport">
+        <div class="transport__row">
+          <div class="transport__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="10" rx="2"/><path d="M7 19v2"/><path d="M17 19v2"/><circle cx="8" cy="14" r="1.5"/><circle cx="16" cy="14" r="1.5"/></svg>
+          </div>
+          <div>
+            <div class="transport__title">Metro 地铁</div>
+            <div class="transport__desc">Archives–Navy Memorial (Green/Yellow) — 2 min walk. Judiciary Square (Red) — 5 min walk.</div>
+          </div>
+        </div>
+        <div class="transport__row">
+          <div class="transport__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h12"/><path d="M14 8h4l3 5"/><path d="M5 17l3-9h6"/></svg>
+          </div>
+          <div>
+            <div class="transport__title">Bicycle 自行车</div>
+            <div class="transport__desc">Capital Bikeshare stations along Pennsylvania Ave. Bike racks available at the venue.</div>
+          </div>
+        </div>
+        <div class="transport__row">
+          <div class="transport__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="9" rx="2"/><circle cx="7" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M5 11l2-5h10l2 5"/></svg>
+          </div>
+          <div>
+            <div class="transport__title">Parking 停车</div>
+            <div class="transport__desc">Limited street parking — public garages within 0.5 mile. Metro strongly recommended.</div>
+          </div>
+        </div>
+        <div class="transport__row">
+          <div class="transport__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 13c-4 0-7 3-7 7h14c0-4-3-7-7-7z"/></svg>
+          </div>
+          <div>
+            <div class="transport__title">Accessibility 无障碍</div>
+            <div class="transport__desc">Entire venue is wheelchair-accessible. ADA-compliant restrooms on-site.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Frequently Asked · 常见问题</span>
+      <h2 class="h2-cn">出发之前</h2>
+    </div>
+
+    <div class="faq">
+      <details class="faq__item" open>
+        <summary class="faq__q">真的免费吗？需要门票吗？</summary>
+        <div class="faq__a">Yes, completely free. <em>(Free Admission · Open to All)</em> No tickets, no registration required. Just show up. Some food and souvenirs at vendor stalls are paid.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q">什么时候开始？什么时候结束？</summary>
+        <div class="faq__a">All-day event on Saturday, August 29, 2026. The opening ceremony begins at 10:00 AM and programming runs through early evening. <em>(See the Stages page for a sample running order.)</em></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q">下雨怎么办？</summary>
+        <div class="faq__a">The festival is held rain or shine. Some performances may relocate to covered areas in inclement weather. Watch the festival's social media for day-of updates.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q">可以带小朋友吗？适合什么年龄？</summary>
+        <div class="faq__a">Absolutely — the festival is designed for the whole family. Kids will love the face painting, ribbon dragons, chopstick races, and panda mascots. Strollers welcome.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q">可以带宠物吗？</summary>
+        <div class="faq__a">Service animals welcome. Leashed pets are allowed in outdoor areas, but the venue is crowded and noisy — for your pet's comfort, consider leaving them at home.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q">怎么领文化护照？</summary>
+        <div class="faq__a">Pick up a free Cultural Passport at the main entrance or any info booth on the day of the event. Collect stamps at each station to unlock souvenirs and food discounts.</div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q">那个免费照片是怎么回事？</summary>
+        <div class="faq__a">Professional photographers will be stationed across the venue. They'll capture your moments and AirDrop the high-resolution photos directly to your iPhone — totally free. <em>(Turn on AirDrop in your settings ahead of time.)</em></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGER ============ -->
+<section class="pager">
+  <div class="container">
+    <div class="pager__inner">
+      <a href="cuisine.html" class="pager__link pager__link--prev">
+        <div class="pager__label">Previous · 03</div>
+        <div class="pager__title">舌尖上的中国</div>
+        <div class="pager__sub">Cuisine · A Culinary Map</div>
+      </a>
+      <a href="organizers.html" class="pager__link pager__link--next">
+        <div class="pager__label">Next</div>
+        <div class="pager__title">主办单位</div>
+        <div class="pager__sub">Organizers · Behind the Festival</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+  document.getElementById('navToggle')?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>

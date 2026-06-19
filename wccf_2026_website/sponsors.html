@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="With sincere appreciation to the 44 sponsors and partners supporting the 24th Washington Chinese Culture Festival.">
+<title>Sponsors · 鸣谢赞助商 · WCCF 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Group label ----- */
+  .group {
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .group__head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+  .group__head h2 {
+    font-family: var(--serif-cn);
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .group__head .en {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .group__head .line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .group__head .count {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .group__head .en { display: none; }
+  }
+
+  /* ----- Logo grid ----- */
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: clamp(10px, 1.2vw, 16px);
+  }
+  .sponsor-cell {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    aspect-ratio: 5/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(14px, 1.6vw, 22px);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .sponsor-cell:hover {
+    transform: translateY(-2px);
+    border-color: var(--red);
+    box-shadow: 0 6px 18px rgba(168, 50, 30, 0.10);
+  }
+  .sponsor-cell img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  @media (max-width: 540px) {
+    .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ----- Thank you closer ----- */
+  .closer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(60px, 8vw, 110px) 0;
+    text-align: center;
+  }
+  .closer__chinese {
+    font-family: var(--serif-cn);
+    font-size: clamp(40px, 7vw, 96px);
+    font-weight: 900;
+    color: var(--paper);
+    letter-spacing: 0.15em;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  .closer__chinese span { color: var(--red); }
+  .closer__english {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--gold-soft);
+    letter-spacing: 0.1em;
+  }
+  .closer__small {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(250,247,241,0.5);
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark">华</span>
+      <span class="nav__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>华盛顿中国文化节</span>
+      </span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="stages.html">Stages</a></li>
+      <li><a href="cuisine.html">Cuisine</a></li>
+      <li><a href="visit.html">Visit</a></li>
+      <li><a href="organizers.html">Organizers</a></li>
+      <li><a href="sponsors.html" class="is-current">Sponsors</a></li>
+    </ul>
+    <a href="visit.html" class="nav__cta">AUG 29 · 2026</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="pagehero">
+  <div class="container">
+    <div class="pagehero__crumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Sponsors</span>
+    </div>
+    <div class="pagehero__inner">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 18px;">With Sincere Appreciation · 衷心感谢</p>
+        <h1 class="pagehero__title-cn">鸣谢<span>赞助商</span></h1>
+        <p class="pagehero__title-en">A celebration this large takes a village — thank you.</p>
+        <p class="pagehero__desc">The 24th Washington Chinese Culture Festival is made possible by the generosity of 44 sponsors and partners — from heritage brands and government cultural institutions to local restaurants, media, financial services, and educational organizations.</p>
+      </div>
+      <div class="pagehero__aside">谢</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SPONSORS GROUPED ============ -->
+<section class="section">
+  <div class="container">
+
+    <!-- Heritage & Cultural -->
+    <div class="group">
+      <div class="group__head">
+        <h2>老字号 与 文化机构</h2>
+        <span class="en">Heritage Brands &amp; Cultural Institutions</span>
+        <span class="line"></span>
+        <span class="count">12 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/01_haichuang_huangpu.png" alt="海创黄浦"></div>
+        <div class="sponsor-cell"><img src="logos/46_laoshanghai.png" alt="老上海"></div>
+        <div class="sponsor-cell"><img src="logos/47_duocai_guizhou.png" alt="多彩贵州"></div>
+        <div class="sponsor-cell"><img src="logos/11_shaanxi.png" alt="Shaanxi"></div>
+        <div class="sponsor-cell"><img src="logos/02_shaowansheng.png" alt="邵万生"></div>
+        <div class="sponsor-cell"><img src="logos/03_daoxiangcun.png" alt="稻香村"></div>
+        <div class="sponsor-cell"><img src="logos/04_zhenlaodafang.png" alt="真老大房"></div>
+        <div class="sponsor-cell"><img src="logos/05_shanghai_yaozao.png" alt="上海药皂"></div>
+        <div class="sponsor-cell"><img src="logos/06_shanpai_fan.png" alt="扇牌"></div>
+        <div class="sponsor-cell"><img src="logos/07_fenghua_flauhra.png" alt="蜂花 FLAUHRA"></div>
+        <div class="sponsor-cell"><img src="logos/08_fenghua_box.png" alt="蜂花"></div>
+        <div class="sponsor-cell"><img src="logos/09_shanghai_red.png" alt="上海"></div>
+      </div>
+    </div>
+
+    <!-- Media -->
+    <div class="group">
+      <div class="group__head">
+        <h2>媒体</h2>
+        <span class="en">Media &amp; Communications</span>
+        <span class="line"></span>
+        <span class="count">5 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/12_wuhan_tv.png" alt="武汉广播电视台"></div>
+        <div class="sponsor-cell"><img src="logos/13_dongfang_tv.png" alt="东方卫视 Dragon TV"></div>
+        <div class="sponsor-cell"><img src="logos/39_xinshijie.png" alt="新世界时报"></div>
+        <div class="sponsor-cell"><img src="logos/40_meihua_media.png" alt="美华传媒"></div>
+        <div class="sponsor-cell"><img src="logos/41_wa_chinese_post.png" alt="华盛顿中文邮报"></div>
+      </div>
+    </div>
+
+    <!-- Food -->
+    <div class="group">
+      <div class="group__head">
+        <h2>餐饮与食品</h2>
+        <span class="en">Food &amp; Hospitality</span>
+        <span class="line"></span>
+        <span class="count">9 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/14_mcdonalds_big.png" alt="McDonald's"></div>
+        <div class="sponsor-cell"><img src="logos/15_zihaiguo.png" alt="自嗨锅"></div>
+        <div class="sponsor-cell"><img src="logos/18_fotile.png" alt="FOTILE 方太"></div>
+        <div class="sponsor-cell"><img src="logos/21_han_palace.png" alt="汉皇 Han Palace"></div>
+        <div class="sponsor-cell"><img src="logos/20_han_spot.png" alt="HAN SPOT"></div>
+        <div class="sponsor-cell"><img src="logos/23_dahongpao.png" alt="大红袍海鲜酒家"></div>
+        <div class="sponsor-cell"><img src="logos/24_ecru_emissary.png" alt="Ecru Emissary LLC"></div>
+        <div class="sponsor-cell"><img src="logos/33_yume.png" alt="Yume Asian Fusion"></div>
+        <div class="sponsor-cell"><img src="logos/17_yelp.png" alt="Yelp"></div>
+      </div>
+    </div>
+
+    <!-- Finance & Business -->
+    <div class="group">
+      <div class="group__head">
+        <h2>金融与商务</h2>
+        <span class="en">Finance &amp; Business</span>
+        <span class="line"></span>
+        <span class="count">7 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/10_wantong_gmcc.png" alt="万通贷款 General Mortgage Capital Corporation"></div>
+        <div class="sponsor-cell"><img src="logos/22_lemfi.png" alt="LeMFi"></div>
+        <div class="sponsor-cell"><img src="logos/31_annova_small.png" alt="Annova Advisors"></div>
+        <div class="sponsor-cell"><img src="logos/34_certiglobe.png" alt="Certiglobe Visas"></div>
+        <div class="sponsor-cell"><img src="logos/35_linsili_insurance.png" alt="林思丽保险事务所"></div>
+        <div class="sponsor-cell"><img src="logos/29_guotian.png" alt="国田集团 Guo Tian"></div>
+        <div class="sponsor-cell"><img src="logos/44_italkbb.png" alt="iTalkBB"></div>
+      </div>
+    </div>
+
+    <!-- Education & Tech -->
+    <div class="group">
+      <div class="group__head">
+        <h2>教育与科技</h2>
+        <span class="en">Education &amp; Technology</span>
+        <span class="line"></span>
+        <span class="count">3 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/25_wust.png" alt="Washington University of Science and Technology"></div>
+        <div class="sponsor-cell"><img src="logos/45_joy_education.png" alt="卓教国际"></div>
+        <div class="sponsor-cell"><img src="logos/36_scenex_ai.png" alt="SceneX AI Group"></div>
+      </div>
+    </div>
+
+    <!-- Real Estate & Services -->
+    <div class="group">
+      <div class="group__head">
+        <h2>地产与生活服务</h2>
+        <span class="en">Real Estate &amp; Lifestyle Services</span>
+        <span class="line"></span>
+        <span class="count">2 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/37_yhh_yue_he.png" alt="YHH Yue He Homes"></div>
+        <div class="sponsor-cell"><img src="logos/30_lc_loving_care.png" alt="LC Loving Care Home Services"></div>
+      </div>
+    </div>
+
+    <!-- Community & Cultural Arts -->
+    <div class="group">
+      <div class="group__head">
+        <h2>社团与文化艺术</h2>
+        <span class="en">Community Organizations &amp; Arts</span>
+        <span class="line"></span>
+        <span class="count">6 PARTNERS</span>
+      </div>
+      <div class="sponsor-grid">
+        <div class="sponsor-cell"><img src="logos/19_ucco.png" alt="美国侨学界社团联席会 UCCO"></div>
+        <div class="sponsor-cell"><img src="logos/26_dmv_qipao.png" alt="大华府旗袍时装艺术团"></div>
+        <div class="sponsor-cell"><img src="logos/27_qipao_va.png" alt="世界旗袍联合会美国VA分会"></div>
+        <div class="sponsor-cell"><img src="logos/28_huatong.png" alt="美国华盛顿中国和平统一促进会"></div>
+        <div class="sponsor-cell"><img src="logos/42_dahuafu_forum.png" alt="大华府两岸时事论坛社"></div>
+        <div class="sponsor-cell"><img src="logos/43_us_shandong.png" alt="全美山东同乡会联合总会"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CLOSER ============ -->
+<section class="closer">
+  <div class="container">
+    <div class="closer__chinese">谨此<span>致谢</span></div>
+    <div class="closer__english">With sincere appreciation.</div>
+    <div class="closer__small">2026 Washington Chinese Culture Festival</div>
+  </div>
+</section>
+
+<!-- ============ PAGER ============ -->
+<section class="pager">
+  <div class="container">
+    <div class="pager__inner">
+      <a href="organizers.html" class="pager__link pager__link--prev">
+        <div class="pager__label">Previous</div>
+        <div class="pager__title">主办单位</div>
+        <div class="pager__sub">Organizers · 9 Bodies</div>
+      </a>
+      <a href="index.html" class="pager__link pager__link--next">
+        <div class="pager__label">Back to Top</div>
+        <div class="pager__title">回到首页</div>
+        <div class="pager__sub">Home · Festival Overview</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="footer__brand-cn">华盛顿中国文化节</div>
+        <div class="footer__brand-en">Washington Chinese Culture Festival</div>
+        <p class="footer__tag">An annual celebration of Chinese culture in the heart of the nation's capital.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="stages.html">Stages</a></li>
+          <li><a href="cuisine.html">Cuisine</a></li>
+          <li><a href="visit.html">Visit</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>The Festival</h4>
+        <ul>
+          <li><a href="organizers.html">Organizers</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">WeChat</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>© 2026 Washington Chinese Culture Festival · All Rights Reserved</div>
+      <div>Pennsylvania Ave NW · Washington, D.C.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+  document.getElementById('navToggle')?.addEventListener('click', () => nav.classList.toggle('nav--open'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section, .closer').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>
