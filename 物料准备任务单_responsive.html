@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B91C1C">
+<title>2026 华盛顿中国文化节 · 物料准备任务单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#B91C1C; --red-deep:#7F1010;
+  --gold:#C4933E; --gold-soft:#E2C485;
+  --ink:#1F1B16; --ink-soft:#3B342B; --muted:#6B6354;
+  --paper:#FAF7F1; --paper-2:#F2ECDE; --card:#FFFFFF;
+  --rule:#E3DBC8; --rule-2:#EFEADB;
+  --status-todo:#94A39A;
+  --status-doing:#C4933E;
+  --status-done:#15803D;
+  --serif-cn:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  --serif-en:"Cormorant Garamond",Georgia,serif;
+  --sans:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.7;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ===== TOP HEADER ===== */
+.top {
+  position:sticky; top:0; z-index:50;
+  background:rgba(250,247,241,0.96);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.top__bar {
+  max-width:1200px;
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.top__brand {
+  display:flex; align-items:center; gap:10px;
+  color:var(--ink); text-decoration:none;
+  flex-shrink:0;
+}
+.top__brand-mark {
+  width:32px; height:32px;
+  border-radius:50%;
+  background:var(--red); color:var(--paper);
+  display:grid; place-items:center;
+  font-family:var(--serif-cn);
+  font-weight:700; font-size:16px;
+}
+.top__brand-text { line-height:1.15; }
+.top__brand-text small {
+  display:block;
+  font-size:10px; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--muted);
+  font-weight:500; margin-bottom:1px;
+}
+.top__brand-text span {
+  font-family:var(--serif-cn);
+  font-weight:700; font-size:14px;
+  letter-spacing:0.04em;
+}
+.top__actions {
+  margin-left:auto;
+  display:flex; gap:8px;
+}
+.btn {
+  border:1px solid var(--rule);
+  background:var(--card);
+  color:var(--ink);
+  padding:7px 14px;
+  border-radius:6px;
+  font-size:13px;
+  font-family:var(--sans);
+  font-weight:500;
+  cursor:pointer;
+  transition:background 0.15s, border-color 0.15s, color 0.15s;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.btn:hover { border-color:var(--red); color:var(--red); }
+.btn--primary {
+  background:var(--red); color:var(--paper); border-color:var(--red);
+}
+.btn--primary:hover { background:var(--red-deep); color:var(--paper); }
+.btn--icon { padding:7px 10px; }
+
+/* Section nav */
+.topnav {
+  background:var(--paper-2);
+  border-bottom:1px solid var(--rule);
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.topnav::-webkit-scrollbar { display:none; }
+.topnav__inner {
+  max-width:1200px;
+  margin:0 auto;
+  padding:8px 24px;
+  display:flex;
+  gap:4px;
+  white-space:nowrap;
+}
+.topnav__link {
+  padding:8px 14px;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  border-radius:4px;
+  text-decoration:none;
+  letter-spacing:0.02em;
+  font-family:var(--serif-cn);
+  font-weight:500;
+  transition:background 0.15s, color 0.15s;
+}
+.topnav__link:hover, .topnav__link.is-active {
+  background:var(--card);
+  color:var(--red);
+}
+
+/* ===== HERO ===== */
+.hero {
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(196,147,62,0.10) 0%, transparent 60%),
+    var(--paper);
+  border-bottom:1px solid var(--rule);
+  padding:40px 0 32px;
+}
+.hero__inner {
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.hero__eyebrow {
+  font-size:11px; letter-spacing:0.3em;
+  text-transform:uppercase; color:var(--red);
+  font-weight:600;
+  margin-bottom:14px;
+}
+.hero__title {
+  font-family:var(--serif-cn);
+  font-size:clamp(24px,4vw,38px);
+  font-weight:900;
+  line-height:1.2;
+  color:var(--ink);
+  letter-spacing:0.04em;
+  margin-bottom:8px;
+}
+.hero__title span { color:var(--red); }
+.hero__sub {
+  font-family:var(--serif-en);
+  font-style:italic;
+  color:var(--muted);
+  font-size:16px;
+  letter-spacing:0.01em;
+}
+
+/* ===== MAIN ===== */
+.main {
+  max-width:1200px;
+  margin:0 auto;
+  padding:36px 24px 80px;
+}
+
+/* ===== BLOCK ===== */
+.block {
+  margin-bottom:48px;
+  scroll-margin-top:120px;
+}
+.block__title {
+  font-family:var(--serif-cn);
+  font-size:clamp(20px,2.5vw,26px);
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.3;
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--red);
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+}
+
+/* ===== INFO GRID ===== */
+.info-grid {
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+}
+.info-row {
+  display:grid;
+  grid-template-columns:160px 1fr;
+  border-bottom:1px solid var(--rule-2);
+}
+.info-row:last-child { border-bottom:none; }
+.info-label {
+  background:var(--paper-2);
+  padding:12px 18px;
+  font-family:var(--serif-cn);
+  font-weight:700;
+  color:var(--ink-soft);
+  font-size:14px;
+  border-right:1px solid var(--rule-2);
+}
+.info-value {
+  padding:12px 18px;
+  color:var(--ink);
+  font-size:14.5px;
+}
+
+/* ===== DATA TABLE ===== */
+.table-wrap {
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+}
+.data-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+}
+.data-table thead {
+  background:var(--ink);
+}
+.data-table th {
+  padding:12px 14px;
+  text-align:left;
+  color:var(--gold-soft);
+  font-family:var(--serif-cn);
+  font-weight:700;
+  font-size:12.5px;
+  letter-spacing:0.06em;
+  white-space:nowrap;
+  border-right:1px solid rgba(250,247,241,0.08);
+}
+.data-table th:last-child { border-right:none; }
+.data-table td {
+  padding:11px 14px;
+  border-top:1px solid var(--rule-2);
+  border-right:1px solid var(--rule-2);
+  color:var(--ink-soft);
+  vertical-align:top;
+  line-height:1.55;
+}
+.data-table td:last-child { border-right:none; }
+.data-table tbody tr:hover { background:var(--rule-2); }
+
+.seq-num {
+  display:inline-block;
+  min-width:24px;
+  text-align:center;
+  background:var(--paper-2);
+  color:var(--red);
+  font-family:var(--serif-en);
+  font-style:italic;
+  font-weight:600;
+  font-size:13px;
+  border-radius:4px;
+  padding:1px 6px;
+}
+.zone-label {
+  font-family:var(--serif-cn);
+  font-weight:700;
+  color:var(--red);
+  font-size:14px;
+}
+
+/* ===== STATUS PILL ===== */
+.status-pill {
+  border:1px solid var(--rule);
+  background:var(--card);
+  padding:6px 12px;
+  border-radius:99px;
+  font-size:12px;
+  font-family:var(--sans);
+  font-weight:600;
+  letter-spacing:0.04em;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  transition:all 0.15s;
+  white-space:nowrap;
+}
+.status-pill .dot {
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--status-todo);
+}
+.status-pill[data-status="未开始"] { color:var(--muted); }
+.status-pill[data-status="进行中"] { color:var(--gold); border-color:var(--gold-soft); background:rgba(196,147,62,0.08); }
+.status-pill[data-status="进行中"] .dot { background:var(--status-doing); }
+.status-pill[data-status="完成"]    { color:var(--status-done); border-color:#86EFAC; background:rgba(21,128,61,0.08); }
+.status-pill[data-status="完成"] .dot    { background:var(--status-done); }
+.status-pill:hover { transform:translateY(-1px); }
+
+/* ===== CHECKBOX ===== */
+.check-cell {
+  width:22px; height:22px;
+  accent-color:var(--red);
+  cursor:pointer;
+  margin:0;
+}
+
+/* ===== TOGGLE PAIR (pass/fail, yes/no) ===== */
+.toggle-pair {
+  display:inline-flex;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  overflow:hidden;
+  background:var(--card);
+}
+.toggle-pair .tg {
+  border:none;
+  background:transparent;
+  padding:5px 12px;
+  font-size:12px;
+  font-weight:600;
+  font-family:var(--sans);
+  color:var(--muted);
+  cursor:pointer;
+  transition:background 0.15s, color 0.15s;
+  border-right:1px solid var(--rule);
+}
+.toggle-pair .tg:last-child { border-right:none; }
+.toggle-pair[data-value="通过"] .tg-pass,
+.toggle-pair[data-value="是"]   .tg-yes {
+  background:var(--status-done); color:var(--paper);
+}
+.toggle-pair[data-value="整改"] .tg-fail,
+.toggle-pair[data-value="否"]   .tg-no {
+  background:var(--red); color:var(--paper);
+}
+.toggle-pair .tg:hover { color:var(--ink); }
+
+/* ===== TEXT INPUTS ===== */
+.fill-input {
+  width:100%;
+  padding:6px 10px;
+  border:1px dashed var(--rule);
+  background:var(--paper);
+  border-radius:4px;
+  font-family:var(--sans);
+  font-size:13px;
+  color:var(--ink);
+  outline:none;
+  resize:vertical;
+}
+.fill-input:focus { border-color:var(--red); background:var(--card); border-style:solid; }
+.fill-area { min-height:38px; }
+
+/* ===== TO TOP ===== */
+.to-top {
+  position:fixed; bottom:20px; right:20px;
+  width:42px; height:42px;
+  border-radius:50%;
+  background:var(--red); color:var(--paper);
+  border:none; cursor:pointer;
+  box-shadow:0 6px 18px rgba(185,28,28,0.32);
+  opacity:0; pointer-events:none;
+  transition:opacity 0.2s;
+  font-size:18px;
+  display:grid; place-items:center;
+  z-index:60;
+}
+.to-top.visible { opacity:1; pointer-events:auto; }
+
+/* ===== RESPONSIVE: mobile cards ===== */
+@media (max-width: 768px) {
+  body { font-size:14px; }
+  .top__bar { padding:10px 16px; gap:8px; }
+  .top__brand-text small { display:none; }
+  .topnav__inner { padding:6px 16px; }
+  .hero { padding:28px 0 22px; }
+  .hero__inner { padding:0 16px; }
+  .main { padding:24px 16px 60px; }
+
+  /* Info table → stacked */
+  .info-row { grid-template-columns: 1fr; }
+  .info-label { border-right:none; border-bottom:1px solid var(--rule-2); padding:8px 14px; font-size:12px; }
+  .info-value { padding:10px 14px; }
+
+  /* Data table → cards */
+  .table-wrap { border:none; background:transparent; }
+  .data-table, .data-table thead, .data-table tbody, .data-table tr, .data-table td {
+    display:block;
+  }
+  .data-table thead { display:none; }
+  .data-table tbody tr {
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    margin-bottom:12px;
+    padding:14px 16px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.03);
+  }
+  .data-table tbody tr:hover { background:var(--card); }
+  .data-table td {
+    padding:6px 0;
+    border:none;
+    display:grid;
+    grid-template-columns: 100px 1fr;
+    gap:10px;
+    align-items:baseline;
+    line-height:1.5;
+  }
+  .data-table td::before {
+    content:attr(data-label);
+    font-family:var(--serif-cn);
+    font-weight:700;
+    font-size:11.5px;
+    color:var(--gold);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding-top:3px;
+  }
+  .data-table td:first-child {
+    border-bottom:1px dashed var(--rule);
+    padding-bottom:8px;
+    margin-bottom:6px;
+  }
+  .data-table td:first-child::before {
+    color:var(--red);
+  }
+}
+@media (max-width: 480px) {
+  .data-table td { grid-template-columns: 1fr; gap:2px; }
+  .data-table td::before { padding-top:0; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  body { background:white; }
+  .top, .topnav, .to-top, .hero { display:none; }
+  .main { padding:0; max-width:100%; }
+  .block { page-break-inside:avoid; }
+  .block__title { border-bottom-color:#000; color:#000; }
+  .data-table thead { background:#000 !important; }
+  .data-table th { color:white !important; -webkit-print-color-adjust:exact; }
+  .data-table td { border-color:#999 !important; }
+  /* Status pill → plain text */
+  .status-pill { border:1px solid #000 !important; background:white !important; color:#000 !important; }
+  .status-pill .dot { display:none; }
+  /* Toggle: only show selected */
+  .toggle-pair .tg { color:#666; }
+  .toggle-pair[data-value="通过"] .tg-pass,
+  .toggle-pair[data-value="整改"] .tg-fail,
+  .toggle-pair[data-value="是"] .tg-yes,
+  .toggle-pair[data-value="否"] .tg-no {
+    background:#000 !important; color:white !important;
+    -webkit-print-color-adjust:exact;
+  }
+  /* Inputs → underlined */
+  .fill-input { border:none; border-bottom:1px solid #999; background:transparent; }
+  .check-cell { accent-color:#000; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top__bar">
+    <a href="#" class="top__brand">
+      <span class="top__brand-mark">华</span>
+      <span class="top__brand-text">
+        <small>WCCF · 24th Edition</small>
+        <span>2026 物料准备任务单</span>
+      </span>
+    </a>
+    <div class="top__actions">
+      <button class="btn" id="btnReset" title="清空全部填写">↺ 重置</button>
+      <button class="btn btn--primary" id="btnPrint" title="打印任务单">⎙ 打印</button>
+    </div>
+  </div>
+  <nav class="topnav">
+    <div class="topnav__inner">
+      <a href="#sec-0" class="topnav__link">基本信息</a><a href="#sec-1" class="topnav__link">任务单信息：物料准备任务单</a><a href="#sec-2" class="topnav__link">一、物料准备总任务表</a><a href="#sec-3" class="topnav__link">二、按功能区物料准备任务表</a><a href="#sec-4" class="topnav__link">三、物料时间节点任务表</a><a href="#sec-5" class="topnav__link">四、物料现场验收标准</a><a href="#sec-6" class="topnav__link">五、物料问题登记表（现场填写）</a><a href="#sec-7" class="topnav__link">六、物料回收确认表（清场填写）</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">2026 Materials Preparation · 任务单</p>
+    <h1 class="hero__title">物料<span>准备</span>任务单</h1>
+    <p class="hero__sub">依据《2026 华盛顿中国文化节执行策划方案大纲 v1.0》</p>
+  </div>
+</section>
+
+<main class="main">
+<section class="block" id="sec-0"><h2 class="block__title">基本信息</h2><div class="info-grid" id="sec-0"><div class="info-row"><div class="info-label">活动名称</div><div class="info-value">2026华盛顿中国文化节</div></div><div class="info-row"><div class="info-label">活动日期</div><div class="info-value">2026年8月29日</div></div><div class="info-row"><div class="info-label">活动时间</div><div class="info-value">06:00-20:00（具体以最终审批及执行版为准）</div></div><div class="info-row"><div class="info-label">活动地点</div><div class="info-value">Washington, D.C. Pennsylvania Avenue，3rd-4th Street</div></div><div class="info-row"><div class="info-label">活动规模</div><div class="info-value">预计约10,000人</div></div><div class="info-row"><div class="info-label">使用说明</div><div class="info-value">本文件为可打印、可填写、可签字的任务单表格版，适用于筹备、进场、现场执行和清场复盘。</div></div></div></section><section class="block" id="sec-1"><h2 class="block__title">任务单信息：物料准备任务单</h2><div class="info-grid" id="sec-1"><div class="info-row"><div class="info-label">任务单名称</div><div class="info-value">2026华盛顿中国文化节物料准备任务单</div></div><div class="info-row"><div class="info-label">适用阶段</div><div class="info-value">活动筹备期、进场前一天、活动当天、清场回收</div></div><div class="info-row"><div class="info-label">牵头部门</div><div class="info-value">后勤组 / 项目管理办公室 / 秘书组</div></div><div class="info-row"><div class="info-label">配合部门</div><div class="info-value">工程组、技术组、安保组、医疗组、主舞台组、第二舞台组、文化展示组、商品区、美食区、赞助商区、VIP接待组、志愿者组</div></div><div class="info-row"><div class="info-label">主要目标</div><div class="info-value">确保所有活动物料按区域、按时间、按责任人准备到位，并完成验收、分发、使用、回收闭环管理</div></div><div class="info-row"><div class="info-label">总负责人</div><div class="info-value">后勤负责人：蔡春生；秘书组协调：何洁</div></div><div class="info-row"><div class="info-label">最终确认</div><div class="info-value">现场总指挥 / 执行主席授权确认</div></div></div></section><section class="block" id="sec-2"><h2 class="block__title">一、物料准备总任务表</h2><div class="table-wrap"><table class="data-table data-table--status" id="sec-2"><thead><tr><th>序号</th><th>任务类别</th><th>具体任务</th><th>主要内容</th><th>责任部门/责任人</th><th>完成时间</th><th>验收标准</th><th>状态</th></tr></thead><tbody><tr><td data-label="序号"><span class="seq-num">1</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">建立物料总清单</td><td data-label="主要内容">汇总帐篷、桌椅、舞台、电力、安保、医疗、清洁、宣传、志愿者等全部物料</td><td data-label="责任部门/责任人">后勤组 / 秘书组</td><td data-label="完成时间">活动前30天</td><td data-label="验收标准">形成统一Excel或Word清单</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r0-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">2</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">建立分区物料清单</td><td data-label="主要内容">按A、B、C、D、E、F、G、H及后勤区分别列明物料</td><td data-label="责任部门/责任人">后勤组 / 各区负责人</td><td data-label="完成时间">活动前25天</td><td data-label="验收标准">每个区域有独立清单</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r1-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">3</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">确认采购、租赁、自备分类</td><td data-label="主要内容">标明每项物料来源，避免重复采购或遗漏</td><td data-label="责任部门/责任人">后勤组 / 财务组</td><td data-label="完成时间">活动前21天</td><td data-label="验收标准">每项物料来源明确</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r2-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">4</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">确认供应商</td><td data-label="主要内容">帐篷、桌椅、舞台、音响、LED、发电机、厕所、垃圾清运等供应商</td><td data-label="责任部门/责任人">后勤组 / 工程组 / 技术组</td><td data-label="完成时间">活动前21天</td><td data-label="验收标准">供应商联系人、电话、到场时间完整</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r3-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">5</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">物料标签管理</td><td data-label="主要内容">按区域制作A区、B区、C区等标签，箱体和大型物料都需贴标</td><td data-label="责任部门/责任人">后勤组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">每箱、每批、每件大型物料有标签</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r4-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">6</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">备用物料准备</td><td data-label="主要内容">胶带、扎带、剪刀、记号笔、电池、插线板、雨布、手电等</td><td data-label="责任部门/责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">备用箱集中管理</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r5-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">7</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">进场装车清单</td><td data-label="主要内容">按车辆、卸货顺序和功能区制作装车表</td><td data-label="责任部门/责任人">后勤组 / 供应商</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">装车顺序与现场使用顺序一致</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r6-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr><tr><td data-label="序号"><span class="seq-num">8</span></td><td data-label="任务类别">总体管理</td><td data-label="具体任务">现场签收表</td><td data-label="主要内容">准备物料到场签收、分区签收、回收签收表</td><td data-label="责任部门/责任人">秘书组 / 后勤组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">表格打印并交给负责人</td><td data-label="状态"><button class="status-pill" data-cell-id="sec-2-r7-c7" data-status="未开始" type="button"><span class="dot"></span><span class="label">未开始</span></button></td></tr></tbody></table></div></section><section class="block" id="sec-3"><h2 class="block__title">二、按功能区物料准备任务表</h2><div class="table-wrap"><table class="data-table data-table--check" id="sec-3"><thead><tr><th>区域</th><th>序号</th><th>物料/任务</th><th>具体要求</th><th>责任人</th><th>完成时间</th><th>验收标准</th><th>完成</th></tr></thead><tbody><tr><td data-label="区域">A区 文化展示区</td><td data-label="序号">1</td><td data-label="物料/任务">帐篷A1-A20</td><td data-label="具体要求">确认20顶帐篷编号、位置、固定方式</td><td data-label="责任人">A区负责人苏丽娟 / 工程组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">帐篷编号与平面图一致</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r0-c7" aria-label="完成"></td></tr><tr><td data-label="区域">A区 文化展示区</td><td data-label="序号">2</td><td data-label="物料/任务">展桌</td><td data-label="具体要求">每个文化展示帐篷至少配置2张展桌</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量与清单一致</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r1-c7" aria-label="完成"></td></tr><tr><td data-label="区域">A区 文化展示区</td><td data-label="序号">3</td><td data-label="物料/任务">椅子</td><td data-label="具体要求">每帐篷原则上配置4把椅子</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量完整、无明显损坏</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r2-c7" aria-label="完成"></td></tr><tr><td data-label="区域">A区 文化展示区</td><td data-label="序号">4</td><td data-label="物料/任务">帐篷门楣</td><td data-label="具体要求">每个帐篷一个</td><td data-label="责任人">文化展示组 / 视觉组</td><td data-label="完成时间">活动前5天</td><td data-label="验收标准">信息准确，版式统一</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r3-c7" aria-label="完成"></td></tr><tr><td data-label="区域">A区 文化展示区</td><td data-label="序号">5</td><td data-label="物料/任务">垃圾桶</td><td data-label="具体要求">每隔若干帐篷设置垃圾桶</td><td data-label="责任人">后勤组 / 清洁组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">摆放位置不阻挡通道</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r4-c7" aria-label="完成"></td></tr><tr><td data-label="区域">B区 商品展销区</td><td data-label="序号">1</td><td data-label="物料/任务">帐篷B1-B18</td><td data-label="具体要求">确认18顶帐篷编号和摊位对应商户</td><td data-label="责任人">B区负责人待定 / 工程组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">编号清楚，位置准确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r5-c7" aria-label="完成"></td></tr><tr><td data-label="区域">B区 商品展销区</td><td data-label="序号">2</td><td data-label="物料/任务">商品陈列桌</td><td data-label="具体要求">每个商品摊位至少2张陈列桌</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量与商户表一致</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r6-c7" aria-label="完成"></td></tr><tr><td data-label="区域">B区 商品展销区</td><td data-label="序号">3</td><td data-label="物料/任务">椅子</td><td data-label="具体要求">每摊位配置基本座椅4个</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量完整</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r7-c7" aria-label="完成"></td></tr><tr><td data-label="区域">B区 商品展销区</td><td data-label="序号">4</td><td data-label="物料/任务">价格牌 /展示牌</td><td data-label="具体要求">商户自备或统一模板</td><td data-label="责任人">商品区负责人 / 视觉组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">价格和展示信息清晰</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r8-c7" aria-label="完成"></td></tr><tr><td data-label="区域">B区 商品展销区</td><td data-label="序号">5</td><td data-label="物料/任务">垃圾桶</td><td data-label="具体要求">商品区通道设置垃圾桶</td><td data-label="责任人">清洁组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">不影响观众通行</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r9-c7" aria-label="完成"></td></tr><tr><td data-label="区域">C区 美食区</td><td data-label="序号">1</td><td data-label="物料/任务">帐篷C1-C25</td><td data-label="具体要求">确认25顶美食帐篷位置和摊主名单</td><td data-label="责任人">C区负责人王博 / 工程组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">摊位编号与商户一致</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r10-c7" aria-label="完成"></td></tr><tr><td data-label="区域">C区 美食区</td><td data-label="序号">2</td><td data-label="物料/任务">食品操作台</td><td data-label="具体要求">各摊位自备或统一租赁</td><td data-label="责任人">美食区负责人 / 后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">稳固、清洁、可操作</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r11-c7" aria-label="完成"></td></tr><tr><td data-label="区域">C区 美食区</td><td data-label="序号">3</td><td data-label="物料/任务">餐桌 / 工作桌</td><td data-label="具体要求">按摊位需求配置 （两桌，四椅）</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量满足基本运营</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r12-c7" aria-label="完成"></td></tr><tr><td data-label="区域">C区 美食区</td><td data-label="序号">4</td><td data-label="物料/任务">排队栏 / 警戒线</td><td data-label="具体要求">热门摊位设置排队动线</td><td data-label="责任人">安保组 / 志愿者组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">排队不堵塞主通道</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r13-c7" aria-label="完成"></td></tr><tr><td data-label="区域">C区 美食区</td><td data-label="序号">5</td><td data-label="物料/任务">垃圾桶 / 垃圾袋</td><td data-label="具体要求">美食区重点增加配置 （六个垃圾桶）</td><td data-label="责任人">清洁组 / 后勤组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">垃圾桶分布合理</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r14-c7" aria-label="完成"></td></tr><tr><td data-label="区域">C区 美食区</td><td data-label="序号">6</td><td data-label="物料/任务">用电 （自备）</td><td data-label="具体要求">统计每摊位用电、燃气、明火需求</td><td data-label="责任人">技术组 / 安保组 / 美食区负责人</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">完成安全确认</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r15-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">1</td><td data-label="物料/任务">舞台结构</td><td data-label="具体要求">主舞台尺寸、承重、搭建时间确认</td><td data-label="责任人">主舞台负责人胡宏 / 工程组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">供应商确认，图纸明确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r16-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">2</td><td data-label="物料/任务">LED屏幕</td><td data-label="具体要求">尺寸12x2.5米</td><td data-label="责任人">技术组 （姜岳洋，董晓）</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">测试视频可正常播放</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r17-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">3</td><td data-label="物料/任务">音响系统</td><td data-label="具体要求">主扩、返听、调音台、音频线确认</td><td data-label="责任人">技术组 （徐洪庆）</td><td data-label="完成时间">活动前5天</td><td data-label="验收标准">设备清单完整</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r18-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">4</td><td data-label="物料/任务">话筒 / 立麦</td><td data-label="具体要求">主持、嘉宾、演员、备用话筒</td><td data-label="责任人">技术组 / 主舞台组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量满足节目需求</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r19-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">5</td><td data-label="物料/任务">导播设备</td><td data-label="具体要求">摄像机、切换台、监视器、线缆</td><td data-label="责任人">摄影摄像组 / 技术组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">信号链路确认</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r20-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">6</td><td data-label="物料/任务">主持人手卡</td><td data-label="具体要求">中英文主持稿、节目单、嘉宾名单</td><td data-label="责任人">主舞台组 / 秘书组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">打印完成并备份</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r21-c7" aria-label="完成"></td></tr><tr><td data-label="区域">D区 主舞台区</td><td data-label="序号">7</td><td data-label="物料/任务">演员候场牌</td><td data-label="具体要求">上场口、下场口、候场区标识</td><td data-label="责任人">主舞台组 / 视觉组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">标识明确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r22-c7" aria-label="完成"></td></tr><tr><td data-label="区域">E区 赞助商区</td><td data-label="序号">1</td><td data-label="物料/任务">帐篷E1-E8</td><td data-label="具体要求">确认赞助商展位分配</td><td data-label="责任人">E区负责人待定 / 招商组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">展位与赞助权益一致</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r23-c7" aria-label="完成"></td></tr><tr><td data-label="区域">E区 赞助商区</td><td data-label="序号">2</td><td data-label="物料/任务">桌椅</td><td data-label="具体要求">每个赞助商展位按权益配置(每个帐篷两桌四椅)</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量准确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r24-c7" aria-label="完成"></td></tr><tr><td data-label="区域">F区 VIP接待区</td><td data-label="序号">1</td><td data-label="物料/任务">接待桌椅</td><td data-label="具体要求">F1-F2接待区布置</td><td data-label="责任人">VIP负责人李民 / 后勤组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">桌椅整洁、位置正确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r25-c7" aria-label="完成"></td></tr><tr><td data-label="区域">F区 VIP接待区</td><td data-label="序号">2</td><td data-label="物料/任务">嘉宾名单</td><td data-label="具体要求">打印签到名单和座位安排</td><td data-label="责任人">秘书组 / VIP组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">名单版本最新</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r26-c7" aria-label="完成"></td></tr><tr><td data-label="区域">F区 VIP接待区</td><td data-label="序号">3</td><td data-label="物料/任务">嘉宾胸牌</td><td data-label="具体要求">按嘉宾、主办方、媒体等分类</td><td data-label="责任人">秘书组 / 视觉组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">胸牌无错字</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r27-c7" aria-label="完成"></td></tr><tr><td data-label="区域">F区 VIP接待区</td><td data-label="序号">4</td><td data-label="物料/任务">饮用水 / 茶点</td><td data-label="具体要求">准备足量接待物品</td><td data-label="责任人">后勤组 / VIP组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">摆放整齐</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r28-c7" aria-label="完成"></td></tr><tr><td data-label="区域">F区 VIP接待区</td><td data-label="序号">5</td><td data-label="物料/任务">接待流程表</td><td data-label="具体要求">嘉宾到达、签到、入座、上台、合影</td><td data-label="责任人">VIP组 / 秘书组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">接待人员人手一份</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r29-c7" aria-label="完成"></td></tr><tr><td data-label="区域">F区 VIP接待区</td><td data-label="序号">6</td><td data-label="物料/任务">礼品袋</td><td data-label="具体要求">如有嘉宾礼品，提前装袋编号</td><td data-label="责任人">VIP组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">数量与嘉宾名单一致</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r30-c7" aria-label="完成"></td></tr><tr><td data-label="区域">G区 第二舞台区</td><td data-label="序号">1</td><td data-label="物料/任务">第二舞台</td><td data-label="具体要求">舞台尺寸、位置、搭建时间确认</td><td data-label="责任人">第二舞台负责人张乐 / 工程组</td><td data-label="完成时间">活动前7天</td><td data-label="验收标准">舞台稳固</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r31-c7" aria-label="完成"></td></tr><tr><td data-label="区域">G区 第二舞台区</td><td data-label="序号">2</td><td data-label="物料/任务">背景幕布</td><td data-label="具体要求">活动主题或互动区背景</td><td data-label="责任人">第二舞台组 / 视觉组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">内容准确，安装牢固</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r32-c7" aria-label="完成"></td></tr><tr><td data-label="区域">G区 第二舞台区</td><td data-label="序号">3</td><td data-label="物料/任务">音响</td><td data-label="具体要求">主持、互动、表演使用</td><td data-label="责任人">技术组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">音量适中，无啸叫</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r33-c7" aria-label="完成"></td></tr><tr><td data-label="区域">G区 第二舞台区</td><td data-label="序号">4</td><td data-label="物料/任务">话筒</td><td data-label="具体要求">主持话筒、备用话筒</td><td data-label="责任人">技术组 / 第二舞台组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">可正常使用</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r34-c7" aria-label="完成"></td></tr><tr><td data-label="区域">G区 第二舞台区</td><td data-label="序号">5</td><td data-label="物料/任务">互动道具</td><td data-label="具体要求">游戏、问答、非遗体验、儿童活动道具</td><td data-label="责任人">第二舞台组</td><td data-label="完成时间">活动前2天</td><td data-label="验收标准">分类装箱</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r35-c7" aria-label="完成"></td></tr><tr><td data-label="区域">G区 第二舞台区</td><td data-label="序号">6</td><td data-label="物料/任务">奖品</td><td data-label="具体要求">小礼品、纪念品、兑奖规则</td><td data-label="责任人">第二舞台组 / 后勤组</td><td data-label="完成时间">活动前2天</td><td data-label="验收标准">数量清楚，发放规则明确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r36-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">1</td><td data-label="物料/任务">志愿者马甲</td><td data-label="具体要求">按岗位人数准备，预留备用</td><td data-label="责任人">志愿者组 / 后勤组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">数量足够，尺寸合理</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r37-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">2</td><td data-label="物料/任务">工作证 （胸牌）</td><td data-label="具体要求">工作人员、志愿者、媒体、供应商分类</td><td data-label="责任人">秘书组 / 视觉组</td><td data-label="完成时间">活动前3天</td><td data-label="验收标准">信息准确，颜色区分明显</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r38-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">3</td><td data-label="物料/任务">对讲机</td><td data-label="具体要求">总指挥、分区负责人、安保、舞台、后勤配置</td><td data-label="责任人">后勤组 / 技术组</td><td data-label="完成时间">活动前2天</td><td data-label="验收标准">频道设置完成，电量充足</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r39-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">4</td><td data-label="物料/任务">饮用水 / 简餐</td><td data-label="具体要求">工作人员和志愿者补给</td><td data-label="责任人">后勤组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">分区发放方案明确</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r40-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">5</td><td data-label="物料/任务">岗位表 / 签到表</td><td data-label="具体要求">志愿者签到、岗位安排、轮班表</td><td data-label="责任人">志愿者组 / 秘书组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">打印并交负责人</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r41-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">6</td><td data-label="物料/任务">急救箱</td><td data-label="具体要求">创可贴、冰袋、消毒用品、常用急救物品</td><td data-label="责任人">医疗组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">急救物资完整</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r42-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">7</td><td data-label="物料/任务">医疗桌椅</td><td data-label="具体要求">医疗急救站配置</td><td data-label="责任人">医疗组 / 后勤组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">明显、易到达</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r43-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">8</td><td data-label="物料/任务">安保背心/警戒线/路障</td><td data-label="具体要求">用于封控、分流、排队、应急隔离</td><td data-label="责任人">安保组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">数量满足现场需求</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r44-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">9</td><td data-label="物料/任务">清洁工具</td><td data-label="具体要求">垃圾袋、扫帚、拖把、垃圾夹、手套</td><td data-label="责任人">清洁组 / 后勤组</td><td data-label="完成时间">活动前1天</td><td data-label="验收标准">分区放置</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r45-c7" aria-label="完成"></td></tr><tr><td data-label="区域">志愿者/医疗/安保/后勤</td><td data-label="序号">10</td><td data-label="物料/任务">失物招领箱</td><td data-label="具体要求">后勤或志愿者服务区设置</td><td data-label="责任人">后勤组 / 志愿者组</td><td data-label="完成时间">活动当天进场</td><td data-label="验收标准">有登记表</td><td data-label="完成"><input class="check-cell" type="checkbox" data-cell-id="sec-3-r46-c7" aria-label="完成"></td></tr></tbody></table></div></section><section class="block" id="sec-4"><h2 class="block__title">三、物料时间节点任务表</h2><div class="table-wrap"><table class="data-table data-table--plain" id="sec-4"><thead><tr><th>时间节点</th><th>工作任务</th><th>责任部门</th><th>输出结果</th></tr></thead><tbody><tr><td data-label="时间节点">活动前30天</td><td data-label="工作任务">建立物料总清单和初步预算</td><td data-label="责任部门">后勤组 / 财务组 / 秘书组</td><td data-label="输出结果">物料总清单v1</td></tr><tr><td data-label="时间节点">活动前25天</td><td data-label="工作任务">各功能区提交物料需求</td><td data-label="责任部门">各区负责人</td><td data-label="输出结果">分区需求表</td></tr><tr><td data-label="时间节点">活动前21天</td><td data-label="工作任务">完成采购、租赁、自备分类</td><td data-label="责任部门">后勤组</td><td data-label="输出结果">物料来源表</td></tr><tr><td data-label="时间节点">活动前14天</td><td data-label="工作任务">确认供应商、价格、送达时间</td><td data-label="责任部门">后勤组 / 工程组 / 技术组</td><td data-label="输出结果">供应商确认表</td></tr><tr><td data-label="时间节点">活动前7天</td><td data-label="工作任务">完成物料清单最终版</td><td data-label="责任部门">秘书组 / 后勤组</td><td data-label="输出结果">物料总清单FINAL</td></tr><tr><td data-label="时间节点">活动前3天</td><td data-label="工作任务">完成打包、标签、装箱</td><td data-label="责任部门">后勤组</td><td data-label="输出结果">分区装箱清单</td></tr><tr><td data-label="时间节点">活动前1天</td><td data-label="工作任务">完成装车、供应商提醒、现场签收表打印</td><td data-label="责任部门">后勤组 / 秘书组</td><td data-label="输出结果">装车表、签收表</td></tr><tr><td data-label="时间节点">活动当天进场</td><td data-label="工作任务">按区卸货、摆放、签收</td><td data-label="责任部门">后勤组 / 各区负责人</td><td data-label="输出结果">现场物料签收表</td></tr><tr><td data-label="时间节点">活动结束后</td><td data-label="工作任务">物料回收、损坏登记、租赁归还</td><td data-label="责任部门">后勤组 / 各区负责人</td><td data-label="输出结果">回收清单、损坏登记表</td></tr><tr><td data-label="时间节点">活动后3天内</td><td data-label="工作任务">财务结算、问题复盘</td><td data-label="责任部门">后勤组 / 财务组 / 秘书组</td><td data-label="输出结果">物料复盘报告</td></tr></tbody></table></div></section><section class="block" id="sec-5"><h2 class="block__title">四、物料现场验收标准</h2><div class="table-wrap"><table class="data-table data-table--passreject" id="sec-5"><thead><tr><th>序号</th><th>验收项目</th><th>验收标准</th><th>责任部门</th><th>结果</th></tr></thead><tbody><tr><td data-label="序号"><span class="seq-num">1</span></td><td data-label="验收项目">帐篷</td><td data-label="验收标准">数量、编号、位置与场地图一致，固定牢靠</td><td data-label="责任部门">工程组 / 各区负责人</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r0-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">2</span></td><td data-label="验收项目">桌椅</td><td data-label="验收标准">数量与分区物料清单一致，摆放整齐</td><td data-label="责任部门">后勤组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r1-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">3</span></td><td data-label="验收项目">舞台技术设备</td><td data-label="验收标准">舞台、音响、LED、灯光、电力设备由专业人员确认可安全使用</td><td data-label="责任部门">技术组 / 工程组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r2-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">4</span></td><td data-label="验收项目">美食区重点物料</td><td data-label="验收标准">灭火器、垃圾桶、排队栏、用电和卫生物料到位</td><td data-label="责任部门">美食区 / 安保组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r3-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">5</span></td><td data-label="验收项目">服务区域物料</td><td data-label="验收标准">VIP、媒体、志愿者、医疗、安保等服务区物料完整</td><td data-label="责任部门">后勤组 / 各服务组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r4-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">6</span></td><td data-label="验收项目">标识系统</td><td data-label="验收标准">所有标识牌清晰、稳固、方向正确</td><td data-label="责任部门">视觉组 / 后勤组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r5-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">7</span></td><td data-label="验收项目">电线电缆</td><td data-label="验收标准">所有电线、电缆、插排不得造成绊倒风险</td><td data-label="责任部门">技术组 / 安保组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r6-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">8</span></td><td data-label="验收项目">备用物料</td><td data-label="验收标准">集中管理，有专人负责，借出回收有记录</td><td data-label="责任部门">后勤组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r7-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">9</span></td><td data-label="验收项目">回收准备</td><td data-label="验收标准">回收清点、损坏登记和场地恢复确认表已准备</td><td data-label="责任部门">后勤组 / 秘书组</td><td data-label="结果"><div class="toggle-pair" data-cell-id="sec-5-r8-c4" data-value=""><button class="tg tg-pass" type="button" data-val="通过">通过</button><button class="tg tg-fail" type="button" data-val="整改">整改</button></div></td></tr></tbody></table></div></section><section class="block" id="sec-6"><h2 class="block__title">五、物料问题登记表（现场填写）</h2><div class="table-wrap"><table class="data-table data-table--fill" id="sec-6"><thead><tr><th>序号</th><th>问题物料</th><th>所属区域</th><th>问题描述</th><th>发现时间</th><th>责任人/处理方式</th><th>是否完成</th></tr></thead><tbody><tr><td data-label="序号"><span class="seq-num">1</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r0-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r0-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r0-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r0-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r0-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r0-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">2</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r1-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r1-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r1-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r1-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r1-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r1-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">3</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r2-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r2-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r2-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r2-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r2-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r2-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">4</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r3-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r3-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r3-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r3-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r3-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r3-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">5</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r4-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r4-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r4-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r4-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r4-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r4-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">6</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r5-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r5-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r5-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r5-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r5-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r5-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr><tr><td data-label="序号"><span class="seq-num">7</span></td><td data-label="问题物料"><input class="fill-input" type="text" data-cell-id="sec-6-r6-c1" placeholder=""></td><td data-label="所属区域"><input class="fill-input" type="text" data-cell-id="sec-6-r6-c2" placeholder=""></td><td data-label="问题描述"><input class="fill-input" type="text" data-cell-id="sec-6-r6-c3" placeholder=""></td><td data-label="发现时间"><input class="fill-input" type="text" data-cell-id="sec-6-r6-c4" placeholder=""></td><td data-label="责任人/处理方式"><input class="fill-input" type="text" data-cell-id="sec-6-r6-c5" placeholder=""></td><td data-label="是否完成"><div class="toggle-pair toggle-yesno" data-cell-id="sec-6-r6-c6" data-value=""><button class="tg tg-yes" type="button" data-val="是">是</button><button class="tg tg-no" type="button" data-val="否">否</button></div></td></tr></tbody></table></div></section><section class="block" id="sec-7"><h2 class="block__title">六、物料回收确认表（清场填写）</h2><div class="table-wrap"><table class="data-table data-table--recycle" id="sec-7"><thead><tr><th>区域</th><th>应回收物料</th><th>实际回收数量</th><th>缺失/损坏情况</th><th>回收责任人</th><th>复核人</th><th>备注</th></tr></thead><tbody><tr><td data-label="区域"><span class="zone-label">A文化展示区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r0-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r0-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r0-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r0-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r0-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r0-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">B商品区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r1-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r1-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r1-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r1-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r1-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r1-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">C美食区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r2-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r2-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r2-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r2-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r2-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r2-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">D主舞台区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r3-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r3-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r3-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r3-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r3-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r3-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">E赞助商区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r4-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r4-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r4-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r4-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r4-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r4-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">F VIP接待区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r5-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r5-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r5-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r5-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r5-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r5-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">G第二舞台区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r6-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r6-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r6-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r6-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r6-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r6-c6"></td></tr><tr><td data-label="区域"><span class="zone-label">后勤服务区</span></td><td data-label="应回收物料"><textarea class="fill-input fill-area" data-cell-id="sec-7-r7-c1" rows="2"></textarea></td><td data-label="实际回收数量"><input class="fill-input" type="text" data-cell-id="sec-7-r7-c2"></td><td data-label="缺失/损坏情况"><textarea class="fill-input fill-area" data-cell-id="sec-7-r7-c3" rows="2"></textarea></td><td data-label="回收责任人"><input class="fill-input" type="text" data-cell-id="sec-7-r7-c4"></td><td data-label="复核人"><input class="fill-input" type="text" data-cell-id="sec-7-r7-c5"></td><td data-label="备注"><input class="fill-input" type="text" data-cell-id="sec-7-r7-c6"></td></tr></tbody></table></div></section>
+</main>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+const STORAGE_KEY = 'wccf_materials_state_v1';
+
+// ===== Load / save state =====
+let state = {};
+try {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) state = JSON.parse(raw);
+} catch (e) { state = {}; }
+
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+// ===== Hydrate UI from state =====
+function hydrate() {
+  // status pills
+  document.querySelectorAll('.status-pill').forEach(el => {
+    const id = el.dataset.cellId;
+    if (state[id]) {
+      el.dataset.status = state[id];
+      el.querySelector('.label').textContent = state[id];
+    }
+  });
+  // checkboxes
+  document.querySelectorAll('.check-cell').forEach(el => {
+    const id = el.dataset.cellId;
+    if (state[id]) el.checked = true;
+  });
+  // toggles
+  document.querySelectorAll('.toggle-pair').forEach(el => {
+    const id = el.dataset.cellId;
+    if (state[id]) el.dataset.value = state[id];
+  });
+  // text inputs
+  document.querySelectorAll('.fill-input').forEach(el => {
+    const id = el.dataset.cellId;
+    if (state[id]) el.value = state[id];
+  });
+}
+
+// ===== Status pill cycling =====
+const STATUS_CYCLE = { '未开始':'进行中', '进行中':'完成', '完成':'未开始' };
+document.addEventListener('click', e => {
+  const pill = e.target.closest('.status-pill');
+  if (pill) {
+    const next = STATUS_CYCLE[pill.dataset.status] || '未开始';
+    pill.dataset.status = next;
+    pill.querySelector('.label').textContent = next;
+    state[pill.dataset.cellId] = next;
+    save();
+    return;
+  }
+  const tg = e.target.closest('.toggle-pair .tg');
+  if (tg) {
+    const pair = tg.closest('.toggle-pair');
+    const val = tg.dataset.val;
+    // Toggle off if same value clicked
+    pair.dataset.value = (pair.dataset.value === val) ? '' : val;
+    state[pair.dataset.cellId] = pair.dataset.value;
+    save();
+  }
+});
+
+// Checkboxes
+document.addEventListener('change', e => {
+  if (e.target.matches('.check-cell')) {
+    state[e.target.dataset.cellId] = e.target.checked;
+    save();
+  }
+});
+
+// Text inputs (debounced via input event)
+let saveTimer = null;
+document.addEventListener('input', e => {
+  if (e.target.matches('.fill-input')) {
+    state[e.target.dataset.cellId] = e.target.value;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, 400);
+  }
+});
+
+// ===== Actions =====
+document.getElementById('btnPrint').addEventListener('click', () => window.print());
+document.getElementById('btnReset').addEventListener('click', () => {
+  if (!confirm('确认清空所有状态、勾选和填写内容？此操作不可撤销。')) return;
+  state = {};
+  localStorage.removeItem(STORAGE_KEY);
+  // reset UI
+  document.querySelectorAll('.status-pill').forEach(el => {
+    el.dataset.status = '未开始';
+    el.querySelector('.label').textContent = '未开始';
+  });
+  document.querySelectorAll('.check-cell').forEach(el => el.checked = false);
+  document.querySelectorAll('.toggle-pair').forEach(el => el.dataset.value = '');
+  document.querySelectorAll('.fill-input').forEach(el => el.value = '');
+});
+
+// ===== Back to top =====
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  toTop.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ===== Active nav section =====
+const navLinks = document.querySelectorAll('.topnav__link');
+const linkMap = new Map();
+navLinks.forEach(a => linkMap.set(a.getAttribute('href').slice(1), a));
+const obs = new IntersectionObserver(entries => {
+  const visible = entries.filter(e => e.isIntersecting)
+    .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+  if (visible.length) {
+    const id = visible[0].target.id;
+    navLinks.forEach(a => a.classList.remove('is-active'));
+    const a = linkMap.get(id);
+    if (a) a.classList.add('is-active');
+  }
+}, { rootMargin: '-120px 0px -60% 0px' });
+document.querySelectorAll('.block').forEach(b => obs.observe(b));
+
+hydrate();
+</script>
+
+</body>
+</html>
