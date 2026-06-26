@@ -280,6 +280,67 @@
   .vendor-list li:first-child { border-top: 0; padding-top: 0; }
   .vendor-list strong { display: block; font-size: 15px; }
   .vendor-list small  { color: var(--ink-soft); font-size: 13px; }
+
+  /* Richer booth list with colored booth-id badge */
+  .exhibit-list { list-style: none; padding: 0; margin: 0; }
+  .exhibit-list li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+    padding: 13px 0;
+    border-top: 1px dotted var(--rule);
+    align-items: start;
+  }
+  .exhibit-list li:first-child { border-top: 0; padding-top: 0; }
+  .exhibit-list .booth-id {
+    background: var(--booth, var(--ink-soft));
+    color: var(--booth-text, #FFF);
+    border-radius: 6px;
+    padding: 8px 4px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+    line-height: 1.1;
+    align-self: start;
+  }
+  .exhibit-list .body strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .exhibit-list .body em {
+    display: block;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .exhibit-list .body small {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-top: 6px;
+    letter-spacing: .02em;
+  }
+  .exhibit-list .body small b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .exhibit-list li.tbd .booth-id {
+    background: transparent;
+    border: 1px dashed var(--rule);
+    color: var(--ink-soft);
+  }
+  .exhibit-list li.tbd .body strong {
+    color: var(--ink-soft);
+    font-weight: 500;
+    font-style: italic;
+  }
   .schedule { list-style: none; padding: 0; margin: 0; }
   .schedule li {
     display: grid; grid-template-columns: 90px 1fr; gap: 14px;
@@ -511,8 +572,8 @@
     <div class="detail-grid">
       <div class="card">
         <h3>区域介绍 · About</h3>
-        <p>中华文化展示区分为两组：B1–B10 位于场地西侧，B11–B18 位于场地东侧。展示中华传统文化、非物质文化遗产、地方文化特色等。</p>
-        <p>Cultural showcase split into two clusters. B1–B10 on the west side, B11–B18 on the east. Featuring traditional Chinese culture, intangible cultural heritage, and regional traditions.</p>
+        <p>中华文化展示区由 <b>希望</b>、<b>美中</b>、<b>哈维</b>、<b>载道</b>、<b>卓教国际</b> 等社团合作呈现，分为两组：B1–B10 位于场地西侧，B11–B18 位于场地东侧。涵盖围棋、剪纸、书法、陶笛、簪花、贵州民族服饰等中华传统文化与非物质文化遗产，以及教育推广和有奖互动活动。</p>
+        <p>Jointly presented by Hope, Mei Zhong, Harvey, Zai Dao, and Zhuojiao International. B1–B10 on the west side, B11–B18 on the east. Activities include Weiqi (Go), paper cutting, calligraphy, ocarina, Fujian hair flowers, Guizhou ethnic costumes, intangible heritage demonstrations, and educational outreach.</p>
       </div>
       <div class="card" style="--booth: var(--zone-b)">
         <h3>展位 · Booths</h3>
@@ -523,11 +584,143 @@
           <span>B16</span><span>B17</span><span>B18</span>
         </div>
       </div>
-      <div class="card" style="grid-column: 1 / -1;">
+      <div class="card" style="grid-column: 1 / -1; --booth: var(--zone-b); --booth-text: #3A2E10;">
         <h3>展示项目 · Exhibits</h3>
-        <ul class="vendor-list">
-          <li><strong>[待填写 · To be added]</strong><small>B1 · 展示项目</small></li>
-          <li><strong>[待填写 · To be added]</strong><small>B2 · 展示项目</small></li>
+        <ul class="exhibit-list">
+          <li>
+            <span class="booth-id">B1</span>
+            <div class="body">
+              <strong>围棋</strong>
+              <em>Weiqi (Go)</em>
+              <small>单位：<b>希望</b> · 负责人：<b>苏丽娟</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B2</span>
+            <div class="body">
+              <strong>剪纸</strong>
+              <em>Chinese Paper Cutting</em>
+              <small>单位：<b>希望</b> · 负责人：<b>苏丽娟</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B3</span>
+            <div class="body">
+              <strong>福建簪花</strong>
+              <em>Fujian Zanhua (Traditional Hair Flowers)</em>
+              <small>单位：<b>希望</b> · 负责人：<b>苏丽娟</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B4</span>
+            <div class="body">
+              <strong>贵州少数民族服饰展示和试穿体验，同时展示非遗特色的民俗物品</strong>
+              <em>Guizhou Ethnic Minority Costume Display &amp; Try-On · Intangible Heritage Folk Items</em>
+              <small>单位：<b>美中</b> · 负责人：<b>李晓</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B5</span>
+            <div class="body">
+              <strong>互动制作铁丝绒花</strong>
+              <em>Interactive Wire Velvet Flower Making</em>
+              <small>单位：<b>美中</b> · 负责人：<b>李晓</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B6</span>
+            <div class="body">
+              <strong>筷子夹豆有奖比赛</strong>
+              <em>Chopstick Bean-Picking Contest (with Prizes)</em>
+              <small>单位：<b>美中</b> · 负责人：<b>李晓</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B7</span>
+            <div class="body">
+              <strong>陶笛</strong>
+              <em>Ocarina</em>
+              <small>单位：<b>哈维</b> · 负责人：<b>田晶</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B8</span>
+            <div class="body">
+              <strong>书法</strong>
+              <em>Chinese Calligraphy</em>
+              <small>单位：<b>哈维</b> · 负责人：<b>田晶</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B9</span>
+            <div class="body">
+              <strong>画脸</strong>
+              <em>Face Painting</em>
+              <small>单位：<b>哈维</b> · 负责人：<b>田晶</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B10</span>
+            <div class="body">
+              <strong>"中华文化知多少"有奖竞猜 · 第四届华盛顿青少年作文大赛咨询及推广</strong>
+              <em>"How Much Do You Know About Chinese Culture" Quiz (trivia, idioms, draw-and-guess) · 4th Washington Youth Writing Competition</em>
+              <small>单位：<b>载道</b> · 负责人：<b>李峰</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B11</span>
+            <div class="body">
+              <strong>教育宣传</strong>
+              <em>Educational Outreach</em>
+              <small>单位：<b>卓教国际</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B12</span>
+            <div class="body">
+              <strong>教育宣传</strong>
+              <em>Educational Outreach</em>
+              <small>单位：<b>卓教国际</b></small>
+            </div>
+          </li>
+          <li>
+            <span class="booth-id">B13</span>
+            <div class="body">
+              <strong>教育宣传</strong>
+              <em>Educational Outreach</em>
+              <small>单位：<b>卓教国际</b></small>
+            </div>
+          </li>
+          <li class="tbd">
+            <span class="booth-id">B14</span>
+            <div class="body">
+              <strong>待安排 · To be assigned</strong>
+            </div>
+          </li>
+          <li class="tbd">
+            <span class="booth-id">B15</span>
+            <div class="body">
+              <strong>待安排 · To be assigned</strong>
+            </div>
+          </li>
+          <li class="tbd">
+            <span class="booth-id">B16</span>
+            <div class="body">
+              <strong>待安排 · To be assigned</strong>
+            </div>
+          </li>
+          <li class="tbd">
+            <span class="booth-id">B17</span>
+            <div class="body">
+              <strong>待安排 · To be assigned</strong>
+            </div>
+          </li>
+          <li class="tbd">
+            <span class="booth-id">B18</span>
+            <div class="body">
+              <strong>待安排 · To be assigned</strong>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
