@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第24届华盛顿中国文化节 · 场地示意图</title>
+<!--
+  =========================================================================
+  第24届华盛顿中国文化节 · 场地示意图   (v3)
+  24th Washington China Culture Festival · Site Map
+  3rd-4th st. Constitution Ave. NW, Washington, DC 20001  ·  8/29/2026
+  =========================================================================
+  v3 changes:
+    • Home page uses the actual venue-map.jpg as the background.
+    • An SVG overlay sits on top with one transparent <a> per zone, so
+      clicks are precisely targeted to each zone in the image.
+    • The SVG viewBox is 0 0 2954 1478, matching the image's native
+      dimensions, so hotspots scale perfectly with the image at any
+      screen size.
+    • Detail pages updated to match the new zone names (文创/商展/创意市集
+      A1-A20, 中华美食城 C1-C25, 合作伙伴展区 E1-E8, 文化节中心区 H1-H6,
+      后勤保障 V1-V6, etc.) and the date 8/29/2026.
+
+  FILES
+    • This file:          2026-china-culture-festival-map-v3.html
+    • Map image alongside it: venue-map.jpg
+    Both must live in the same folder when you publish.
+
+  TUNING HOTSPOT POSITIONS
+    If a hotspot doesn't sit exactly over its zone in the image, edit
+    the coordinates inside the <svg> overlay. Coordinates are in image
+    pixels (the image is 2954 wide × 1478 tall).
+  =========================================================================
+-->
+<style>
+  /* ============================================================
+     Design tokens
+     ============================================================ */
+  :root {
+    --page:      #ECE7DA;
+    --paper:     #FFFFFF;
+    --ink:       #163C6E;
+    --ink-soft:  #5F6E84;
+    --rule:      #D9E1EC;
+
+    /* Zone palette (sampled from the new map) */
+    --zone-a:    #C2877A;   /* 文创 / 创意市集 (pink salmon)        */
+    --zone-b:    #C9A85A;   /* 中华文化展示区 (warm yellow)         */
+    --zone-c:    #C77A5C;   /* 中华美食城 (terracotta)              */
+    --zone-d:    #8B5A4A;   /* 舞台第一 (brown)                     */
+    --zone-e:    #8AA85F;   /* 合作伙伴展区 (olive green)           */
+    --zone-g:    #4A7064;   /* 舞台第二 (dark teal)                 */
+    --zone-h:    #7AAA92;   /* 文化节中心区 (sage)                  */
+    --zone-v:    #7DB59E;   /* 后勤保障 (mint)                      */
+    --zone-vip:  #C9A85A;   /* VIP 接待区                           */
+    --zone-m:    #DC3545;   /* 医疗 (red cross)                     */
+    --zone-tech: #5F6E84;   /* Tech Booth                           */
+
+    --shadow: 0 1px 0 rgba(22,60,110,.05), 0 8px 28px rgba(22,60,110,.08);
+    --radius: 14px;
+  }
+
+  /* ============================================================
+     Base
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family:
+      "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+      "Source Han Sans CN", "Noto Sans CJK SC",
+      "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  /* ============================================================
+     View switching
+     ============================================================ */
+  .detail-view { display: none; }
+  .detail-view:target { display: block; }
+  body:has(.detail-view:target) .home-view { display: none; }
+
+  /* ============================================================
+     Header
+     ============================================================ */
+  .site-header {
+    background: var(--ink);
+    color: #FFFFFF;
+    padding: 16px 22px;
+    text-align: center;
+  }
+  .site-header .zh {
+    margin: 0;
+    font-size: clamp(18px, 3.4vw, 26px);
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .site-header .en {
+    margin: 4px 0 0;
+    font-size: 12px;
+    letter-spacing: .14em;
+    opacity: .72;
+  }
+
+  /* ============================================================
+     Layout
+     ============================================================ */
+  main {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 22px 16px 80px;
+  }
+
+  /* ============================================================
+     Map container — image with SVG overlay
+     ============================================================ */
+  .map-container {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--paper);
+    line-height: 0;          /* removes inline-image gap                */
+  }
+  .map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Hotspot styling — invisible by default, highlighted on hover/focus */
+  .hotspot {
+    fill: rgba(22, 60, 110, 0);
+    stroke: rgba(22, 60, 110, 0);
+    stroke-width: 10;
+    stroke-linejoin: round;
+    cursor: pointer;
+    transition: fill .18s, stroke .18s;
+    rx: 14;
+    ry: 14;
+  }
+  /* Hover/focus: tint with the zone's color (set via CSS var per zone) */
+  .map-overlay a:hover .hotspot,
+  .map-overlay a:focus .hotspot,
+  .map-overlay a.is-highlighted .hotspot {
+    fill: var(--hot-fill, rgba(22, 60, 110, .14));
+    stroke: var(--hot-stroke, rgba(22, 60, 110, .85));
+  }
+
+  /* Per-zone hotspot color */
+  .map-overlay a[data-zone="a"]   { --hot-fill: rgba(194,135,122,.22); --hot-stroke: rgba(160,90,75,.95); }
+  .map-overlay a[data-zone="b"]   { --hot-fill: rgba(201,168,90,.26);  --hot-stroke: rgba(155,120,40,.95); }
+  .map-overlay a[data-zone="c"]   { --hot-fill: rgba(199,122,92,.22);  --hot-stroke: rgba(160,75,50,.95); }
+  .map-overlay a[data-zone="d"]   { --hot-fill: rgba(139,90,74,.22);   --hot-stroke: rgba(80,45,30,.95); }
+  .map-overlay a[data-zone="e"]   { --hot-fill: rgba(138,168,95,.24);  --hot-stroke: rgba(85,120,40,.95); }
+  .map-overlay a[data-zone="g"]   { --hot-fill: rgba(74,112,100,.22);  --hot-stroke: rgba(30,70,60,.95); }
+  .map-overlay a[data-zone="h"]   { --hot-fill: rgba(122,170,146,.22); --hot-stroke: rgba(60,120,90,.95); }
+  .map-overlay a[data-zone="v"]   { --hot-fill: rgba(125,181,158,.22); --hot-stroke: rgba(60,130,100,.95); }
+  .map-overlay a[data-zone="vip"] { --hot-fill: rgba(201,168,90,.26);  --hot-stroke: rgba(155,120,40,.95); }
+  .map-overlay a[data-zone="m"]   { --hot-fill: rgba(220,53,69,.22);   --hot-stroke: rgba(180,30,45,.95); }
+  .map-overlay a[data-zone="tech"]{ --hot-fill: rgba(95,110,132,.22);  --hot-stroke: rgba(50,65,90,.95); }
+
+  /* Tap hint */
+  .tap-hint {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+    margin: 0 0 12px;
+  }
+
+  /* ============================================================
+     Legend
+     ============================================================ */
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .legend a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 10px 12px;
+    box-shadow: var(--shadow);
+    transition: transform .15s;
+    min-height: 56px;
+  }
+  .legend a:hover { transform: translateY(-1px); }
+  .legend .badge {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    flex: none;
+    color: #FFF;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .legend .zh { display: block; font-weight: 600; font-size: 14px; }
+  .legend .en { display: block; font-size: 11px; color: var(--ink-soft); }
+
+  /* ============================================================
+     Detail view
+     ============================================================ */
+  .detail-view { animation: fade .18s ease-out; }
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .detail-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 22px 24px; border-radius: var(--radius);
+    color: #FFF; margin-bottom: 22px; flex-wrap: wrap;
+  }
+  .detail-head .tag {
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .85;
+  }
+  .detail-head .zh {
+    margin: 4px 0 0; font-size: clamp(22px, 3.4vw, 32px); line-height: 1.15; font-weight: 800;
+  }
+  .detail-head .en {
+    margin: 4px 0 0; font-size: 13px; letter-spacing: .1em; opacity: .82;
+  }
+  .detail-head .letter {
+    font-size: 56px; font-weight: 900; line-height: 1; opacity: .88; margin-left: auto;
+  }
+  #area-a   .detail-head { background: var(--zone-a);   }
+  #area-b   .detail-head { background: var(--zone-b);   color: #3A2E10; }
+  #area-c   .detail-head { background: var(--zone-c);   }
+  #area-d   .detail-head { background: var(--zone-d);   }
+  #area-e   .detail-head { background: var(--zone-e);   color: #1F2A0E; }
+  #area-g   .detail-head { background: var(--zone-g);   }
+  #area-h   .detail-head { background: var(--zone-h);   color: #143626; }
+  #area-v   .detail-head { background: var(--zone-v);   color: #143626; }
+  #area-vip .detail-head { background: var(--zone-vip); color: #3A2E10; }
+  #area-m   .detail-head { background: var(--zone-m);   }
+  #area-tech .detail-head{ background: var(--zone-tech);}
+
+  .detail-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 22px;
+  }
+  @media (max-width: 760px) { .detail-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--paper); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 22px;
+  }
+  .card h3 {
+    margin: 0 0 14px; font-size: 12px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 700;
+  }
+  .card p:first-of-type { margin-top: 0; }
+  .card p:last-child    { margin-bottom: 0; }
+  .booth-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px;
+  }
+  .booth-grid span {
+    background: var(--booth); color: #FFF; text-align: center;
+    padding: 8px 6px; border-radius: 6px; font-size: 13px;
+    font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .vendor-list { list-style: none; padding: 0; margin: 0; }
+  .vendor-list li { padding: 10px 0; border-top: 1px dotted var(--rule); }
+  .vendor-list li:first-child { border-top: 0; padding-top: 0; }
+  .vendor-list strong { display: block; font-size: 15px; }
+  .vendor-list small  { color: var(--ink-soft); font-size: 13px; }
+  .schedule { list-style: none; padding: 0; margin: 0; }
+  .schedule li {
+    display: grid; grid-template-columns: 90px 1fr; gap: 14px;
+    padding: 10px 0; border-top: 1px solid var(--rule);
+  }
+  .schedule li:first-child { border-top: 0; padding-top: 0; }
+  .schedule time {
+    font-variant-numeric: tabular-nums; color: var(--ink-soft);
+    font-size: 14px; padding-top: 2px;
+  }
+  .schedule strong { font-weight: 600; display: block; }
+  .schedule small  { color: var(--ink-soft); font-size: 13px; }
+
+  /* ============================================================
+     Home button (visible on detail views)
+     ============================================================ */
+  .home-button {
+    position: fixed; top: 12px; right: 14px; z-index: 10;
+    display: none; width: 48px; height: 48px;
+    background: var(--paper); border-radius: 50%;
+    box-shadow: 0 6px 16px rgba(22,60,110,.18), 0 0 0 1px var(--rule);
+    align-items: center; justify-content: center;
+    text-decoration: none; color: var(--ink);
+    transition: transform .15s;
+  }
+  .home-button:hover { transform: scale(1.06); }
+  .home-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  body:has(.detail-view:target) .home-button { display: flex; }
+  .home-button svg { width: 22px; height: 22px; }
+
+  /* ============================================================
+     Footer
+     ============================================================ */
+  footer {
+    text-align: center; color: var(--ink-soft); font-size: 13px;
+    padding: 22px; border-top: 1px solid var(--rule); margin-top: 28px;
+  }
+  footer .zh { display: block; }
+  footer .en {
+    display: block; opacity: .7; font-size: 11px;
+    letter-spacing: .14em; margin-top: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .detail-view { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <p class="zh">第24届华盛顿中国文化节 · 场地示意图</p>
+  <p class="en">24th Washington China Culture Festival · 3rd-4th St. Constitution Ave. NW · 8/29/2026</p>
+</header>
+
+<!-- ===================== HOME BUTTON ===================== -->
+<a href="#" class="home-button" aria-label="返回首页 Back to map">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 11l9-8 9 8"/>
+    <path d="M5 10v10h14V10"/>
+    <path d="M10 20v-6h4v6"/>
+  </svg>
+</a>
+
+<main>
+
+  <!-- ============================================================== -->
+  <!-- HOME VIEW                                                       -->
+  <!-- ============================================================== -->
+  <section id="home" class="view home-view" aria-label="Festival map">
+
+    <p class="tap-hint">点击地图上的区域查看详情 · Tap any zone for details</p>
+
+    <div class="map-container">
+      <!-- Background image: the venue map (must sit next to this HTML) -->
+      <img src="venue-map.jpg"
+           alt="第24届华盛顿中国文化节场地示意图"
+           class="map-image"
+           width="2954" height="1478">
+
+      <!-- ================================================== -->
+      <!-- Click hotspots over the image                       -->
+      <!-- viewBox matches image dimensions, so coordinates    -->
+      <!-- are in image pixels (2954 × 1478).                  -->
+      <!-- ================================================== -->
+      <svg class="map-overlay"
+           viewBox="0 0 2954 1478"
+           xmlns="http://www.w3.org/2000/svg"
+           aria-label="Clickable zones">
+
+        <!-- C — 中华美食城 (curved orange strip, top-right) -->
+        <a href="#area-c" data-zone="c" aria-label="中华美食城 Chinese Food City">
+          <title>中华美食城 (C1-C25)</title>
+          <polygon class="hotspot"
+            points="1390,180 2380,135 2280,520 1300,580"/>
+        </a>
+
+        <!-- V — 后勤保障 (sage green triangle) -->
+        <a href="#area-v" data-zone="v" aria-label="后勤保障 Logistics Support">
+          <title>后勤保障 (V1-V6)</title>
+          <polygon class="hotspot"
+            points="2530,415 2685,720 2360,720"/>
+        </a>
+
+        <!-- B (B1-B10) — left yellow strip -->
+        <a href="#area-b" data-zone="b" aria-label="中华文化展示区 B1-B10">
+          <title>中华文化展示区 (B1-B10)</title>
+          <rect class="hotspot" x="320" y="840" width="785" height="155"/>
+        </a>
+
+        <!-- B (B11-B18) — right yellow strip -->
+        <a href="#area-b" data-zone="b" aria-label="中华文化展示区 B11-B18">
+          <title>中华文化展示区 (B11-B18)</title>
+          <rect class="hotspot" x="1880" y="840" width="640" height="155"/>
+        </a>
+
+        <!-- VIP 接待区 — small yellow box -->
+        <a href="#area-vip" data-zone="vip" aria-label="VIP 接待区 VIP Reception">
+          <title>VIP 接待区</title>
+          <rect class="hotspot" x="2530" y="840" width="200" height="155"/>
+        </a>
+
+        <!-- H — 文化节中心区 / 问讯处 (teal strip) -->
+        <a href="#area-h" data-zone="h" aria-label="文化节中心区 Festival Center">
+          <title>文化节中心区 · 问讯处 (H1-H6)</title>
+          <rect class="hotspot" x="525" y="1070" width="675" height="135"/>
+        </a>
+
+        <!-- M — 医疗 (red cross icon) -->
+        <a href="#area-m" data-zone="m" aria-label="医疗急救 First Aid">
+          <title>医疗急救</title>
+          <circle class="hotspot" cx="1730" cy="1130" r="60"/>
+        </a>
+
+        <!-- E — 合作伙伴展区 (green outlined strip) -->
+        <a href="#area-e" data-zone="e" aria-label="合作伙伴展区 Partner Exhibits E1-E8">
+          <title>合作伙伴展区 (E1-E8)</title>
+          <rect class="hotspot" x="1820" y="1080" width="570" height="125"/>
+        </a>
+
+        <!-- A — 文创 / 商展 / 创意市集 (big pink strip) -->
+        <a href="#area-a" data-zone="a" aria-label="文创 商展 创意市集 A1-A20">
+          <title>文创 · 商展 · 创意市集 (A1-A20)</title>
+          <rect class="hotspot" x="380" y="1245" width="2010" height="170"/>
+        </a>
+
+        <!-- Tech Booth — small icon below A -->
+        <a href="#area-tech" data-zone="tech" aria-label="Tech Booth">
+          <title>Tech Booth</title>
+          <rect class="hotspot" x="1070" y="1385" width="200" height="75"/>
+        </a>
+
+        <!-- G — 舞台第二 (dark green vertical, far left) -->
+        <a href="#area-g" data-zone="g" aria-label="舞台第二 Stage 2 G1-G3">
+          <title>舞台第二 (G1-G3)</title>
+          <rect class="hotspot" x="300" y="1085" width="180" height="325"/>
+        </a>
+
+        <!-- D — 舞台第一 (brown vertical, far right) -->
+        <a href="#area-d" data-zone="d" aria-label="舞台第一 Main Stage D1-D9">
+          <title>舞台第一 (D1-D9)</title>
+          <rect class="hotspot" x="2400" y="1085" width="195" height="325"/>
+        </a>
+
+      </svg>
+    </div>
+
+    <!-- ====================== LEGEND ====================== -->
+    <div class="legend" aria-label="Zones">
+      <a href="#area-a" data-zone="a"><span class="badge" style="background:var(--zone-a)">A</span><span><span class="zh">文创 · 创意市集</span><span class="en">Creative Market · A1–A20</span></span></a>
+      <a href="#area-b" data-zone="b"><span class="badge" style="background:var(--zone-b)">B</span><span><span class="zh">中华文化展示区</span><span class="en">Cultural Showcase · B1–B18</span></span></a>
+      <a href="#area-c" data-zone="c"><span class="badge" style="background:var(--zone-c)">C</span><span><span class="zh">中华美食城</span><span class="en">Chinese Food City · C1–C25</span></span></a>
+      <a href="#area-d" data-zone="d"><span class="badge" style="background:var(--zone-d)">D</span><span><span class="zh">舞台第一</span><span class="en">Main Stage · D1–D9</span></span></a>
+      <a href="#area-e" data-zone="e"><span class="badge" style="background:var(--zone-e);color:#1F2A0E">E</span><span><span class="zh">合作伙伴展区</span><span class="en">Partner Exhibits · E1–E8</span></span></a>
+      <a href="#area-g" data-zone="g"><span class="badge" style="background:var(--zone-g)">G</span><span><span class="zh">舞台第二</span><span class="en">Stage 2 · G1–G3</span></span></a>
+      <a href="#area-h" data-zone="h"><span class="badge" style="background:var(--zone-h);color:#143626">H</span><span><span class="zh">文化节中心区 · 问讯处</span><span class="en">Festival Center · H1–H6</span></span></a>
+      <a href="#area-v" data-zone="v"><span class="badge" style="background:var(--zone-v);color:#143626">V</span><span><span class="zh">后勤保障</span><span class="en">Logistics · V1–V6</span></span></a>
+      <a href="#area-vip" data-zone="vip"><span class="badge" style="background:var(--zone-vip);color:#3A2E10">★</span><span><span class="zh">VIP 接待区</span><span class="en">VIP Reception</span></span></a>
+      <a href="#area-m" data-zone="m"><span class="badge" style="background:var(--zone-m)">+</span><span><span class="zh">医疗急救</span><span class="en">First Aid</span></span></a>
+      <a href="#area-tech" data-zone="tech"><span class="badge" style="background:var(--zone-tech)">⚙</span><span><span class="zh">技术服务台</span><span class="en">Tech Booth</span></span></a>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- DETAIL SECTIONS                                                 -->
+  <!-- ============================================================== -->
+
+  <!-- A · 文创 商展 创意市集 -->
+  <section id="area-a" class="detail-view" aria-label="文创 创意市集 详情">
+    <div class="detail-head">
+      <div><div class="tag">Zone A</div><div class="zh">文创 · 商展 · 创意市集</div><div class="en">Cultural Creative Market · A1–A20</div></div>
+      <div class="letter">A</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>区域介绍 · About</h3>
+        <p>文化节最大的展销区域，共设 20 个展位（A1–A20）。汇聚文创产品、原创设计、手工艺品、特色商展，是文化与商业相融的核心市集。</p>
+        <p>The festival's largest market area with 20 booths (A1–A20). Cultural creative products, original design, handicrafts, and curated exhibitor stalls — where culture meets commerce.</p>
+      </div>
+      <div class="card" style="--booth: var(--zone-a)">
+        <h3>展位 · Booths</h3>
+        <div class="booth-grid">
+          <span>A1</span><span>A2</span><span>A3</span><span>A4</span><span>A5</span>
+          <span>A6</span><span>A7</span><span>A8</span><span>A9</span><span>A10</span>
+          <span>A11</span><span>A12</span><span>A13</span><span>A14</span><span>A15</span>
+          <span>A16</span><span>A17</span><span>A18</span><span>A19</span><span>A20</span>
+        </div>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>商家名单 · Exhibitors</h3>
+        <ul class="vendor-list">
+          <li><strong>[待填写 · To be added]</strong><small>A1 · 商家名称 / 展示内容</small></li>
+          <li><strong>[待填写 · To be added]</strong><small>A2 · 商家名称 / 展示内容</small></li>
+          <li><strong>[待填写 · To be added]</strong><small>A3 · 商家名称 / 展示内容</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- B · 中华文化展示区 -->
+  <section id="area-b" class="detail-view" aria-label="中华文化展示区 详情">
+    <div class="detail-head">
+      <div><div class="tag">Zone B</div><div class="zh">中华文化展示区</div><div class="en">Chinese Cultural Showcase · B1–B18</div></div>
+      <div class="letter">B</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>区域介绍 · About</h3>
+        <p>中华文化展示区分为两组：B1–B10 位于场地西侧，B11–B18 位于场地东侧。展示中华传统文化、非物质文化遗产、地方文化特色等。</p>
+        <p>Cultural showcase split into two clusters. B1–B10 on the west side, B11–B18 on the east. Featuring traditional Chinese culture, intangible cultural heritage, and regional traditions.</p>
+      </div>
+      <div class="card" style="--booth: var(--zone-b)">
+        <h3>展位 · Booths</h3>
+        <div class="booth-grid">
+          <span>B1</span><span>B2</span><span>B3</span><span>B4</span><span>B5</span>
+          <span>B6</span><span>B7</span><span>B8</span><span>B9</span><span>B10</span>
+          <span>B11</span><span>B12</span><span>B13</span><span>B14</span><span>B15</span>
+          <span>B16</span><span>B17</span><span>B18</span>
+        </div>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>展示项目 · Exhibits</h3>
+        <ul class="vendor-list">
+          <li><strong>[待填写 · To be added]</strong><small>B1 · 展示项目</small></li>
+          <li><strong>[待填写 · To be added]</strong><small>B2 · 展示项目</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- C · 中华美食城 -->
+  <section id="area-c" class="detail-view" aria-label="中华美食城 详情">
+    <div class="detail-head">
+      <div><div class="tag">Zone C</div><div class="zh">中华美食城</div><div class="en">Chinese Food City · C1–C25</div></div>
+      <div class="letter">C</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>区域介绍 · About</h3>
+        <p>中华美食城共设 25 个摊位（C1–C25），沿场地北侧弧形排列。八大菜系、特色小吃、地方点心、传统饮品一应俱全，带您品尝最地道的中华美食。</p>
+        <p>Twenty-five food stalls (C1–C25) arranged along the northern arc of the venue. Eight regional cuisines, street snacks, traditional desserts, and drinks — the most authentic Chinese flavors.</p>
+      </div>
+      <div class="card" style="--booth: var(--zone-c)">
+        <h3>展位 · Booths</h3>
+        <div class="booth-grid">
+          <span>C1</span><span>C2</span><span>C3</span><span>C4</span><span>C5</span>
+          <span>C6</span><span>C7</span><span>C8</span><span>C9</span><span>C10</span>
+          <span>C11</span><span>C12</span><span>C13</span><span>C14</span><span>C15</span>
+          <span>C16</span><span>C17</span><span>C18</span><span>C19</span><span>C20</span>
+          <span>C21</span><span>C22</span><span>C23</span><span>C24</span><span>C25</span>
+        </div>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>美食摊位 · Vendors</h3>
+        <ul class="vendor-list">
+          <li><strong>[待填写 · To be added]</strong><small>C1 · 摊位名称 · 主营菜品</small></li>
+          <li><strong>[待填写 · To be added]</strong><small>C2 · 摊位名称 · 主营菜品</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- D · 舞台第一 -->
+  <section id="area-d" class="detail-view" aria-label="舞台第一 详情">
+    <div class="detail-head">
+      <div><div class="tag">Stage One</div><div class="zh">舞台第一</div><div class="en">Main Stage · D1–D9</div></div>
+      <div class="letter">D</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>舞台介绍 · About</h3>
+        <p>文化节主舞台，配备 LED 大屏幕、专业灯光与音响系统。承担开幕式、主要文艺演出、闭幕式等核心活动。位于场地东端。</p>
+        <p>The festival's main stage with LED screens and full lighting/audio production. Hosts the opening ceremony, headline performances, and closing program. Located at the east end of the venue.</p>
+        <p style="margin-top:14px;"><strong>导演组 D1–D5</strong> · Director's group<br><strong>技术 / 化妆 D6–D9</strong> · Tech &amp; Makeup</p>
+      </div>
+      <div class="card">
+        <h3>演出安排 · Program</h3>
+        <ul class="schedule">
+          <li><time>11:00</time><div><strong>开幕式 · Opening Ceremony</strong></div></li>
+          <li><time>12:30</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+          <li><time>14:00</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+          <li><time>16:00</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+          <li><time>18:00</time><div><strong>闭幕式 · Closing Ceremony</strong></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- E · 合作伙伴展区 -->
+  <section id="area-e" class="detail-view" aria-label="合作伙伴展区 详情">
+    <div class="detail-head">
+      <div><div class="tag">Zone E</div><div class="zh">合作伙伴展区</div><div class="en">Partner Exhibits · E1–E8</div></div>
+      <div class="letter">E</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>区域介绍 · About</h3>
+        <p>合作伙伴展区共设 8 个展位（E1–E8），专门安排文化节战略合作伙伴、赞助商及社区组织。位于主舞台西侧，紧邻医疗急救站。</p>
+        <p>Eight booths (E1–E8) reserved for festival strategic partners, sponsors, and community organizations. Located west of the Main Stage, next to First Aid.</p>
+      </div>
+      <div class="card" style="--booth: var(--zone-e)">
+        <h3>展位 · Booths</h3>
+        <div class="booth-grid">
+          <span>E1</span><span>E2</span><span>E3</span><span>E4</span>
+          <span>E5</span><span>E6</span><span>E7</span><span>E8</span>
+        </div>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>合作伙伴 · Partners</h3>
+        <ul class="vendor-list">
+          <li><strong>[合作伙伴名称 · Partner Name]</strong><small>E1</small></li>
+          <li><strong>[合作伙伴名称 · Partner Name]</strong><small>E2</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- G · 舞台第二 -->
+  <section id="area-g" class="detail-view" aria-label="舞台第二 详情">
+    <div class="detail-head">
+      <div><div class="tag">Stage Two</div><div class="zh">舞台第二</div><div class="en">Stage 2 · G1–G3</div></div>
+      <div class="letter">G</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>舞台介绍 · About</h3>
+        <p>第二舞台位于场地西端（4 街西北方向），主要承担互动表演、小型演出、社区文艺节目。后台与设备区为 G1、G2、G3。</p>
+        <p>Located at the west end of the venue toward 4th Street NW. Hosts interactive performances, smaller programs, and community acts. Backstage and equipment in G1, G2, G3.</p>
+      </div>
+      <div class="card">
+        <h3>演出安排 · Program</h3>
+        <ul class="schedule">
+          <li><time>11:30</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+          <li><time>13:00</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+          <li><time>15:00</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+          <li><time>17:00</time><div><strong>[节目名称]</strong><small>表演团体</small></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- H · 文化节中心区 · 问讯处 -->
+  <section id="area-h" class="detail-view" aria-label="文化节中心区 详情">
+    <div class="detail-head">
+      <div><div class="tag">Zone H</div><div class="zh">文化节中心区 · 问讯处</div><div class="en">Festival Center · Info Booth · H1–H6</div></div>
+      <div class="letter">H</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>服务内容 · Services</h3>
+        <p>文化节中心区是访客服务的核心枢纽。问讯处提供活动信息、地图、失物招领、儿童走失协助、无障碍服务、多语种翻译等。</p>
+        <p>The festival's central hub for visitor services. The Info Booth provides event schedules, maps, lost &amp; found, child reunification, accessibility support, and multilingual assistance.</p>
+      </div>
+      <div class="card">
+        <h3>开放时间 · Hours</h3>
+        <p>11:00 AM – 7:00 PM (8/29/2026)<br>电话 / Phone: [号码 · Number]<br>位置 / Location: 场地中央，B1-B10 南侧</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- V · 后勤保障 -->
+  <section id="area-v" class="detail-view" aria-label="后勤保障 详情">
+    <div class="detail-head">
+      <div><div class="tag">Zone V</div><div class="zh">后勤保障</div><div class="en">Logistics Support · V1–V6</div></div>
+      <div class="letter">V</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>区域介绍 · About</h3>
+        <p>后勤保障区是全场后勤、志愿者协调、物资管理中心，共 6 个工作位（V1–V6）。负责场地运营、突发事件处置、人员调度。</p>
+        <p>Backstage operations, volunteer coordination, and supply management. Six work stations (V1–V6) handling venue operations, incident response, and staff dispatch.</p>
+      </div>
+      <div class="card">
+        <h3>紧急联系 · Emergency</h3>
+        <p>现场总指挥 / Site Coordinator: [姓名 · Name]<br>对讲机频道 / Radio: [频道号 · Channel]<br>紧急电话 / Emergency: 911</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP · VIP接待区 -->
+  <section id="area-vip" class="detail-view" aria-label="VIP 接待区 详情">
+    <div class="detail-head">
+      <div><div class="tag">VIP</div><div class="zh">VIP 接待区</div><div class="en">VIP Reception</div></div>
+      <div class="letter">★</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>区域介绍 · About</h3>
+        <p>VIP 嘉宾接待与休息区。仅限受邀嘉宾、贵宾、合作伙伴入内。位于场地东侧，紧邻主舞台与中华文化展示区 B11–B18。</p>
+        <p>Reception and lounge for invited VIPs, dignitaries, and partners. Access by invitation only. Located on the east side, next to the Main Stage and Cultural Showcase B11–B18.</p>
+      </div>
+      <div class="card">
+        <h3>联系方式 · Contact</h3>
+        <p>VIP 协调 / VIP Liaison: [姓名 · Name]<br>电话 / Phone: [号码 · Number]<br>邮箱 / Email: [vip@example.org]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- M · 医疗急救 -->
+  <section id="area-m" class="detail-view" aria-label="医疗急救 详情">
+    <div class="detail-head">
+      <div><div class="tag">Medical</div><div class="zh">医疗急救站</div><div class="en">First Aid Station</div></div>
+      <div class="letter">+</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>服务内容 · Services</h3>
+        <p>由专业急救人员驻守。提供常见伤病处理、防暑降温、儿童意外救助、常用药品。位于合作伙伴展区 E 旁。</p>
+        <p>Staffed by trained EMS personnel. Minor injuries, heat-related care, pediatric first aid, and common medications. Located next to the Partner Exhibits (Zone E).</p>
+      </div>
+      <div class="card">
+        <h3>紧急情况 · Emergency</h3>
+        <p>如遇严重医疗紧急情况，请立即拨打 <strong>911</strong>，并通知最近的工作人员（红色背心）。</p>
+        <p>For serious medical emergencies, dial <strong>911</strong> immediately and alert the nearest staff member (red vest).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech · Tech Booth -->
+  <section id="area-tech" class="detail-view" aria-label="Tech Booth 详情">
+    <div class="detail-head">
+      <div><div class="tag">Tech</div><div class="zh">技术服务台</div><div class="en">Tech Booth</div></div>
+      <div class="letter">⚙</div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <h3>服务内容 · Services</h3>
+        <p>技术服务台提供现场音视频、网络、移动电源、广播系统、舞台设备等技术支持。位于文创市集 A 区中部。</p>
+        <p>On-site support for A/V, network, charging stations, PA system, and stage equipment. Located in the middle of the Creative Market (Zone A).</p>
+      </div>
+      <div class="card">
+        <h3>联系方式 · Contact</h3>
+        <p>技术负责人 / Tech Lead: [姓名 · Name]<br>对讲机频道 / Radio: [频道号 · Channel]</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="zh">第24届华盛顿中国文化节 · 8/29/2026 · 3rd-4th St. Constitution Ave. NW, Washington DC</span>
+  <span class="en">24th Washington China Culture Festival</span>
+</footer>
+
+<!-- =========================================================
+     Optional JS: sync hover between legend and map hotspots.
+     The page works without it.
+     ========================================================= -->
+<script>
+(function () {
+  const overlay = document.querySelector('.map-overlay');
+  if (!overlay) return;
+
+  // When you hover a legend item, highlight the matching hotspot.
+  document.querySelectorAll('.legend a[data-zone]').forEach(item => {
+    const zone = item.getAttribute('data-zone');
+    const targets = overlay.querySelectorAll('a[data-zone="' + zone + '"]');
+    const on  = () => targets.forEach(t => t.classList.add('is-highlighted'));
+    const off = () => targets.forEach(t => t.classList.remove('is-highlighted'));
+    item.addEventListener('mouseenter', on);
+    item.addEventListener('mouseleave', off);
+    item.addEventListener('focus',  on);
+    item.addEventListener('blur',   off);
+  });
+})();
+</script>
+
+</body>
+</html>
