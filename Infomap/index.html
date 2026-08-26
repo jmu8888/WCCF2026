@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+<title>肯尼亚 + 坦桑尼亚 游猎行程</title>
+
+<style>
+:root {
+    --gold: #e0b25a;
+    --gold-dim: rgba(224,178,90,0.55);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #10120e;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* ---------- 顶部标题条 ---------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 8px 12px 6px;
+    background: linear-gradient(180deg, rgba(10,12,8,0.92), rgba(10,12,8,0));
+    text-align: center;
+    pointer-events: none;
+}
+
+.header h1 {
+    margin: 0;
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.header .sub {
+    margin-top: 2px;
+    color: rgba(255,255,255,0.65);
+    font-size: 10px;
+}
+
+/* ---------- 日期跳转条 ---------- */
+.daybar {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 10px 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.daybar::-webkit-scrollbar { display: none; }
+
+.daybar button {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    background: rgba(0,0,0,0.35);
+    color: rgba(255,255,255,0.75);
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.daybar button.active {
+    background: var(--gold);
+    color: #241a04;
+    border-color: var(--gold);
+    box-shadow: 0 0 8px rgba(224,178,90,0.6);
+}
+
+/* ---------- 滑动容器 ---------- */
+.slider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+.slider::-webkit-scrollbar { display: none; }
+.slider { scrollbar-width: none; }
+
+.slide {
+    position: relative;
+    min-width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 84px 18px 74px;
+    color: #f3ead9;
+}
+
+/* ---------- 首页：路线图 ---------- */
+.slide.home-slide {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background: #0b0d09;
+}
+
+.slide.home-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.home-hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 34px;
+    z-index: 2;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.85);
+    pointer-events: none;
+}
+
+/* 每天不同的主题渐变 */
+.slide.region-flight    { background: linear-gradient(160deg, #1a2140, #0f1428 60%, #10120e); }
+.slide.region-nairobi   { background: linear-gradient(160deg, #2b3a4a, #16202b 60%, #10120e); }
+.slide.region-samburu   { background: linear-gradient(160deg, #7a4a24, #4a2c12 60%, #10120e); }
+.slide.region-nakuru    { background: linear-gradient(160deg, #1f4a4d, #163333 60%, #10120e); }
+.slide.region-village   { background: linear-gradient(160deg, #6b3220, #3d1c12 60%, #10120e); }
+.slide.region-mara      { background: linear-gradient(160deg, #6b4a1e, #472f11 60%, #10120e); }
+.slide.region-serengeti { background: linear-gradient(160deg, #7a3620, #4a1f10 60%, #10120e); }
+.slide.region-arusha    { background: linear-gradient(160deg, #3a4a3a, #202b20 60%, #10120e); }
+.slide.region-amboseli  { background: linear-gradient(160deg, #8a4a1e, #522d10 60%, #10120e); }
+.slide.region-depart    { background: linear-gradient(160deg, #34404a, #1c242b 60%, #10120e); }
+.slide.region-notes     { background: linear-gradient(160deg, #3a3428, #211d15 60%, #10120e); }
+
+/* ---------- 行程须知 / 费用说明 ---------- */
+.notes-section {
+    margin-bottom: 14px;
+}
+
+.notes-section h3 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.notes-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 11.5px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.88);
+}
+
+.notes-list li {
+    margin-bottom: 5px;
+}
+
+.notes-list.plain {
+    list-style: none;
+    padding-left: 0;
+}
+
+.notes-list.plain li {
+    padding-left: 14px;
+    position: relative;
+}
+
+.notes-list.plain li::before {
+    content: "※";
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+}
+
+.notes-group-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    margin: 10px 0 4px;
+}
+
+.notes-group-label:first-child {
+    margin-top: 0;
+}
+
+.notes-list.contact {
+    list-style: none;
+    padding-left: 0;
+}
+
+.notes-list.contact a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.slide-inner {
+    overflow-y: auto;
+    max-height: 100%;
+    padding-right: 2px;
+}
+
+.day-tag {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.day-tag .num {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.day-tag .date {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+}
+
+.title {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 4px 0 10px;
+    color: #fff;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 10.5px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    white-space: nowrap;
+}
+
+.badge.star {
+    background: rgba(224,178,90,0.2);
+    border-color: var(--gold-dim);
+    color: var(--gold);
+}
+
+.desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 12px;
+}
+
+/* ---------- 时间轴（逐条行程） ---------- */
+.timeline {
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+    border-left: 2px solid rgba(224,178,90,0.3);
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.92);
+}
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.timeline .t {
+    display: block;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 1px;
+}
+
+.info-card {
+    background: rgba(0,0,0,0.32);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.info-row {
+    display: flex;
+    gap: 8px;
+}
+
+.info-row .label {
+    flex: 0 0 44px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.info-row .value {
+    color: rgba(255,255,255,0.88);
+}
+
+.info-row.note .value {
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* ---------- 航班卡片（Day0 / 返程） ---------- */
+.flight-leg {
+    background: rgba(0,0,0,0.32);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+}
+
+.flight-leg .flight-date {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.flight-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.flight-route .ap {
+    flex: 1;
+    min-width: 0;
+}
+
+.flight-route .ap.arr { text-align: right; }
+
+.flight-route .code {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.flight-route .city {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.flight-route .time {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.flight-route .plane {
+    flex: 0 0 auto;
+    color: rgba(255,255,255,0.4);
+    font-size: 15px;
+    padding: 0 4px;
+}
+
+.flight-route .arrnote {
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+}
+
+.flight-meta {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(255,255,255,0.15);
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+}
+
+.flight-meta b { color: #fff; }
+
+/* ---------- 左右箭头（桌面点击用） ---------- */
+.arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+.arrow.left { left: 6px; }
+.arrow.right { right: 6px; }
+.arrow:active { background: rgba(0,0,0,0.55); }
+
+/* ---------- 页码圆点 ---------- */
+.dots {
+    position: fixed;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0 20px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+}
+
+.dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 4px var(--gold);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>肯尼亚 + 坦桑尼亚 游猎行程</h1>
+    <div class="sub" id="subHeader"></div>
+</div>
+
+<div class="daybar" id="daybar"></div>
+
+<div class="arrow left" id="arrowLeft">&#8249;</div>
+<div class="arrow right" id="arrowRight">&#8250;</div>
+
+<div class="slider" id="slider"></div>
+
+<div class="dots" id="dots"></div>
+
+<script>
+// 出发 2026-08-16（Day 0），返抵 2026-08-29（Day 13）。
+// D1-D12 行程内容整理自《肯尼亚行程单》KT260817-28（Aug 17-28, 2026）。
+const startDate = "2026-08-16";
+
+const days = [
+// ---------------- 首页：路线图 ----------------
+{
+    type: "home",
+    image: "tripmap.jpg",
+    hint: "按实际行程绘制 &nbsp;·&nbsp; 向左滑动开始查看每日行程 →"
+},
+// ---------------- Day 0：华盛顿 IAD 出发 ----------------
+{
+    dayNum: 0,
+    region: "flight",
+    type: "flight",
+    title: "启程：华盛顿 → 伦敦 → 内罗毕",
+    badges: ["国际航班", "经停伦敦"],
+    legs: [
+        {
+            date: "Sunday, August 16, 2026",
+            dep: { code: "IAD", city: "Washington Dulles", time: "7:15 PM" },
+            arr: { code: "LHR", city: "London Heathrow", time: "7:45 AM", note: "Flight arrives Monday, August 17, 2026" },
+            flightNo: "AA 6796",
+            operator: "Operated by British Airways",
+            cls: "M",
+            meals: "Meals"
+        },
+        {
+            date: "Monday, August 17, 2026",
+            dep: { code: "LHR", city: "London Heathrow", time: "9:45 AM" },
+            arr: { code: "NBO", city: "Nairobi", time: "9:00 PM" },
+            flightNo: "AA 6653",
+            operator: "Operated by British Airways",
+            cls: "M",
+            meals: "Meals"
+        }
+    ]
+},
+// ---------------- Day 1-12：肯尼亚 + 坦桑尼亚游猎（KT260817-28，信息取自《肯尼亚行程单》） ----------------
+{
+    dayNum: 1,
+    region: "nairobi",
+    title: "抵达内罗毕",
+    badges: ["接机专车", "行前分享会"],
+    timeline: [
+        { t: "13:40", e: "乘坐AA8249航班抵达内罗毕国际机场（JKIA），出关后可在机场购买本地电话卡，兑换本地货币，接着送往酒店，入住，休息。" },
+        { t: "17:00", e: "波布非洲代表前往酒店做行前分享会" },
+        { t: "19:00", e: "晚餐安排「非洲歌舞表演」+「非洲百兽宴」" }
+    ],
+    hotel: "Safari Park Hotel - 本地5星",
+    mealsRaw: "晚餐 - 百兽宴",
+    transport: "轿车/商务车",
+    activity: "无",
+    note: "傍晚5点左右做行前分享会"
+},
+{
+    dayNum: 2,
+    region: "samburu",
+    title: "内罗毕 → 桑布鲁国家保护区",
+    badges: ["五特兽", "观鸟"],
+    timeline: [
+        { t: "6:30", e: "早餐，退房" },
+        { t: "7:00", e: "前往桑布鲁" },
+        { t: "13:00", e: "抵达isiolo镇上，在Bomen餐厅午餐" },
+        { t: "15:00", e: "抵达桑布鲁公园，开始寻找5特兽" },
+        { t: "18:30", e: "前往酒店入住，休息" }
+    ],
+    hotel: "Samburu Sopa - 园内4星 - 重点：五特兽（东非剑羚，索马里鸵鸟，细纹斑马，网纹长颈鹿，长颈羚），犀鸟，鹫珠鸡",
+    mealsRaw: "Bomen午餐 + 晚餐",
+    transport: "越野车",
+    activity: "五特兽，狮子，花豹，观鸟",
+    note: "午餐在isiolo镇上很有名的Bomen restaurant，烤羊肉特别好吃"
+},
+{
+    dayNum: 3,
+    region: "samburu",
+    title: "桑布鲁公园全天游猎",
+    badges: ["清晨拍摄"],
+    timeline: [
+        { t: "5:50", e: "带上打包的早餐出发拍摄" },
+        { t: "11:00", e: "返回酒店休息，午餐" },
+        { t: "15:30", e: "出发下午游猎" },
+        { t: "18:30", e: "返回酒店休息，晚餐" }
+    ],
+    hotel: "Samburu Sopa（续住）",
+    mealsRaw: "三餐",
+    transport: "越野车",
+    activity: "",
+    note: "桑布鲁天气较热，注意别中暑"
+},
+{
+    dayNum: 4,
+    region: "nakuru",
+    title: "桑布鲁 → 纳库鲁湖",
+    badges: [],
+    timeline: [
+        { t: "6:30", e: "早餐" },
+        { t: "7:00", e: "退房，带上午餐盒出发游猎" },
+        { t: "10:00", e: "前往Lake Nakuru，途中用午餐盒" },
+        { t: "17:00", e: "抵达酒店休息，晚餐" }
+    ],
+    hotel: "Sarova Woodlands - 园外4星 - 公园门口",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "",
+    note: "今天不进Nakuru"
+},
+{
+    dayNum: 5,
+    region: "village",
+    title: "纳库鲁湖游猎 → 马赛部落",
+    badges: ["马赛部落体验", "篝火晚会"],
+    timeline: [
+        { t: "6:00", e: "早餐" },
+        { t: "6:30", e: "出发Lake Nakuru游猎" },
+        { t: "11:00", e: "出发前往马赛部落，途中用午餐盒" },
+        { t: "16:00", e: "左右抵达部落，欢迎仪式等活动" },
+        { t: "19:00", e: "晚餐，篝火晚会" }
+    ],
+    hotel: "Maji Moto Maasai Cultural Camp - 马赛部落的生态营地，比较简陋，但是部落人文创作非洲棒的地方，日出日落随便拍",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "马赛部落",
+    note: "洗手间和洗澡比较不方便，在帐篷外"
+},
+{
+    dayNum: 6,
+    region: "mara",
+    title: "马赛部落 → 马赛马拉全天游猎",
+    badges: ["大迁徙", "天河之渡"],
+    timeline: [
+        { t: "7:00", e: "酒店内早餐，退房" },
+        { t: "7:30", e: "出发前往马赛马拉，进入全天游猎" },
+        { t: "18:00", e: "返回酒店休息，晚餐" }
+    ],
+    hotel: "Mara Elatie - 园门口帐篷酒店 - 地势高，景色美，近海关口",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "大迁徙 天河之渡",
+    note: ""
+},
+{
+    dayNum: 7,
+    region: "serengeti",
+    title: "马赛马拉 → 塞伦盖蒂北部",
+    badges: ["跨境换车", "车程约4小时"],
+    timeline: [
+        { t: "7:00", e: "酒店早餐" },
+        { t: "8:00", e: "带上午餐盒，前往Isebani关口" },
+        { t: "10:00", e: "抵达Isebani关口，办理出入境手续，换上波布非洲坦桑尼亚的越野车" },
+        { t: "11:00", e: "前往塞伦盖蒂，大约4小时抵达塞伦盖蒂北部游猎" },
+        { t: "18:30", e: "前往酒店，入住，休息，晚餐" }
+    ],
+    hotel: "Kenzan Migration Camp - Mara river - 园内地理位置好",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "进入到塞伦盖蒂",
+    note: "需要过海关，请准备好坦桑尼亚签证 + 黄皮本 + 护照"
+},
+{
+    dayNum: 8,
+    region: "serengeti",
+    title: "马拉河边游猎，等候动物大迁徙过河",
+    badges: ["大迁徙", "全天游猎"],
+    timeline: [
+        { t: "06:30", e: "早餐" },
+        { t: "07:00", e: "带上午餐盒，全天在马拉河边游猎，等过河" },
+        { t: "18:30", e: "返回酒店，休息，晚餐" }
+    ],
+    hotel: "Kenzan Migration Camp（续住）",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "马拉河边游猎/大迁徙",
+    note: "全天游猎"
+},
+{
+    dayNum: 9,
+    region: "serengeti",
+    title: "塞伦盖蒂中部：追踪大猫",
+    badges: ["中部大猫", "全天游猎"],
+    timeline: [
+        { t: "6:30", e: "早餐" },
+        { t: "7:00", e: "带上行李+午餐盒出发马拉河游猎半天（如已经看到过河，直接前往中部），然后前往中部" },
+        { t: "18:30", e: "回到酒店休息，晚餐" }
+    ],
+    hotel: "Land of Nature - 园内野奢帐篷",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "中部大猫",
+    note: "全天游猎"
+},
+{
+    dayNum: 10,
+    region: "arusha",
+    title: "塞伦盖蒂 → 阿鲁沙",
+    badges: [],
+    timeline: [
+        { t: "7:00", e: "早餐，收拾行李，可以看日出，需要早起" },
+        { t: "11:00", e: "左右出塞伦盖蒂，经过恩戈罗返回阿鲁沙" },
+        { t: "18:00", e: "中餐厅晚餐，然后返回酒店休息" }
+    ],
+    hotel: "Planet Lodge - 城市花园4星",
+    mealsRaw: "三餐/午餐盒",
+    transport: "越野车",
+    activity: "",
+    note: "不下火山口"
+},
+{
+    dayNum: 11,
+    region: "amboseli",
+    title: "阿鲁沙 → 安博塞利：远眺乞力马扎罗",
+    badges: ["非洲第一高峰", "火烈鸟"],
+    timeline: [
+        { t: "6:30", e: "早餐" },
+        { t: "7:00", e: "前往Namanga关口，大概1.5小时抵达，请准备好ETA签证，护照+黄皮本" },
+        { t: "9:30", e: "左右出海关，前往安博塞利公园游猎，大约1小时左右到公园" },
+        { t: "10:30", e: "左右进入公园游猎" },
+        { t: "12:30", e: "出公园，到酒店入住，午餐" },
+        { t: "15:30", e: "进入公园游猎" },
+        { t: "18:00", e: "出公园到酒店休息，晚餐" }
+    ],
+    hotel: "Oilepo Amboseli - 园外大门外10分钟帐篷酒店",
+    mealsRaw: "三餐",
+    transport: "越野车",
+    activity: "非洲第一高峰 - 乞力马扎罗，火烈鸟",
+    note: "过海关准备好ETA签证，黄皮本，护照原件"
+},
+{
+    dayNum: 12,
+    region: "depart",
+    title: "安博塞利游猎 → 内罗毕送机",
+    badges: ["国际航班返程"],
+    timeline: [
+        { t: "6:00", e: "带上打包早餐，前往公园游猎" },
+        { t: "9:30", e: "出公园门口，前往酒店退房，收拾行李" },
+        { t: "10:30", e: "返回内罗毕，送到机场离开" },
+        { t: "15:00", e: "抵达内罗毕国际机场，可在机场购买简餐（费用自理）" },
+        { t: "18:00", e: "乘坐AA8227航班离开内罗毕，结束愉快的非洲之旅（返程航班详情见 Day 13）" }
+    ],
+    hotel: "无",
+    mealsRaw: "早餐",
+    transport: "越野车",
+    activity: "国际航班离开",
+    note: "市区行走，堵车时不要开窗玩手机，在商场注意保管好自己的个人物品"
+},
+// ---------------- Day 13：返抵华盛顿 IAD ----------------
+{
+    dayNum: 13,
+    region: "flight",
+    type: "flight",
+    title: "返程：内罗毕 → 多哈 → 华盛顿",
+    badges: ["国际航班", "经停多哈"],
+    legs: [
+        {
+            date: "Friday, August 28, 2026",
+            dep: { code: "NBO", city: "Nairobi", time: "6:00 PM" },
+            arr: { code: "DOH", city: "Doha", time: "11:10 PM" },
+            flightNo: "AA 8227",
+            operator: "Operated by Qatar Airways",
+            cls: "S",
+            meals: "Meals"
+        },
+        {
+            date: "Saturday, August 29, 2026",
+            dep: { code: "DOH", city: "Doha", time: "1:25 AM" },
+            arr: { code: "IAD", city: "Washington Dulles", time: "8:45 AM" },
+            flightNo: "AA 8122",
+            operator: "Operated by Qatar Airways",
+            cls: "S",
+            meals: "Meals"
+        }
+    ]
+},
+// ---------------- 行程须知 / 费用说明 ----------------
+{
+    type: "notes",
+    title: "行程须知 · 费用说明",
+    cautions: [
+        "由于交通路况、野生动物习性等不可预知因素影响，以上时间安排仅供参考，在不减少参观景点和准时抵达酒店以及机场的前提下，客人和向导及司机协商后可对当天景点游览顺序的先后或者时间点进行调整。",
+        "肯尼亚坦桑尼亚某些公园内路况较差，可能会出现爆胎或者其他车辆小故障，我们随车配备2个备用轮胎和简易修车设备，如遇该情况，敬请谅解，并耐心等待司机修复车辆，谢谢。",
+        "酒店内洗衣、理发、电话、传真、收费电视、饮品、烟酒等个人消费敬请自理。",
+        "小费建议：英文司机兼导游 - 每位客人每天10美元，酒店客房服务（一般放在酒店前台的小费箱）搬运行李和服务人员的小费建议1-5美元/次，小费在服务结束后赠与。",
+        "国家公园不可以下路，不可以随意下车，站/坐到车顶，不可捡野生动物骨头，不能在车内或者是不允许吸烟处吸烟，被公园Ranger发现违规一般罚款100美元/次。",
+        "有些体验活动可能因为天气原因取消或者变更，比如夜晚游猎、落日鸡尾酒、热气球。酒店包含的体验因天气取消不退款，热气球公司取消会退全款。",
+        "Safari期间越野车默认无空调，如果需要能开空调的越野车，需要提前预订并根据季节增加100-200美元/天的租车费，酒店提供的敞篷越野车无空调。"
+    ],
+    included: [
+        "用车：Safari期间8座可开顶越野车，城市期间商务车接送，含车的油费/司机/住宿/门票",
+        "住宿：行程中说明的酒店",
+        "用餐：行程中注明的用餐标准，如因自身原因放弃用餐，则餐费不退",
+        "门票：行程中注明景点的首道门票，过夜费",
+        "司导：英文司兼导",
+        "矿泉水：每人每天2瓶矿泉水",
+        "直升机救援保险",
+        "电子版的东非旅行手册 / 电子版的东非动植物手册",
+        "行前分享和落地后的细节介绍",
+        "体验活动：马赛部落入住一晚"
+    ],
+    excluded: [
+        "司导小费，英文司机兼导游 - 每位客人每天10美元",
+        "行程中不包含的项目和用餐",
+        "酒店、餐厅服务人员的小费",
+        "行程中不包含的自费可选项，比如高尔夫、骑马、骑自行车等",
+        "出入境个人物品海关征税，超重行李的托运费、保管费，因交通延阻、战争、政变、罢工、天气、飞机机器故障、航班取消或更改时间等不可抗力原因所引致的额外费用",
+        "酒店内洗衣、理发、电话、传真、收费电视、饮品、烟酒等个人消费，当地参加的自费以及以上「费用包含」中不包含的其它项目",
+        "出发地至集合地的交通等非行程安排的交通",
+        "办理黄皮书（国际预防接种证书）的费用",
+        "中文向导",
+        "国际旅行保险（务必购买）",
+        "国际机票",
+        "肯尼亚ETA代办50美元/人（含服务费），坦桑尼亚电子签美国护照100美元/人，其他护照50美元/人，服务费20美元/人"
+    ],
+    safety: [
+        {
+            heading: "🔐 1. 安全问题",
+            items: [
+                "高速/城市行车过程中，请务必系好安全带，不要和司机聊天。",
+                "在观看野生动物的时候，如果遇到颠簸路段也请系好安全带。",
+                "在城市里行驶，遇到堵车或者是游行的时候，请务必关好门窗。千万不要靠着窗玩手机，也不要对着游行的人或者是路上的人拍照，以免激怒行人，引发砸车事故。",
+                "住无铁丝网的帐篷营地的时候，请务必注意和野生动物保持安全距离。天黑出帐篷必须有安保人员陪同，如遇到帐篷外有大型动物，请留在帐篷内，不要外出，呼叫酒店安保，等他们驱赶动物后，再出帐篷。",
+                "在公园内，车辆行进过程中，请不要站起来，也不要站在座椅上。",
+                "请不要把新鲜的水果（比如香蕉）带到帐篷里面，请不要喂任何的野生动物，也不要触摸野生动物，以免被抓伤或者是咬伤。"
+            ]
+        },
+        {
+            heading: "👩‍⚕️ 2. 健康问题",
+            items: [
+                "坦桑尼亚旅行期间，请注意不要穿深黑色和深蓝色的衣服，或者是大块深色的衣裤。这些颜色的衣服容易招致采采蝇的叮咬。如果车内进入采采蝇，务必赶出去，或者直接消灭。",
+                "采采蝇叮咬后，容易起一个红肿的大包，请用肥皂水冲洗，并涂抹止痒药膏，如果症状没有减轻，请就医。",
+                "刚到东非，尽量少吃生菜沙拉以及冷食和冷饮，以免肠胃不适应。少空腹喝黑咖啡，并多喝水。晚上可以减少肉类的摄取。白天的午餐盒，超过14:00请不要再吃里面的肉食。",
+                "早晚务必加衣服保暖，特别是在塞伦盖蒂/马赛马拉/恩戈罗恩戈罗的时候，晚上较冷，温度约12-26度。",
+                "东非位于赤道附近，请做好防晒，多喝水。做好防尘、防晒，带好帽子、墨镜、防晒面罩，防止中暑。",
+                "住草原上的帐篷酒店，刷牙请用洗漱台上的矿泉水（2瓶免费）。"
+            ]
+        },
+        {
+            heading: "🚙 3. 公园里的注意事项",
+            items: [
+                "所有的公园内/车内/酒店房间内（除非是吸烟房）都是不能吸烟的，如果要吸烟请务必在指定区域，一般公园的洗手间空旷处/酒店的指定吸烟处可以吸烟。肯尼亚和坦桑尼亚很多公共场合都是禁烟的，吸烟人士请务必咨询当地管理。",
+                "不能乱扔垃圾，不要拣动物骨头或者其他动植物的皮毛或者鸟的羽毛。",
+                "Safari期间，不能喂食动物，不能对动物大喊大叫，朝它们扔东西，更不能在禁止下车的区域下车。也不要让司机把车开到不允许行走的路上。",
+                "去看动物大迁徙/过河之前，一定要先解决「生理问题」，大草原上往往要使用「Bush Toilet」，需要提前和司机说，找到地方，一般车后解决。",
+                "观看野生动物的过程中，请不要坐到车顶，或者是站到车顶，一经Ranger发现，每人每次罚款100美元。",
+                "公园开门和关门的时间为6am-6pm，如遇到特殊情况，需要提前和Ranger报备。如果违反公园的开关门规定，一经Ranger发现，一般罚款100美元/次起。"
+            ]
+        },
+        {
+            heading: "🏨 4. 酒店注意事项",
+            items: [
+                "酒店入住的时候，都会说明用餐时间和注意事项，请务必听取。",
+                "部分公园的酒店有热水和用电时间的限制，入住时请确认清楚，合理安排洗澡与用餐时间。移动帐篷营地往往使用「Bucket shower」，一般为20L，酒店工作人员烧好灌上去，客人在帐篷里面洗澡，这种较为原始有趣的洗澡方式需要你尽量节约用水，尽快洗澡。",
+                "出入房间请随时管好房门，尤其是夜间的时候，防止蚊虫以及猴子狒狒进入。"
+            ]
+        },
+        {
+            heading: "💲 5. 钱财/器材安全",
+            items: [
+                "记得一定把钱分开放：每天花的小费和零钱放一处，大钱放在其他地方。不要在当地人面前露出大笔的钱财，现金以及贵重的物品一定要随身保管。",
+                "现金和首饰请自己随身保管，或者放到保险箱里，去吃晚餐的时候也请随身携带。",
+                "带相机客户，如果坐在门边的位置要特别注意，开门下车之前要先收好相机，以免不小心砸落相机。",
+                "水上活动的时候，注意手机的安全，以免掉落在水中。"
+            ]
+        },
+        {
+            heading: "💰 6. 小费建议",
+            items: [
+                "英文司导小费：建议每位客人每人8-10美元/人/天给英文司导。",
+                "中文向导+英文司机小费：建议每位客人每人10-15美元/人/天给中文向导+英文司机。",
+                "野奢酒店内的小费：建议每位客人5-10美元/每人/每天给酒店的工作人员，放入Tip Box或者当面给服务的团队。",
+                "行李员的小费：建议每位客人每次服务给1美元小费。",
+                "中途礼品店上洗手间，如果不购买任何的东西，建议每次1美元的小费放到Tip Box。"
+            ]
+        }
+    ],
+    contactGroups: [
+        {
+            group: "☎️ 7. 紧急情况联系电话 · 波布非洲",
+            items: [
+                "坦桑尼亚办公室：<a href=\"tel:+255622680305\">+255 622680305</a>、<a href=\"tel:+255767282042\">+255 767282042</a>",
+                "肯尼亚办公室：<a href=\"tel:+254706597188\">+254 706597188</a>、<a href=\"tel:+254705709998\">+254 705709998</a>"
+            ]
+        },
+        {
+            group: "肯尼亚",
+            items: [
+                "肯尼亚报警电话：<a href=\"tel:999\">999</a>",
+                "外交部全球领事保护与服务应急呼叫中心：<a href=\"tel:861012308\">86-10-12308</a> 或 <a href=\"tel:861065612308\">86-10-65612308</a>",
+                "驻肯尼亚使馆24小时领事保护协助电话：<a href=\"tel:254202711222\">254-202711222</a>"
+            ]
+        },
+        {
+            group: "坦桑尼亚",
+            items: [
+                "坦桑尼亚匪警：<a href=\"tel:111\">111</a> / <a href=\"tel:112\">112</a>，火警：<a href=\"tel:114\">114</a>",
+                "驻坦桑尼亚使馆24小时领事保护协助电话：<a href=\"tel:+255754075128\">+255 754075128</a>",
+                "驻桑给巴尔岛领馆24小时领事保护协助电话：<a href=\"tel:+255772148768\">+255 772148768</a>"
+            ]
+        }
+    ]
+}
+];
+
+const weekdayNames = ["周日","周一","周二","周三","周四","周五","周六"];
+
+function fmtDate(base, offset) {
+    const d = new Date(base + "T00:00:00");
+    d.setDate(d.getDate() + offset);
+    const mm = String(d.getMonth()+1).padStart(2,"0");
+    const dd = String(d.getDate()).padStart(2,"0");
+    return { label: mm + "-" + dd, weekday: weekdayNames[d.getDay()] };
+}
+
+function renderFlightLeg(leg) {
+    const arrNote = leg.arr.note ? '<div class="arrnote">' + leg.arr.note + '</div>' : '';
+    return (
+        '<div class="flight-leg">' +
+            '<div class="flight-date">' + leg.date + '</div>' +
+            '<div class="flight-route">' +
+                '<div class="ap dep">' +
+                    '<div class="code">' + leg.dep.code + '</div>' +
+                    '<div class="city">' + leg.dep.city + '</div>' +
+                    '<div class="time">' + leg.dep.time + '</div>' +
+                '</div>' +
+                '<div class="plane">&#9992;</div>' +
+                '<div class="ap arr">' +
+                    '<div class="code">' + leg.arr.code + '</div>' +
+                    '<div class="city">' + leg.arr.city + '</div>' +
+                    '<div class="time">' + leg.arr.time + '</div>' +
+                    arrNote +
+                '</div>' +
+            '</div>' +
+            '<div class="flight-meta">' +
+                '<span><b>' + leg.flightNo + '</b></span>' +
+                '<span>' + leg.operator + '</span>' +
+                '<span>Class: (' + leg.cls + ')</span>' +
+                '<span>' + leg.meals + '</span>' +
+            '</div>' +
+        '</div>'
+    );
+}
+
+const slider = document.getElementById("slider");
+const dotsEl = document.getElementById("dots");
+const daybarEl = document.getElementById("daybar");
+const sub = document.getElementById("subHeader");
+
+const numberedDays = days.filter(day => day.type !== "home" && day.type !== "notes");
+const firstDate = fmtDate(startDate, 0);
+const lastDate = fmtDate(startDate, numberedDays.length - 1);
+sub.textContent = firstDate.label + " ~ " + lastDate.label + " · 共" + numberedDays.length + "天";
+
+let dateOffset = 0;
+
+days.forEach((day, i) => {
+    // slide
+    const slide = document.createElement("div");
+
+    if (day.type === "home") {
+        slide.className = "slide home-slide";
+        slide.id = "home";
+        slide.innerHTML =
+            '<img src="' + day.image + '" alt="行程路线图">' +
+            '<div class="home-hint">' + day.hint + '</div>';
+        slider.appendChild(slide);
+
+        const dot = document.createElement("div");
+        dot.className = "dot active";
+        dotsEl.appendChild(dot);
+
+        const btn = document.createElement("button");
+        btn.textContent = "\u{1F3E0}";
+        btn.className = "active";
+        btn.addEventListener("click", () => {
+            slide.scrollIntoView({ behavior: "smooth", inline: "start" });
+        });
+        daybarEl.appendChild(btn);
+        return;
+    }
+
+    if (day.type === "notes") {
+        slide.className = "slide region-notes";
+        slide.id = "notes";
+
+        const list = (items, plain) =>
+            '<ul class="notes-list' + (plain ? ' plain' : '') + '">' +
+                items.map(t => '<li>' + t + '</li>').join("") +
+            '</ul>';
+
+        const safetyHtml = day.safety.map(sec =>
+            '<div class="notes-section"><h3>' + sec.heading + '</h3>' + list(sec.items, true) + '</div>'
+        ).join("");
+
+        const contactsHtml =
+            '<div class="notes-section">' +
+                day.contactGroups.map(g =>
+                    '<div class="notes-group-label">' + g.group + '</div>' +
+                    list(g.items, false).replace('class="notes-list"', 'class="notes-list contact"')
+                ).join("") +
+            '</div>';
+
+        slide.innerHTML =
+            '<div class="slide-inner">' +
+                '<div class="title">' + day.title + '</div>' +
+                '<div class="notes-section"><h3>温馨提示</h3>' + list(day.cautions, true) + '</div>' +
+                '<div class="notes-section"><h3>I. 费用包含 Included</h3>' + list(day.included, false) + '</div>' +
+                '<div class="notes-section"><h3>II. 费用不包含 Excluded</h3>' + list(day.excluded, false) + '</div>' +
+                safetyHtml +
+                contactsHtml +
+            '</div>';
+        slider.appendChild(slide);
+
+        const dot = document.createElement("div");
+        dot.className = "dot";
+        dotsEl.appendChild(dot);
+
+        const btn = document.createElement("button");
+        btn.textContent = "\u{1F4CB}";
+        btn.className = "";
+        btn.addEventListener("click", () => {
+            slide.scrollIntoView({ behavior: "smooth", inline: "start" });
+        });
+        daybarEl.appendChild(btn);
+        return;
+    }
+
+    const d = fmtDate(startDate, dateOffset);
+    dateOffset++;
+
+    slide.className = "slide region-" + day.region;
+    slide.id = "day" + day.dayNum;
+
+    const badgesHtml = day.badges.map(b => {
+        const isStar = b.indexOf("★") !== -1;
+        return '<span class="badge' + (isStar ? ' star' : '') + '">' + b + '</span>';
+    }).join("");
+
+    let bodyHtml;
+    if (day.type === "flight") {
+        bodyHtml = day.legs.map(renderFlightLeg).join("");
+    } else {
+        const timelineHtml = '<ul class="timeline">' +
+            day.timeline.map(item => '<li><span class="t">' + item.t + '</span>' + item.e + '</li>').join("") +
+            '</ul>';
+        const hotelRow = day.hotel
+            ? '<div class="info-row"><div class="label">酒店</div><div class="value">' + day.hotel + '</div></div>'
+            : '';
+        const transportRow = day.transport
+            ? '<div class="info-row"><div class="label">交通</div><div class="value">' + day.transport + '</div></div>'
+            : '';
+        const activityRow = day.activity
+            ? '<div class="info-row"><div class="label">活动</div><div class="value">' + day.activity + '</div></div>'
+            : '';
+        const noteRow = day.note
+            ? '<div class="info-row note"><div class="label">备注</div><div class="value">' + day.note + '</div></div>'
+            : '';
+        bodyHtml =
+            timelineHtml +
+            '<div class="info-card">' +
+                hotelRow +
+                transportRow +
+                '<div class="info-row"><div class="label">用餐</div><div class="value">' + day.mealsRaw + '</div></div>' +
+                activityRow +
+                noteRow +
+            '</div>';
+    }
+
+    slide.innerHTML =
+        '<div class="slide-inner">' +
+            '<div class="day-tag"><span class="num">D' + day.dayNum + '</span><span class="date">' + d.label + ' ' + d.weekday + '</span></div>' +
+            '<div class="title">' + day.title + '</div>' +
+            (badgesHtml ? '<div class="badges">' + badgesHtml + '</div>' : '') +
+            bodyHtml +
+        '</div>';
+
+    slider.appendChild(slide);
+
+    // dot
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dotsEl.appendChild(dot);
+
+    // daybar button
+    const btn = document.createElement("button");
+    btn.textContent = String(day.dayNum);
+    btn.className = "";
+    btn.addEventListener("click", () => {
+        slide.scrollIntoView({ behavior: "smooth", inline: "start" });
+    });
+    daybarEl.appendChild(btn);
+});
+
+const dots = document.querySelectorAll(".dot");
+const dayBtns = document.querySelectorAll(".daybar button");
+
+function updateActive() {
+    const page = Math.round(slider.scrollLeft / slider.clientWidth);
+    dots.forEach((dot, index) => dot.classList.toggle("active", index === page));
+    dayBtns.forEach((btn, index) => btn.classList.toggle("active", index === page));
+    const activeBtn = dayBtns[page];
+    if (activeBtn) activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+}
+
+slider.addEventListener("scroll", updateActive);
+
+document.getElementById("arrowLeft").addEventListener("click", () => {
+    slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+});
+document.getElementById("arrowRight").addEventListener("click", () => {
+    slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+    if (e.key === "ArrowLeft") slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<svg viewBox="0 0 1080 990" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif">
+
+<defs>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="10"/>
+    </filter>
+</defs>
+
+<!-- 背景陆地 -->
+<rect x="0" y="0" width="1080" height="990" fill="#f2eee3"/>
+
+<!-- 国家公园/保护区绿地（软化） -->
+<g filter="url(#soft)" opacity="0.75">
+    <ellipse cx="909" cy="145" rx="120" ry="100" fill="#bfdcae"/>
+    <ellipse cx="644" cy="300" rx="80" ry="60" fill="#bfdcae"/>
+    <ellipse cx="470" cy="480" rx="150" ry="115" fill="#bfdcae"/>
+    <ellipse cx="420" cy="630" rx="160" ry="190" fill="#a9d29a"/>
+    <ellipse cx="855" cy="718" rx="105" ry="85" fill="#d8d59e"/>
+    <ellipse cx="540" cy="810" rx="55" ry="45" fill="#bfdcae"/>
+</g>
+
+<!-- 湖泊 -->
+<path d="M0,330 C 60,320 130,350 150,410 C 165,460 120,510 60,505 C 20,500 0,470 0,440 Z" fill="#a9d4e6"/>
+<text x="55" y="420" font-size="13" fill="#4a7a91" font-style="italic">维多利亚湖</text>
+
+<ellipse cx="628" cy="300" rx="16" ry="10" fill="#a9d4e6"/>
+<ellipse cx="612" cy="666" rx="22" ry="13" fill="#a9d4e6"/>
+<text x="612" y="700" font-size="11" fill="#4a7a91" font-style="italic" text-anchor="middle">纳特龙湖</text>
+
+<!-- 国界线（肯尼亚 / 坦桑尼亚） -->
+<path d="M0,398 L90,414 L358,448 L594,513 L773,692 L936,846 L1000,912"
+      fill="none" stroke="#8a8378" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+<text x="150" y="435" font-size="13" fill="#8a8378" transform="rotate(9 150 435)">肯尼亚 KENYA</text>
+<text x="640" y="600" font-size="13" fill="#8a8378" transform="rotate(42 640 600)">坦桑尼亚 TANZANIA</text>
+
+<!-- 山峰图标 -->
+<g>
+    <path d="M864,196 L878,222 L871,222 L864,208 L857,222 L850,222 Z" fill="#8b8f99"/>
+    <text x="864" y="236" font-size="11" fill="#6b6f79" text-anchor="middle">肯尼亚山</text>
+</g>
+<g>
+    <path d="M873,776 L892,808 L883,808 L873,788 L863,808 L854,808 Z" fill="#8b8f99"/>
+    <path d="M873,776 L878,786 L868,786 Z" fill="#fff"/>
+    <text x="873" y="822" font-size="11" fill="#6b6f79" text-anchor="middle">乞力马扎罗山</text>
+</g>
+
+<!-- 恩戈罗恩戈罗（途经，不过夜） -->
+<circle cx="540" cy="810" r="9" fill="none" stroke="#5f8a4a" stroke-width="2"/>
+<text x="540" y="835" font-size="11" fill="#5f8a4a" text-anchor="middle">恩戈罗恩戈罗（途经）</text>
+
+<!-- 行程路线 -->
+<path d="M777,466 L909,117 L644,289 L585,477 L468,470 L423,567 L418,675 L752,841 L855,711 L777,466"
+      fill="none" stroke="#ffffff" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M777,466 L909,117 L644,289 L585,477 L468,470 L423,567 L418,675 L752,841 L855,711 L777,466"
+      fill="none" stroke="#4c3fa0" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+
+<!-- ============ 站点标记 ============ -->
+
+<!-- D1/D13 内罗毕 -->
+<circle cx="777" cy="466" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="795" y="452" font-size="14" font-weight="700" fill="#1c1c1c">Safari Park Hotel</text>
+<text x="795" y="470" font-size="13" font-weight="700" fill="#c0392b">D1 / D13 · 内罗毕</text>
+
+<!-- D2-3 桑布鲁 -->
+<circle cx="909" cy="117" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="893" y="98" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="end">Samburu Sopa</text>
+<text x="893" y="116" font-size="13" font-weight="700" fill="#c0392b" text-anchor="end">D2-3 · 桑布鲁</text>
+
+<!-- D4 纳库鲁 -->
+<circle cx="644" cy="289" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="626" y="270" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="end">Sarova Woodlands</text>
+<text x="626" y="288" font-size="13" font-weight="700" fill="#c0392b" text-anchor="end">D4 · 纳库鲁</text>
+
+<!-- D5 马赛部落 -->
+<circle cx="585" cy="477" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="585" y="504" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="middle">Maji Moto Cultural Camp</text>
+<text x="585" y="521" font-size="13" font-weight="700" fill="#c0392b" text-anchor="middle">D5 · 马赛部落</text>
+
+<!-- D6 马赛马拉 -->
+<circle cx="468" cy="470" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="450" y="452" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="end">Mara Elatia</text>
+<text x="450" y="470" font-size="13" font-weight="700" fill="#c0392b" text-anchor="end">D6 · 马赛马拉</text>
+
+<!-- D7-8 塞伦盖蒂北 -->
+<circle cx="423" cy="567" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="405" y="558" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="end">Kenzan Migration Camp</text>
+<text x="405" y="576" font-size="13" font-weight="700" fill="#c0392b" text-anchor="end">D7-8 · 塞伦盖蒂北</text>
+
+<!-- D9 塞伦盖蒂中部 -->
+<circle cx="418" cy="675" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="400" y="666" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="end">Land of Nature</text>
+<text x="400" y="684" font-size="13" font-weight="700" fill="#c0392b" text-anchor="end">D9 · 塞伦盖蒂中部</text>
+
+<!-- D10 阿鲁沙 -->
+<circle cx="752" cy="841" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="752" y="868" font-size="14" font-weight="700" fill="#1c1c1c" text-anchor="middle">Planet Lodge</text>
+<text x="752" y="885" font-size="13" font-weight="700" fill="#c0392b" text-anchor="middle">D10 · 阿鲁沙</text>
+
+<!-- D11-12 安博塞利 -->
+<circle cx="855" cy="711" r="8" fill="#fff" stroke="#2b2b2b" stroke-width="2.5"/>
+<text x="873" y="702" font-size="14" font-weight="700" fill="#1c1c1c">Oilepo Amboseli</text>
+<text x="873" y="720" font-size="13" font-weight="700" fill="#c0392b">D11-12 · 安博塞利</text>
+
+<!-- 图例 / 标题 -->
+<rect x="18" y="18" width="330" height="58" rx="10" fill="rgba(255,255,255,0.85)" stroke="#d8d2c2"/>
+<text x="34" y="42" font-size="17" font-weight="800" fill="#1c1c1c">肯尼亚 + 坦桑尼亚 游猎路线图</text>
+<text x="34" y="62" font-size="12" fill="#555">Aug 17 – Aug 28, 2026 · KT260817-28</text>
+
+<!-- 指北针 -->
+<g transform="translate(1020,50)">
+    <circle r="26" fill="rgba(255,255,255,0.85)" stroke="#d8d2c2"/>
+    <path d="M0,-18 L7,6 L0,0 L-7,6 Z" fill="#2b2b2b"/>
+    <text x="0" y="-24" font-size="12" font-weight="700" text-anchor="middle" fill="#2b2b2b">N</text>
+</g>
+
+</svg>
